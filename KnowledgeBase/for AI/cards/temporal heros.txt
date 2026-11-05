@@ -1,0 +1,414 @@
+Temporal Heros
+Temporal Hero: Civilian With Attitude 
+Rank 0 
+Color: grey
+Stats: attack 5,000 | Shield  15,000 
+Effect: "Temporal Hero" units of any element can be played without color penalties.
+Card Type: leader card 
+
+Temporal Hero: Cadet Hero
+Rank 1 
+Color: grey 
+Stats: attack 8,000 | Shield  10,000 
+Stack: This unit gains all effects of the cards that are underneath this card. 
+Effect: Once per turn, when a Temporal Hero unit is summoned to your side of the field, you can select and activate 1 of the following effects:
+Draw 1 card
+Gain 1 energy.
+Card Type: Leader card 
+
+Temporal Hero: Commander Flux
+Rank 2 
+Color: grey 
+Stats: Attack 10,000 | Shield  5,000 
+Stack: This unit gains all effects of the cards that are underneath this card. 
+Effect: All active Temporal Hero units gain +5,000 Attack.
+Card Type: leader card 
+
+Temporal Hero: Auxiliary Quartz 
+Rank 3 
+Color: grey 
+Stats: Attack 13,000 | Shield  5,000 
+Stack: This unit gains all effects of the cards that are underneath this card. 
+Effect: Cost 4 Energy; Target 5 "Temporal Hero" cards from the graveyard, shuffle them back into your deck. Summon 1 "Temporal Hero" unit directly to the field from the deck, Extra Deck, and graveyard. 
+Card Type: Leader Card 
+
+Temporal Hero: Cobalt
+rank 2
+Color: Blue
+Cost: 3 energy
+Stats: Attack  10,000 | Shield  5,000
+Effect: Once per turn, choose 2 "Temporal Hero" units on the field and send them to the graveyard, draw 2 cards from your deck, then choose 1 card from your hand and shuffle it into your deck. 
+
+Temporal Hero: Crimson
+rank2
+Color: Red
+Cost: 3 energy 
+Stats: Attack  10,000 | Shield  5,000
+Effect: Once per turn, pay 1 Energy, and target a unit or support card on the field and destroy it.
+
+Temporal Hero: Emerald
+rank2
+Color: Green
+Cost: 3 energy 
+Stats: Attack  10,000 | Shield  5,000
+Effect: Once per turn, reveal a "Temporal Hero"  unit from hand; gain 1  Energy
+
+Temporal Hero: Amber
+rank2
+Color: Yellow
+Cost: 3 energy 
+Stats: Attack  10,000 | Shield  5,000
+Effect: Once per turn, search your deck or graveyard for 1 "Temporal Hero" unit and add it to your hand, then select 1 card from your hand and shuffle it into your deck
+
+
+Temporal Hero: Obsidian
+rank2
+Color: Purple
+Cost: 3 energy 
+Stats: Attack  10,000 | Shield  5,000
+Effect: Once per turn, target 1 "Temporal Hero" unit in the grave and place it under a rank 4 unit.
+Once per turn, target 1 unit on the opponent's field and negate its effect. 
+
+Temporal Hero: Rose 
+rank2
+Color:  Pink
+Cost: 3 energy 
+Stats: Attack  10,000 | Shield  5,000
+Effect: Once per turn, target 2 units and give them +5,000 Attack until the end of the turn.
+
+Temporal Hero: Crimson N.O.V.A
+Rank: 4
+Color: Red
+Attack 15000 / Defence 10000
+Cost: Shuffle 2 "Temporal Hero" unit cards on your side of the field back to the deck.
+Effect: When this unit is summoned to your side of the field, shuffle 1 Temporal Hero unit from your hand back into the deck. Target 1 unit and 1 support card on your opponent's field and destroy them.
+
+Temporal Hero: Cobalt N.O.V.A 
+Rank: 4
+Color: Blue
+Attack 15000 / Defence 10000
+Cost: Shuffle 2 "Temporal Hero" unit cards on your side of the field back to the deck. 
+Effect: When this unit is summoned to your side of the field, draw 3 cards and put 2 cards from your hand to the bottom of the deck. 
+
+Temporal Hero: Emerald N.O.V.A 
+Rank: 4
+Color: Green
+Attack 15000 / Defence 10000
+Cost: Shuffle 2 "Temporal Hero" unit cards on your side of the field back to the deck. 
+Effect: When this unit is summoned on your side of the field, discard 1 card and gain 2 energy.
+
+Temporal Hero: Amber N.O.V.A 
+Rank: 4
+Color: Yellow
+Attack 15000 / Defence 10000
+Cost: Shuffle 2 "Temporal Hero" unit cards on your side of the field back to the deck. 
+Effect: When this unit is summoned to your side of the field, search your deck for 2 Temporal Hero units and add them to your hand.
+
+Temporal Hero: Obsidian N.O.V.A 
+Rank: 4
+Color: Purple
+Attack 15000 / Defence 10000
+Cost: Shuffle 2 "Temporal Hero" unit cards on your side of the field back to the deck.  
+Effect: When this unit is summoned to your side of the field, choose and activate one of the following effects.
+-Discard 1 card. Target 1 unit on either player's field and negate its effects.
+-Target 1 Temporal Hero unit from the graveyard and place it under a Temporal Hero rank 4 unit. 
+
+Temporal Hero: Rose N.O.V.A
+Rank: 4
+Color: Pink
+Attack 15000 / Defence 10000
+Cost: Shuffle 2 "Temporal Hero" unit cards on your side of the field back to the deck. 
+Effect: When this unit is summoned to your side of the field, pay 1 energy and discard 1 Temporal Hero unit from hand. Halve the power of all units on the field until the end of the turn.
+
+Temporal Hero: Fortress Guardian 
+(Attack 15,000 | Shield  15,000) 
+Rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 Temporal Hero units from the field or graveyard to it as material. 
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Gains +5,000 Shield for every material under this unit when guarding.
+
+Temporal Hero: Aegis Shield 
+(Attack 15,000 | Shield  15,000) 
+rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 Temporal Hero units from the field or graveyard to it as material. 
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Detach all 3 materials from this unit and protect this card from being destroyed by an attack or card effect.
+
+Temporal Hero: Strike Buster 
+(Attack 15,000 | Shield  5,000) 
+rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 Temporal Hero units from the field or graveyard to it as material.  
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Gains +5,000 Attack for every material underneath this unit.
+
+Temporal Hero: Vanguard Executioner 
+(Attack 15,000 | Shield  5,000) 
+rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 Temporal Hero units from the field or graveyard to it as material.  
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Once per turn, detach 1 material target and destroy 1  enemy unit or support card on the field.
+
+Temporal Hero: Energy Relay 
+(Attack 15,000 | Shield  10,000) 
+rank4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 Temporal Hero units from the field or graveyard to it as material.  
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: When this unit declares an attack, gain 1 Energy.
+
+Temporal Hero: Temporal Recovery 
+(Attack 15,000 | Shield  10,000) 
+rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 Temporal Hero units from the field or graveyard to it as material. 
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Once per turn, detach 2 materials and draw 4 cards from your deck, then shuffle 2 cards from your hand back to your deck.
+
+Temporal Hero: Core Five Titan 
+(Attack 15,000 | Shield  15,000) 
+rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 5 Temporal Hero units from the field or graveyard to it as material. 
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Choose 2 materials from this unit and place them to the bottom of your deck. Choose 1 unit from the graveyard and summon it to the field. 
+
+Temporal Hero: Obsidian Shadow Titan 
+(Attack 15,000 | Shield  10,000) 
+rank 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 5 Temporal Hero units from the field or graveyard to it as material.  
+Stack: This unit gains all effects of the cards that are underneath this card.
+Effect: Detach 2 materials to negate a unit's attack or card effect this turn.
+
+Temporal Hero: Zenith Apex Quartz
+Attack: 15,000+ | Shield : 15,000 
+Rank: 4
+Color: Grey 
+Cost: Play this Rank 4 unit by attaching 3 or more Rank 4 Temporal Hero units from the field or graveyard and a Temporal Hero: Auxiliary Quartz to it as material. 
+Stack: This unit gains all effects of the cards that are underneath this card. 
+Effect: When this unit is summoned to your side of the field, destroy all cards on the opponent's field. This card has the following effect depending on the number of materials under this card.
+1-2: When this unit declares an attack, pay 1 energy and destroy a support card on the field
+3-4: Once per turn, discard 1 material and gain two energy.
+5-6: This unit is immune to all unit effects on the field, hand, or graveyard. 
+At the end of the turn, this unit discards 1 material.
+
+Temporal Hero: Solar Lion
+Rank 3
+Color: Red
+Attack 13000 Shield  5000
+Cost: 4
+Effect: This unit gains first strike ( can attack the turn it's summoned ). When this unit attacks, it can attack 2 units at a time.
+In hand, this card costs 1 less energy for each Temporal Hero you control (Minimum cost: 1 energy)." 
+
+Temporal Hero: Apex Eagle 
+rank 3
+Color: Yellow
+Attack: 13000 Shield: 5000
+Cost: 4 
+Effect: When this unit is summoned to your side of the field,  choose 1 unit on your field; destroy it, then search your deck for 2 units with rank 2 or lower and add them to hand.
+In hand, this card costs 1 less energy for each 'Temporal Hero' you control (Minimum cost: 1 energy)." 
+
+Temporal Hero: Wave Dolphin 
+rank 3
+Color: Blue
+Attack 13000 Shield  5000
+Cost: 4 
+Effect: Once per turn, search the grave for a spell and an item card, add them to hand.
+In hand, this card costs 1 less energy for each 'Temporal Hero' you control (Minimum cost: 1 energy)." 
+
+Temporal Hero: Seismic Gorilla 
+Rank 3
+Color: Green
+Cost: 4 
+Attack: 13000 Shield: 5000
+Effect: When this unit is summoned to your side of the field, put this unit in tap position and gain 2 energy.
+In hand, this card costs 1 less energy for each 'Temporal Hero' you control (Minimum cost: 1 energy)." 
+
+Temporal Hero: Gale Hawk
+Rank 3 
+Color: Pink
+Cost: 4 
+Attack: 13000 Shield: 5000
+Effect: When this card is summoned to your side of the field,  your opponent discards 1 card from their hand and destroys 1 support unit on their side of the field. 
+In hand, this card costs 1 less energy for each 'Temporal Hero' you control (Minimum cost: 1 energy)." 
+
+Temporal Hero: Void Dragon 
+Rank 3
+Color: Purple
+Cost: 4 
+Attack: 13000 Shield: 5000
+Effect: When this unit is summoned to your side of the field, choose 2 units on the opponent's field; one is sent to the graveyard, and the other has its effects negated. 
+In hand, this card costs 1 less energy for each 'Temporal Hero' you control (Minimum cost: 1 energy)." 
+
+RANK 1 CARDS:
+
+Dojo Sparring Prodigy
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack  8,000 | Shield 10,000
+Effect: This unit is treated as a "Temporal Hero" unit either on the field, hand, or graveyard.
+
+Academy Circuit Hacker
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: Once per turn, look at the top card of your deck; if it's a "Temporal Hero" card, add it to your hand; if it is not, send it to the bottom of the deck.
+
+Underground Circuit Brawler
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: This card gains +2,000 Attack during your turn if it is the only unit you control.
+
+Cryptic Academy Initiate
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: Once per turn, you may send 1 card from your hand to the graveyard; if you do, gain 1 Energy.
+
+Recon Academy Cadet
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: When an opponent’s card effect targets a "Temporal Hero" card, you may banish this card from your graveyard to negate the effect.
+
+Experimental Rig Test-Pilot
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: When this unit is placed on the field, discard 1 card from your hand, then draw 1 card.
+
+Sub-City Street Racer
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: Gain first strike ( can attack the turn it's summoned ) if you control a "Temporal Hero" unit.
+
+Subterranean Ruin Scavenger
+Rank: 1
+Color: grey 
+Cost: 1 energy
+Stats: Attack 8,000 | Shield 10,000
+Effect: When this unit is summoned to your side of the field, look at the top 3 cards of your deck, place them back in any order, and give all active "Temporal Hero" units +1,000 Attack until the end of the turn.
+
+RANK 0 CARDS: 
+
+Unfazed Juice-Bar Proprietor
+Rank: 0
+Color: grey 
+Cost: 1 energy 
+Stats: Attack 5,000 | Shield 15,000
+Effect: Once per turn, when a "Temporal Hero" unit is placed on your field, choose a Temporal Hero card from hand, shuffle it back to the deck, gain 1 Energy, and draw 1 card.
+Card type: Support
+
+Astra-Feline Systems Architect
+Rank: 0
+Color: grey 
+Cost: 1 energy 
+Stats: Attack 5,000 | Shield 15,000
+Effect: Once per turn, reveal 1 "Temporal Hero" unit in your hand and search your deck for a Spell or Item card.
+Card type: Support
+
+Bumbling Precinct Irregulars
+Rank: 0
+Color: grey 
+Cost: 1 energy 
+Stats: Attack 5,000 | Shield 15,000
+Effect: When an opponent targets your active "Temporal Hero" unit with an effect, destroy this card instead.
+Card type: Support
+
+Rescue Operations Commandant
+Rank: 0
+Color: grey 
+Cost: 1  energy 
+Stats: Attack 5,000 | Shield 10,000
+Effect: While you control a "Temporal Hero" unit, all active units gain +1,000 shield.
+Card type: Support unit.
+
+Bio-Tech Conglomerate Chief
+Rank: 0
+Color: grey 
+Cost: 1 energy
+Stats: Attack 5,000 | Shield 15,000
+Effect: Once per turn, send 1 "Temporal Hero" unit from your hand to the graveyard; gain 1 Energy.
+Card type: Support unit. 
+
+Sylvan-Hybrid Borderland Hermit
+Rank: 0 
+Color: grey 
+Cost: 1 energy
+Stats: Attack 5,000 | Shield 15,000
+Effect: When this card is sent from the field to the graveyard, shuffle 1 "Temporal Hero" card from your graveyard back into your deck.
+Card type: Support unit. 
+
+Apprentice Portal Warder
+Rank: 0
+Color: grey 
+Cost: 1 energy
+Stats: Attack 5,000 | Shield 15,000
+Effect: When this card is summoned to your side of the field, look at the top 3 cards of your deck and add 1 "Temporal Hero" card to your hand. Put the rest to the bottom of the deck.
+Card type: Support unit. 
+
+Items and Spells:
+
+Transform Flux Hero 
+Card Type: (Spell) 
+Color: Grey 
+Cost: 2 energy
+Effect: Target a Rank 1 unit on your side of the field; send it to the graveyard. Choose a Rank 2 Temporal Hero unit from the deck and play it on the field.
+[GUARD BREAK]: Gain 1 Mana.
+
+Blaster Combination (Spell)
+Color: Grey 
+Cost: 2 energy
+Effect: If you control 3 or more "Temporal Hero " units. Target and destroy 1 enemy unit on the field.
+
+Dark Dagger
+Color: Grey 
+Card Type: (Equip) Item 
+Cost: 2 energy
+Effect: When this card is equipped to a Temporal Hero unit, it gains the following effects.
+- Target a unit on the field, and it can't attack or activate its effects until after your opponent's next turn. 
+-As long as this card is equipped to a Temporal Hero, it gains + 5000 Attack
+[GUARD BREAK]: Draw 1 card from your deck.
+
+Sword & Shield Array
+Color: Grey 
+Card Type: Spell
+Cost: 1 energy
+Effect: Target 1 "Temporal Hero" unit and it gains +10,000 Attack
+
+Heavy Ax Blaster
+Color: Grey 
+Card Type: (Equip) Item
+Cost: 1 energy 
+Effect: Equip to any Rank 2 or higher "Temporal Hero" unit. The equipped unit gains +5,000 Attack and a shield.
+
+Crimson Sovereign Battlizer
+Card Type:  (Equip) Item 
+Cost: 3 Energy
+Color: Grey 
+Effect: Equip this card to a Red colored rank 2 Temporal Hero unit on your field. Choose 2 item cards with equip and equip them directly to this card without paying their energy costs. While this card is equipped, this unit gains +10000 Power. 
+
+Quantum Resonance Conduit
+Cost: 3
+Color: grey
+Card Type: Spell
+Effect: Search your deck or graveyard for  2 Temporal Hero units. Reveal them, play one to your side of the field, and the other is added to your hand.
+
+Communication
+Cost: 1
+Color: grey
+Card Type: Spell
+Effect: Search your deck for a Temporal Hero unit that's rank 2 and add it to your hand.

@@ -1,0 +1,57 @@
+car game ideas
+Game stuff
+
+Custom tool for my game engin to handle background light sounds and ai and debris 
+
+Car game with story line set in NYC and have car parts like equipment so if you take a part from one car to another the last car will lose that part
+
+If you buy a car you get access to swappable parts 
+Making the engin two part a top and bottem
+
+Real Tire science such as contact patch heating the tires wear tear and degration 
+
+The games name is the culture 
+
+Weight transfer 
+Real world physics 
+Reaction to road conditions 
+Better motion blurr and speed feeling
+Such as g force in the neck stocks react to 0-60 speed like compression and dampers
+
+All parts that can be modified on a car will be able to mod
+
+All engin and part combinations will have their real world sounds 
+
+Car shops
+paint shops 
+Body kits 
+Custom body kits
+Full recreation of cities road sizes and proportion and road conditions 
+Dlc will be other states and more cars 
+NY will be the first state 
+Street racing is the main race type 
+Challenge online racer to street race 
+Click challenge the choose a amount to bet or even pink slips
+Cars are not just paid for I want you to earn them 
+Dirt 
+Cross country
+Drift
+Touge in the mountains 
+Drag
+Track
+Street race
+Level-up system will be based on rep 
+Cops in-game
+Cops can bring the copper 
+Clans will be able to be formed, called clubs 
+
+i need physics and all important details for each individual car
+
+i need to figure out the types of agents that can do each task
+I want a dash cam feel and camera view 
+
+https://youtu.be/BIokybnK7Eg?is=KXTeck8HBsGnKUhA
+
+https://youtu.be/e9OriySqLjQ?is=ebeFPCTvWcdT34iy
+
+https://youtu.be/9ZbHkMLDtPI?is=u-BUbDLAuzqBjBAk

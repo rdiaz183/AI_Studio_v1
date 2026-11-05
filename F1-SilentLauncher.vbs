@@ -1,0 +1,2 @@
+Set objShell = CreateObject("WScript.Shell")
+objShell.Run "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File ""C:\Users\rdiaz\Documents\Unreal Projects\AI_Studio_Workspace\F1-Daemon.ps1"" -Action Listen -VirtualKey 112", 0, False

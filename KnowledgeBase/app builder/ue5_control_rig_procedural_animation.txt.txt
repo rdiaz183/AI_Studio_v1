@@ -1,0 +1,66 @@
+
+
+=== Introduction ===
+
+
+--- Introduction and overview ---
+
+Before we begin, I want to give you an overview of each stage of the process so you know what to expect
+and what we're aiming for, as well as give you some useful troubleshooting tips.
+In the first section, we'll be creating a procedural walk system for this Scorpion character model.
+Our first step will be to calculate the speed of the character.
+This will allow us to predict the motion of the scorpion and to control variables such as the leg lift
+height based on the movement speed.
+To calculate this, we will save the previous position of the character and compare it to the current
+position to see how far it is moved in the time that has passed to calculate its movement speed per
+second.
+Next, we'll loop through all six of the feet bonds of the character, and use the full body IK solver
+to allow us to move these bonds to the target points that we specify.
+And the solver will adjust the body and limbs of the character in order to reach these target points.
+Using this, we will first lock all of the feet in place so that when the actor moves, the character
+stays locked in place.
+We will then create a timer, which will act as a cycle to decide when to lock and unlock the feet from
+their position in the world.
+We will offset the timing of each of the feet, so that they do not all move in sync, and instead move
+one at a time.
+We do this by offsetting the cycle time by a different percentage for each individual foot.
+After this, we want to incorporate the movement speed we have calculated to allow the character to
+anticipate where it will move to in the future, so that it can step forwards in the direction of movement.
+Next, we will make the legs lift in an arc whilst taking a step to create more realistic looking movements,
+and we'll use sphere tracers to detect the floor height so that the landing spots can be adjusted to
+make the character walk over obstacles.
+And finally, we will make some overall tweaks to the animation, including adding additional body motions,
+adjusting the variables, and making improvements to the traces so that the character can move through
+a variety of environments.
+After completing this section, you'll be shown how to port your animation system to another character,
+and then we'll move on to looking at more features of Control Rig and some use case examples, which
+can be combined with regular Keyframed animations.
+And lastly, you will be challenged to create a turning place animation system of your own.
+Before being shown my process of figuring out how to approach and implement the system.
+The course starts off very slow as we gradually introduce concepts.
+So if you are experience with Unreal Engine or animation, you may need to speed up some of the earlier
+videos, but I would recommend not skipping through any of them because we will be continually building
+on previous sections in the later videos.
+
+--- Basic tips & troubleshooting ---
+
+Whilst working through this course, you will likely run into some crashes, so it's important to save
+frequently and ideally create backups of what you're working on.
+A useful tip to solve many issues that may arise is to close, control, rig and reopen it, or to close
+and reopen the editor.
+This is particularly useful in cases where you are getting errors which don't make sense often when
+dealing with arrays, where it will tell you that an array you're trying to use is out of bounds.
+First, try clicking compile a few times to see if that fixes it and if not, reopen control rig.
+For more general issues that you might encounter.
+It can be very useful to create print nodes, to print information, to make sure what you think is
+happening is what's actually happening.
+And if you have errors which seem out of place and don't make any sense, sometimes this may be because
+of a problem that has come earlier, rather than where it suggests the error is.
+In this case, try cutting out different parts of the logic in control rig to isolate the real cause
+of the problem.
+If you're still having an issue and you have looked over previous videos again to try to correct any
+errors, take a look to see if anyone else has had the same problem in the question section of the video.
+If the problem hasn't already been asked and solved, post your own question and I will respond.
+Or I can also be contacted on the discord server.
+When you're ready to begin, download, extract and open the project file from the course resources
+and we will get started.

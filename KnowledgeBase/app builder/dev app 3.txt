@@ -1,0 +1,101 @@
+import socket, json, os, re, subprocess, urllib.request, urllib.parse
+
+PROJECT_ROOT = r"C:\Users\rdiaz\Documents\Unreal Projects\Code510_AI_Workspace"
+STATE_FILE = os.path.join(PROJECT_ROOT, "Bridge", "state_machine.json")
+ADGUARD_URL = "http://127.0.0.1:80/control"
+
+def sanitize_and_write(file_path, content):
+    clean_rel = os.path.normpath(file_path.replace("/", "\\")).lstrip("\\")
+    full_path = os.path.abspath(os.path.join(PROJECT_ROOT, clean_rel))
+    if not full_path.startswith(os.path.abspath(PROJECT_ROOT)):
+        raise ValueError(f"Blocked path traversal attempt: {file_path}")
+    os.makedirs(os.path.dirname(full_path), exist_ok=True)
+    with open(full_path, "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"[IPC AUTO-APPLY] Written to: {full_path}")
+    try:
+        subprocess.run(["git", "add", full_path], cwd=PROJECT_ROOT, capture_output=True)
+        subprocess.run(["git", "commit", "-m", f"chore(auto-apply): Update {os.path.basename(full_path)}"], cwd=PROJECT_ROOT, capture_output=True)
+    except Exception:
+        pass
+
+def extract_modify_project_json(text):
+    fenced = re.findall(r'```(?:json)?\s*(\{[\s\S]*?\})\s*```', text)
+    for candidate in fenced:
+        if '"modify_project"' in candidate:
+            try:
+                return json.loads(candidate)
+            except Exception:
+                pass
+    idx = text.find('"modify_project"')
+    if idx != -1:
+        start = text.rfind('{', 0, idx)
+        end = text.rfind('}')
+        if start != -1 and end != -1 and end > start:
+            try:
+                return json.loads(text[start:end+1])
+            except Exception:
+                pass
+    return None
+
+def handle_client(conn):
+    try:
+        chunks = []
+        conn.settimeout(2.0)
+        while True:
+            try:
+                chunk = conn.recv(65536)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+                if b"\n" in chunk:
+                    break
+            except socket.timeout:
+                break
+        raw_data = b"".join(chunks).decode("utf-8").strip()
+        if not raw_data:
+            return
+
+        text = raw_data
+        try:
+            rpc = json.loads(raw_data)
+            if isinstance(rpc, dict):
+                if rpc.get("action") == "get_state" and os.path.exists(STATE_FILE):
+                    with open(STATE_FILE, "r", encoding="utf-8") as sf:
+                        conn.sendall((sf.read() + "\n").encode("utf-8"))
+                    return
+                if "params" in rpc and "raw_text" in rpc["params"]:
+                    text = rpc["params"]["raw_text"]
+        except Exception:
+            pass
+
+        payload = extract_modify_project_json(text)
+        if payload and payload.get("action") == "modify_project":
+            files_written = 0
+            for f in payload.get("files", []):
+                sanitize_and_write(f["path"], f["content"])
+                files_written += 1
+            conn.sendall(json.dumps({"status": "APPLIED", "files": files_written}).encode("utf-8") + b"\n")
+            return
+
+        conn.sendall(b'{"status": "OK"}\n')
+    except Exception as e:
+        try:
+            conn.sendall((json.dumps({"status": "ERROR", "error": str(e)}) + "\n").encode("utf-8"))
+        except Exception:
+            pass
+    finally:
+        conn.close()
+
+def main():
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.bind(("0.0.0.0", 9876))
+    server.listen(5)
+    print("[MULTI-DOMAIN IPC] Listening on port 9876...")
+    while True:
+        conn, _ = server.accept()
+        handle_client(conn)
+
+if __name__ == "__main__":
+    main()

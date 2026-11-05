@@ -1,0 +1,90 @@
+Classic Trope,Copyright Risk,Original & Safe Naming Convention,Design Logic
+Morpher,Morpher / Transmutation Device,"Chrono-Link, Shift-Drive, Phase-Key",Sounds high-tech and operational while signaling transformation.
+Megazord,Megazord / Ultra Zord,"Apex Titan, Combiner Dreadnought, Nexus Frame",Uses heavy industrial and martial terms to signify massive fusion mecha.
+Battlizer,Battlizer / Super Mode,"Zenith Exosuit, Hyper-Vestment, Aegis Chassis","Highlights heavy, single-user armor upgrades."
+Ranger Squad,Power Rangers / Sentai,"Cadre Operatives, Spectrum Vanguard, Vectors",Fits military/hero squad themes with color or designation codenames.
+Morphing Grid,The Morphing Grid,"Prismatic Web, Resonance Field, The Origin Core",Establishes the lore source powering all transforms and energy bursts.
+
+
+
+### Catchy Naming Alternatives & Progression Architecture
+
+Here are three distinct, catchy naming direction themes for your time-traveling Toku TCG. Each theme clearly maps out how a squad member evolves from **Rank 1 (Pre-Ranger / Civilian-Trainee)** into **Rank 2 (Era Ranger / Suited Form)**, while keeping the MC as the flexible 7th Ranger.
+
+---
+
+### Option 1: The "Epoch-Shift" Theme (Sleek, High-Energy)
+
+*Focuses on high-octane gear shifts and time jumps. Fits a fast-paced, modern action vibe.*
+
+* **7th Ranger MC:** **Cipher** (The unwritten timeline code)
+* *Rank 0:* Cadet Cipher
+* *Rank 1:* Cipher: Zero-Suit (Pre-Ranger / Tactical Training Armor)
+* *Rank 2:* Cipher: Era Prime (First Morphed Form)
+* *Rank 3:* Cipher: Apex Overdrive (Heavy Exo-Frame)
+
+
+* **Main Squad (Set 1 - Base Timeline Era):**
+* *Rank 1 (Pre-Ranger):* Shift Initiate: [Color/Name] *(e.g., Shift Initiate: Crimson)*
+* *Rank 2 (Era Ranger):* Epoch Ranger: [Color] *(e.g., Epoch Ranger: Crimson)*
+
+
+* **Collectible Key Item:** **Epoch Keys**
+* **Morpher Spell:** **Shift-Drive: Ignition**
+
+---
+
+### Option 2: The "Chrono-Relay" Theme (Classic Toku / Comic Energy)
+
+*Echoes classic Toku team naming schemes like Time Force or Power Rangers, making the era-swapping aspect sound official and heroic.*
+
+* **7th Ranger MC:** **Flux** (The constant variable in time)
+* *Rank 0:* Recruit Flux
+* *Rank 1:* Flux: Anchor Mode (Pre-Ranger Prototype)
+* *Rank 2:* Flux: Continuum Ranger (Full Era Suit)
+* *Rank 3:* Flux: Sovereign Zenith (Boss Form)
+
+
+* **Main Squad (Set 1 - Base Timeline Era):**
+* *Rank 1 (Pre-Ranger):* Relay Cadet: [Color] *(e.g., Relay Cadet: Cobalt)*
+* *Rank 2 (Era Ranger):* Chrono Guard: [Color] *(e.g., Chrono Guard: Cobalt)*
+
+
+* **Collectible Key Item:** **Chrono Keys**
+* **Morpher Spell:** **Relay Link: Engage**
+
+---
+
+### Option 3: The "Nexus-Vanguard" Theme (Heavy Sci-Fi / Industrial)
+
+*A darker, more tactical naming style that leans into military temporal defense.*
+
+* **7th Ranger MC:** **Sync** (The bridge between all temporal frequencies)
+* *Rank 0:* Initiate Sync
+* *Rank 1:* Sync: Field Cadet (Pre-Ranger Civilian Uniform)
+* *Rank 2:* Sync: Vanguard Strike (Morphed Era Suit)
+* *Rank 3:* Sync: Omni Vanguard (Heavy Command Core)
+
+
+* **Main Squad (Set 1 - Base Timeline Era):**
+* *Rank 1 (Pre-Ranger):* Vanguard Trainee: [Color] *(e.g., Vanguard Trainee: Emerald)*
+* *Rank 2 (Era Ranger):* Nexus Ranger: [Color] *(e.g., Nexus Ranger: Emerald)*
+
+
+* **Collectible Key Item:** **Nexus Keys**
+* **Morpher Spell:** **Nexus Phase: Overdrive**
+
+---
+
+### Progression & Set 1 Structure Comparison
+
+| Rank Level | Gameplay Role | Set 1 Visual / Narrative Form | Example Card Title (Option 1) |
+| --- | --- | --- | --- |
+| **Rank 0** | Starter Engine / Search | Grey Trainee / Unpainted Prototype | *Cadet Cipher* |
+| **Rank 1** | Early Filter / Setup | Pre-Ranger (Civilian or Tactical Suit) | *Shift Initiate: Crimson* |
+| **Rank 2** | Era Power / Squad Buff | Fully Suited Era Ranger (Set 1 Base Form) | *Epoch Ranger: Crimson* |
+| **Rank 3** | Boss Unit / Board Wipe | Heavy Armored Exo-Suit / Command Reactor | *Cipher: Apex Overdrive* |
+
+When future booster sets launch (e.g., *Set 2: Feudal Era*, *Set 3: Galactic Era*), you can print new **Rank 2 Era Rangers** for the squad (e.g., *Feudal Epoch Ranger: Crimson* or *Galactic Epoch Ranger: Crimson*). The main squad keeps their Rank 1 Pre-Ranger identities, but unlocks entirely new Rank 2s, Zords, and Keys from those specific sets.
+
+Which naming direction (**Cipher / Epoch**, **Flux / Chrono**, or **Sync / Nexus**) feels closest to the vibe you want for your main characters?

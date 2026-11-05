@@ -1,0 +1,199 @@
+universal cards (neutral colored cards )
+Keep One, Lose One.
+Card type: Spell            
+Cost: 1 Energy
+Effect: Look at the top 2 cards of your deck. Add 1 to your hand and send the other to the graveyard.
+
+Blessings of light
+Card type: Item          
+Cost: 1 Energy
+Equip
+Effect: Attach this card to a unit. When a card effect would destroy this unit, send this card to the graveyard instead.
+
+Tactical Recall 
+Card type: Spell     
+Cost: 1 Energy
+Effect: You can only use this effect once per turn; target 1 Rank 2 or lower unit you control; return it to your hand, and gain 2 Energy.
+
+Entropy Shackle 
+Card type: Item         
+Cost: 2 Energy
+Effect: Target 1 unit your opponent controls; negate its effects and reduce its Power to 0 until the end of the turn.
+
+Abyssal Interdict 
+Cost: Spell            
+Cost: 2 Energy
+Effect:  Discard this card when your opponent summons a unit from the graveyard: Negate that summoning and banish the unit face-down.
+Guard Break Effect: Banish up to 3 cards from any player's graveyard, then draw 1 card. 
+
+Mass Dampener 
+Card type: Spell
+Cost: 2
+Effect: Reduce a unit's attack by 10,000 for the remainder of the turn.
+
+Deflection 
+Card type: Spell
+Cost: 1 Energy
+Effect: Negate the attack of one unit and reduce all incoming combat damage from that battle to zero.
+Guard Break Effect: Gain 2 energy.
+
+Green Healing Magic 
+Card type: Spell
+Cost: 2 Energy
+Effect: Place this card face-up in your damage zone
+Guard Break Effect: Choose a unit in the graveyard and summon it to the field.
+
+Dredge 
+Card type: Spell)
+Cost: 1 Energy
+Effect: Send the top 3 cards of your deck to the graveyard; draw 1 card.
+
+Grave Seal 
+Card type: Spell
+Cost: 1 Energy
+Effect: When your opponent activates an effect in the graveyard, negate that effect.
+
+Underdog’s Gambit 
+Card type: Spell 
+Cost 1 Energy
+Effect: Once per turn, when you play this card, choose one of the following effects and activate it:
+-If your opponent controls more units than you, draw 2 cards.
+-When your opponent summons more than 2 units on turn 1: Your opponent destroys 1 unit on their side of the field.
+
+Land Rift 
+Card type: Spell 
+Cost: 3 Energy
+Effect: Banish all cards in both graveyards.
+
+E.M.Pulse 
+Card type: Spell
+Cost: 1
+Effect: Target 1 unit on the field; destroy all equip item cards on a unit.
+
+Axiom Breaker 
+Card type: Spell
+Cost: 1
+Effect: Destroy a support unit. 
+Guard Break: Negate a unit's effect on the field.
+
+Horizon Barrier 
+Card type: Spell
+Cost: 1
+Effect: Once per turn, protect a unit from being destroyed by battle. 
+Guard Break: Nullify the next attack this turn.
+
+Kinetic Repulsor 
+Card type: item
+Cost: 1
+Equip
+Play: Once per turn, send this card to the graveyard when it's equipped to a unit. Return a support unit on the field to the hand. 
+Guard Break: Skip the opponent's next draw phase.
+
+Shock gauntlets 
+Card type: Item
+Cost: 2
+Equip
+Effect: Equip this card to a unit, and it gives +5000 attack. If a card this unit attacked is still on the field after that battle, that unit can't attack the opponent's next turn.
+
+Abyssal Harvest 
+Card type: spell
+Cost: 2
+Effect: Draw 3 cards and send 2 cards from your hand to the graveyard.
+Guard Break: Draw 2 cards.
+
+Energy Siphon 
+Card type: Spell
+Cost: 1
+Effect: You gain 1 energy, and your opponent loses 1 energy 
+
+Entropy Converter 
+Card type: Spell
+Cost: 0
+Effect: Once per turn, banish 2 cards from your graveyard, and gain 2 energy. 
+
+Gravity Well
+Card type: spell
+Cost: 4
+Effect: When your opponent enters battle phase, end that phase and move to the next phase of the turn.
+
+Surge Cola
+Card type: Item
+Cost: 1
+Equip
+Effect: Equip this card to a unit; Boost a unit's power by +5,000.
+
+Tank Cola
+Card type: Item
+Cost: 1
+Equip
+Effect: Equip this card to a unit; negate this unit's destruction and send this card to the graveyard instead.
+
+Jet Cola 
+Card type: Item
+Cost: 1
+Equip
+Effect: Equip this card to a unit; this unit gains first strike (it can attack the turn it is summoned).
+
+Holy Cola
+Card type: Item
+Cost: 1
+Equip
+Effect: Equip this card to a unit; if the unit is sent to the graveyard this turn, return this unit to the field, but all its effects are negated this turn. 
+
+Deadshot Cola 
+Card type: Item
+Cost: 1
+Equip
+Effect: Equip this card to a unit; this unit gains the effect when this card is destroyed; target a card on the field and destroy it.
+
+Elemental Cola 
+Card type: Item
+Cost: 1
+Equip
+Effect: Equip this card to a unit; this unit gains immunity to spell effects.
+
+cola vender
+Color: Gray
+Rank: 0
+Cost: 1
+Stats: Attack 5000 / Defense 15000
+Effect: When this card is summoned to your support zone, search your deck for one cola item and add it to your hand. 
+Support unit
+
+Disruptor Echo
+Rank: 0
+Cost: 1
+Stats: Attack 5000 / Defense 15000
+Effect: Once per turn, target one item card equipped to a unit and destroy it.
+
+Armageddon 
+Card type: spell
+Cost: 4
+Effect: Destroy every card on the field.
+Guard Break: The battle phase ends immediately when this card is revealed  
+
+Phalanx Sweep 
+Card type: spell
+Cost: 2  
+Effect: Destroy all token units on the field. 
+
+Apex Enforcer: Blake
+Color: Grey
+Rank: 1
+Cost: 1
+Stats: Attack 8000 / Defense 10000
+Effect: When this card is summoned to your side of the field, destroy one support unit.
+
+Covert Operative: Cipher 
+Color: Grey
+Rank: 1
+Cost: 1
+Stats: Attack 8000 / Defense 10000
+Effect: Once per turn, draw 1 card and place a card from your hand to the bottom of your deck.
+
+Core Converter
+Color: Grey
+Rank: 1
+Cost: 1
+Stats: Attack 8000 / Defense 10000
+Effect: When this card is summoned to your side of the field, discard 1 rank 2 or greater card from your hand and gain 2 energy.

@@ -1,0 +1,17 @@
+{
+   "state": "idle",
+   "active_models": {
+     "aistudio": "deepseek-r1:14b",
+     "teach": "gemini-2.5-pro",
+     "embed": "nomic-embed-text"
+   },
+   "ports": {
+     "aistudio_ipc": 9876,
+     "teach_ipc": 9877,
+     "ollama": 11434
+   },
+   "telemetry": {
+     "ast_audit_pass": true,
+     "version_checker_pass": true
+   }
+}

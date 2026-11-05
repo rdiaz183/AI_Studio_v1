@@ -1,0 +1,145 @@
+## 1. Rules & Combat System Refinement
+
+* **Simultaneous Trigger Stack (LIFO Engine)**: When multiple effects trigger simultaneously (e.g., a board wipe revealing a `[GUARD BREAK]` card while an opponent's passive trigger conditions are met), resolution follows an **Active Player First (APF) LIFO Stack**. Active player triggers enter the queue first in the controller's chosen order, followed by Non-Active Player (NAP) triggers. Stack resolves top-to-bottom.
+
+
+* **Targeting Mechanics & Fizzling Rules**: Targeting occurs at action declaration. If a target leaves the Vanguard Zone, changes zones, or becomes illegal prior to resolution, the effect fizzles completely; spent Mana and cards are not refunded. Backline Leader and Support zones remain un-targetable by single-target attacks while Vanguard units are present due to Vanguard Taunt.
+
+
+* **Deck Constraints & Uniqueness Limits**: Main Deck construction strictly enforces 40 cards with a maximum of 3 copies per title. High-impact Rank 3 units feature the `[UNIQUE]` keyword, limiting a player to controlling only 1 active instance on the field at a time.
+
+
+
+---
+
+## 2. Data Modeling & Card Balance Engine
+
+* **Stat Ratio Formula Matrix**:
+Card budgets are governed by a strict mathematical efficiency formula:
+
+$$\text{Target Power Ratio} = \text{Base ATK} + \text{Shield Value} + (\text{Effect Value Modifier} \times 1,000)$$
+
+
+* **Rank 1 Budget**: 12,000 total points (e.g., 7,000 ATK + 3,000 Shield + 2,000 Effect Value).
+
+
+* **Rank 2 Budget**: 16,000 total points (e.g., 9,000 ATK + 5,000 Shield + 2,000 Effect Value).
+
+
+* **Rank 3 Budget**: 20,000 total points (e.g., 12,000 ATK + 6,000 Shield + 2,000 Effect Value).
+
+
+
+
+* **Standardized Keyword Framework**:
+* `[GUARD BREAK]`: Triggers automatically for 0 Mana when revealed from the Damage Zone.
+
+
+* `[INTERCEPT]`: Engage this Vanguard unit to commit its Shield Value to total defense during an opponent's attack.
+
+
+* `[STUN]`: Disables all passive, active, and inherited skills of the target unit or Leader for 1 full turn.
+
+
+* `[PENETRATE]`: If total combat power exceeds Total Defense, deal 1 direct damage to the defender's Damage Zone.
+
+
+
+
+* **Card Database JSON Schema**:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AegisBreachCard",
+  "type": "object",
+  "properties": {
+    "card_id": { "type": "string", "example": "IGN-001" },
+    "title": { "type": "string", "example": "Flame-Bound Striker" },
+    "card_type": { "type": "string", "enum": ["Leader", "Unit", "Support", "Item", "Interrupt"] },
+    "faction": { "type": "string", "enum": ["Ignis", "Aegis", "Neutral"] },
+    "rank_requirement": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "mana_cost": { "type": "integer", "minimum": 0, "maximum": 10 },
+    "base_atk": { "type": "integer", "multipleOf": 1000 },
+    "shield_value": { "type": "integer", "multipleOf": 1000 },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "effect_script_id": { "type": "string", "example": "script_guardbreak_deal3k" }
+  },
+  "required": ["card_id", "title", "card_type", "rank_requirement", "mana_cost"]
+}
+
+```
+
+---
+
+## 3. Digital UI/UX & Mobile Design
+
+* **Prompt Timer Logic & Anti-Roping**: When an action grants an off-turn response window, a 6-second timer appears.
+
+
+* **Auto-Pass Filter**: Client automatically bypasses response prompts if unspent Mana is lower than any usable Interrupt card in hand.
+
+
+* **Chess Clock Engine**: Players receive a 60-second total bank for off-turn decisions per match; exhausting this bank forces auto-pass for the rest of the game.
+
+
+* **Glassmorphic Render Pipeline**: Visual elements use a single pass-through translucent shader pipeline. To maintain 60 FPS on low-spec mobile GPUs, glass panel textures (35–40% opacity) are pre-baked with blurred background buffers rather than computing real-time Gaussian blurs on every frame.
+
+
+* **Touch & Gesture Mapping**:
+* *Deploy*: Drag Unit/Support card from hand directly into Vanguard/Support Zone.
+
+
+* *Hand Guard*: Drag Unit card directly onto defending unit/Leader during combat response window.
+
+
+* *Evolve*: Drag next-rank Leader card from off-screen extra deck UI onto the Leader Zone.
+
+
+
+
+
+---
+
+## 4. Network Architecture & Game State Engine
+
+* **Server-Authoritative State Machine**: Constructed in Rust/C++ to eliminate client tampering. The server maintains the true match state, calculates combat results ($\text{Total Defense} = \text{Target Base ATK} + \sum \text{Defending Shields} + \text{Modifiers}$), and executes deck draws.
+
+
+* **Deterministic Priority & Ping Compensation**: Off-turn Interrupt responses use a client-side prediction buffer. When Player A attacks, Player B receives a response window packet with a server timestamp. Player B’s action input must be acknowledged by the server within $Timer + RTT/2$ to resolve successfully.
+
+
+* **Protocol & Serialization**: Game events are serialized using Google Protocol Buffers (Protobuf) transmitted over WebSockets for browser/mobile client cross-compatibility.
+
+---
+
+## 5. Visual & Audio Asset Pipeline
+
+* **Full-Bleed Visual Guidelines**: Artwork canvas sized at $1500 \times 2100$ px (300 DPI). Focal subject matter must reside within the central 60% safe zone. Lower and upper bounds are designated for translucent UI text overlays.
+
+
+* **VFX Shader Matrix**:
+* *Leader Evolution*: Radiant light pillar animation scaling in size per rank progression (Ranks 0–3).
+
+
+* *Guard Break*: High-contrast flash with screen shake and card reveal animation from the Damage Zone.
+
+
+* *System Stun*: Red digital glitch mesh covering the Leader card slot.
+
+
+
+
+* **Dynamic Audio Engine**: Layered SFX system scaling with power values; attacks above 10,000 ATK trigger low-frequency bass impacts and unique metallic destruction sounds.
+
+
+
+---
+
+## 6. QA, Analytics & Live Operations
+
+* **MCTS Balance Simulation Suite**: Monte Carlo Tree Search bots execute 1,000,000 automated self-play matches across starter decks to analyze turn-1 vs. turn-2 win rates. System targets win-rate parity within $50.0\% \pm 1.5\%$ across all play orientations.
+
+
+* **Anti-Cheat & Telemetry Audit**: Server logs game state action vectors as a compact stream. Every turn-end generates a state hash. Mismatched hashes trigger automatic server match termination and log reporting.
+* **Monetization Architecture**: 100% cosmetic monetization. Pay-to-win elements are explicitly excluded. Cash shop items include alternate full-art card treatments, dynamic 3D Leader pedestals, customized card backs, custom Damage Zone shield sleeves, and thematic playmats.

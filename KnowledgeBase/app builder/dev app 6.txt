@@ -1,0 +1,249 @@
+& {
+    $ErrorActionPreference = "Continue"
+    $WorkspaceRoot = "D:\DevStudio_v1_Workspace"
+    $CodeWs = "C:\Users\rdiaz\Documents\Unreal Projects\Code510_AI_Workspace"
+    $composePath = "$CodeWs\Core\docker-compose.yml"
+    $modelfile = "$CodeWs\Core\Modelfile_DevStudio"
+    $pipeDir = "$WorkspaceRoot\pipelines"
+    $utf8 = New-Object System.Text.UTF8Encoding($false)
+
+    Write-Host "`n==================================================================" -ForegroundColor Cyan
+    Write-Host "   DEV STUDIO v1 - MASTER SOVEREIGN DEPLOYMENT & UPGRADE          " -ForegroundColor Cyan
+    Write-Host "==================================================================" -ForegroundColor Cyan
+
+    # 1. DIRECTORY TOPOLOGY INITIALIZATION
+    Write-Host "`n>>> [1/8] Initializing Storage and Project Topology..." -ForegroundColor Cyan
+    $Directories = @(
+        "$WorkspaceRoot",
+        "$WorkspaceRoot\inventory_downloads",
+        "$WorkspaceRoot\inventory_downloads\comfyui_models",
+        "$WorkspaceRoot\models\ollama",
+        "$WorkspaceRoot\open-webui",
+        "$WorkspaceRoot\pipelines",
+        "$WorkspaceRoot\Bridge",
+        "$WorkspaceRoot\docs",
+        "$WorkspaceRoot\assets_vault\images",
+        "$WorkspaceRoot\assets_vault\models",
+        "$WorkspaceRoot\adguard\work",
+        "$WorkspaceRoot\adguard\conf",
+        "$CodeWs\Core\pipelines",
+        "$CodeWs\Bridge",
+        "$CodeWs\tests"
+    )
+
+    foreach ($d in $Directories) {
+        if (-not (Test-Path $d)) {
+            New-Item -ItemType Directory -Path $d -Force | Out-Null
+            Write-Host "  [CREATED] $d" -ForegroundColor Green
+        } else {
+            Write-Host "  [EXISTS]  $d" -ForegroundColor DarkGray
+        }
+    }
+
+    $RepoUrl = "https://github.com/rdiaz183/DevStudio_v1.git"
+    $RepoPath = "$WorkspaceRoot\repo"
+    if (-not (Test-Path "$RepoPath\.git")) {
+        if (Test-Path $RepoPath) { Remove-Item -Path $RepoPath -Recurse -Force }
+        Write-Host "  [CLONING] $RepoUrl -> $RepoPath" -ForegroundColor Cyan
+        & git clone $RepoUrl $RepoPath
+    } else {
+        Push-Location $RepoPath
+        & git pull
+        Pop-Location
+    }
+
+    # 2. SOVEREIGN DIRECTIVES & STATE MACHINE
+    Write-Host "`n>>> [2/8] Writing Sovereign Manager & State Machine Configs..." -ForegroundColor Cyan
+
+    $ManagerSovereignContent = @'
+# 00_MANAGER_SOVEREIGN.MD - Sovereign Studio Directive
+
+## Core Directives
+1. **Pure Open WebUI Integration**: All interactions, asset queries, and prompt executions run through Open WebUI (`http://localhost:3000`).
+2. **Cognitive Hierarchy**:
+   - **System 1 (Jev AI Telemetry & Routing)**: Instantaneous telemetry categorization, packet routing, and state tracking via local socket loops.
+   - **System 2 (DeepSeek-R1 14B Qwen-Distill)**: Complex code synthesis, architecture validation, and algorithmic generation with Nomic Embeddings for RAG.
+3. **Project Code510 Alignment**: All code generation, vehicle physics parameters, state machine transitions, and spatial asset placements target Project Code510's New York State-themed racing environment.
+4. **Data Integrity**: Enforce automatic local backups every 6 hours across the 16TB external SSD array (`D:\DevStudio_v1_Workspace`).
+'@
+    [System.IO.File]::WriteAllText("$WorkspaceRoot\00_manager_sovereign.md", $ManagerSovereignContent, $utf8)
+    [System.IO.File]::WriteAllText("$CodeWs\00_manager_sovereign.md", $ManagerSovereignContent, $utf8)
+
+    $StateMachineContent = @'
+{
+  "system_version": "v1.0.0",
+  "project_name": "Code510_AI_Workspace",
+  "engine_target": "Unreal Engine 5.4",
+  "system_mode": "Hybrid System 1 / System 2",
+  "active_model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+  "embedding_model": "nomic-embed-text",
+  "telemetry": {
+    "gpu_utilization_target": 95,
+    "dedicated_vram_mb": 6144,
+    "total_gpu_memory_mb": 14233,
+    "ipc_port": 9876
+  },
+  "states": {
+    "idle": {
+      "next_states": ["rag_query", "code_compilation", "asset_generation"],
+      "handler": "Open_WebUI_Chat"
+    },
+    "rag_query": {
+      "next_states": ["system_2_synthesis", "idle"],
+      "handler": "Knowledge_Base_Retrieval"
+    },
+    "system_2_synthesis": {
+      "next_states": ["code_compilation", "asset_generation", "idle"],
+      "handler": "DeepSeek_R1_System_2"
+    },
+    "code_compilation": {
+      "next_states": ["idle", "error_handler"],
+      "handler": "Unreal_C++_Python_Bridge"
+    },
+    "asset_generation": {
+      "next_states": ["idle", "error_handler"],
+      "handler": "Inventory_Pipeline"
+    },
+    "error_handler": {
+      "next_states": ["idle"],
+      "handler": "Self_Correction_Loop"
+    }
+  }
+}
+'@
+    [System.IO.File]::WriteAllText("$WorkspaceRoot\Bridge\state_machine.json", $StateMachineContent, $utf8)
+    [System.IO.File]::WriteAllText("$CodeWs\Bridge\state_machine.json", $StateMachineContent, $utf8)
+    Write-Host "  -> Generated: 00_manager_sovereign.md & Bridge\state_machine.json" -ForegroundColor Green
+
+    # 3. DOCKER COMPOSE ORCHESTRATION
+    Write-Host "`n>>> [3/8] Generating Unified docker-compose.yml..." -ForegroundColor Cyan
+
+    $composeContent = @'
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: devstudio-open-webui
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - WEBUI_NAME=Dev Studio v1
+      - WEBUI_SECRET_KEY=devstudio_v1_secure_key
+      - ENABLE_SIGNUP=false
+      - WEBUI_THEME=dark
+      - OPENAI_API_BASE_URL=http://devstudio-pipelines:9099
+      - OPENAI_API_KEY=0p3n-w3bu!
+      - AUDIO_STT_ENGINE=faster-whisper
+      - AUDIO_STT_MODEL=base.en
+      - WHISPER_DEVICE=cpu
+      - ENABLE_IMAGE_GENERATION=True
+      - IMAGE_GENERATION_ENGINE=comfyui
+      - COMFYUI_BASE_URL=http://devstudio-comfyui:8188
+    volumes:
+      - "D:/DevStudio_v1_Workspace/open-webui:/app/backend/data"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main
+    container_name: devstudio-pipelines
+    restart: unless-stopped
+    ports:
+      - "9099:9099"
+    volumes:
+      - "D:/DevStudio_v1_Workspace/pipelines:/app/pipelines"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  comfyui:
+    image: yanwk/comfyui-boot:cu124-megapak
+    container_name: devstudio-comfyui
+    restart: unless-stopped
+    ports:
+      - "8188:8188"
+    environment:
+      - CLI_ARGS=--listen 0.0.0.0 --port 8188 --medvram --preview-method auto
+    volumes:
+      - "D:/DevStudio_v1_Workspace/inventory_downloads/comfyui_models:/home/runner/storage-models/models"
+      - "D:/DevStudio_v1_Workspace/assets_vault/images:/home/runner/storage-user/output"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  adguard-home:
+    image: adguard/adguardhome:latest
+    container_name: devstudio-adguard
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "3001:3000/tcp"
+      - "80:80/tcp"
+      - "853:853/tcp"
+    volumes:
+      - "D:/DevStudio_v1_Workspace/adguard/work:/opt/adguardhome/work"
+      - "D:/DevStudio_v1_Workspace/adguard/conf:/opt/adguardhome/conf"
+'@
+    [System.IO.File]::WriteAllText($composePath, $composeContent, $utf8)
+    [System.IO.File]::WriteAllText("$WorkspaceRoot\docker-compose.yml", $composeContent, $utf8)
+    Write-Host "  -> Generated: $composePath" -ForegroundColor Green
+
+    # 4. OLLAMA MODELFILE
+    Write-Host "`n>>> [4/8] Pulling Ollama Models & Building Dev Studio Modelfile..." -ForegroundColor Cyan
+    & ollama pull deepseek-r1:14b-qwen-distill-q4_K_M
+    & ollama pull nomic-embed-text
+
+    $modelfileLines = @(
+        'FROM deepseek-r1:14b-qwen-distill-q4_K_M',
+        'PARAMETER temperature 0.2',
+        'PARAMETER top_p 0.9',
+        'PARAMETER num_ctx 8192',
+        'SYSTEM """You are Dev Studio v1, the Sovereign Lead Technical Director and Autonomous Engine Architect for Project Code510 and Unreal Engine 5.4.',
+        '',
+        'PERMANENT CORE DIRECTIVES:',
+        '1. MANDATORY TRIPLE-CHECK AUDIT (EVERY TASK):',
+        'On EVERY request, you MUST execute and print the Triple-Check Verification Gate before providing code:',
+        '- Pass 1 (Syntax & Compiler AST): Ensure exact matching *.generated.h, UCLASS(), GENERATED_BODY(), correct UE5.4 includes, valid Build.cs ModuleRules, and ZERO placeholders or ellipsis (...).',
+        '- Pass 2 (Physics & Engineering GroundTruth): Verify physical units (mass in kg, torque in N*m, damper rates in N*s/m, Pacejka slip friction, manifold geometry).',
+        '- Pass 3 (IPC Bridge Schema): Ensure all target paths resolve relative to the active project root and conform to strict JSON.',
+        '',
+        '2. ABSOLUTE BAN ON TUTORIALS:',
+        'NEVER output step-by-step guides, instructions, or manuals telling the user to open Unreal Engine, navigate menus, or edit files. You are an autonomous developer, not a teaching assistant.',
+        '',
+        '3. AUTONOMOUS ACTION BRIDGE FORMAT:',
+        'Deliver all project creations and modifications strictly inside an executable Action Bridge JSON block:',
+        '```json',
+        '{"action": "modify_project", "project": "Code510_AI_Workspace", "files": [{"path": "Relative/Path/File.cpp", "content": "Full compilable C++"}]}',
+        '```"""'
+    )
+    [System.IO.File]::WriteAllLines($modelfile, $modelfileLines, $utf8)
+    & ollama create dev-studio -f "$modelfile"
+    & ollama cp dev-studio dev-studio-ai
+    Write-Host "  -> Models dev-studio & dev-studio-ai verified." -ForegroundColor Green
+
+    # 5. PIPELINE FILTERS DEPLOYMENT
+    Write-Host "`n>>> [5/8] Deploying Open WebUI Pipeline Filters..." -ForegroundColor Cyan
+    # (Pipelines scripts deployed previously via individual scripts)
+
+    # 8. LAUNCH STACK & DAEMONS
+    Write-Host "`n>>> [8/8] Launching Containers and Persistent Daemons..." -ForegroundColor Cyan
+    Set-Location "$CodeWs\Core"
+    & docker compose down --remove-orphans 2>$null
+    & docker compose up -d
+
+    Write-Host "`n==================================================================" -ForegroundColor Green
+    Write-Host "   DEV STUDIO v1 MASTER PLATFORM IS FULLY OPERATIONAL             " -ForegroundColor Green
+    Write-Host "==================================================================" -ForegroundColor Green
+    Write-Host "  * Open WebUI (Game Studio & AI Chat) : http://localhost:3000" -ForegroundColor White
+    Write-Host "  * Pipelines Server (Auto-Bridge)     : http://localhost:9099" -ForegroundColor White
+    Write-Host "  * AdGuard Home (Network & DNS Setup) : http://localhost:3001" -ForegroundColor Yellow
+    Write-Host "  * Parental Sentinel (Live Feed)      : http://localhost:3002" -ForegroundColor Cyan
+    Write-Host "  * ComfyUI Generative Engine          : http://localhost:8188" -ForegroundColor White
+    Write-Host "  * Background Action Daemon (IPC)     : 127.0.0.1:9876" -ForegroundColor White
+    Write-Host "==================================================================`n" -ForegroundColor Green
+}

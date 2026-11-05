@@ -1,0 +1,1072 @@
+
+00:00:01
+It may come as a surprise, but Roguelite  shoot-em-up games like Vampire Survivors   or Brotato are some of the easiest, most  satisfying games to whip up in a single   sitting. In this tutorial, you will learn how  to do just that. If you're new to the channel,   welcome to GDQuest.
+
+
+00:00:18
+ I'm Nathan and I've been  helping people learn to make games for the   past seven years using Godot. Why Godot? Because  of all the game engines we've tried at GDQuest,   we've found it to be the most intuitive and  easiest to pick up. It's lightweight and powerful,   but most importantly, it's completely free and  open source so it helps preserve your right to   access, understand and modify the software  you will depend on to create your games.  
+
+
+00:00:46
+In this story-al, you will learn to code player  movement, a weapon, enemies that spawn randomly   and move towards the player, player and enemy  health, and more. Follow along till the end and   you'll have created your first 2D game and become  familiar with some of the most essential features. But that's not all.
+
+
+00:01:03
+ This video is sponsored  by all the new and experienced developers   who have bought GDQuest courses to learn how  to make games with Godot. There are several   easter eggs hidden throughout this video.  They are special coupons you can add up to   each other for a cumulative discount on our  Great Godot 4 Starter Kit. If you find them,   I ask that you please keep them to yourself to  encourage others to complete this tutorial.
+
+
+00:01:22
+ The   Great Godot 4 Starter Kit includes three  complete courses progressively launching   in Early Access starting January 30, 2024. You  will be able to access them directly on GDSchool,   our brand new learning platform. We will start  with our foundational courses, Learn 2D and 3D   Game Dev From Zero with Godot 4, followed by our  popular interactive cookbook of game mechanics,   Node Essentials Godot 4 Edition. Release timeline  in the description.
+
+
+00:01:49
+ Throughout Early Access,   you'll be able to get each new module as  soon as we release it rather than wait for   the complete course to be launched  in the full version at full price. Before we get started, a word of advice. To follow  along and understand what you're reproducing,   you should know at least a little bit of coding.  If you don't, no worries.
+
+
+00:02:09
+ Make sure you subscribe   to the channel and save this video. Then  check out GDQuest's free interactive tool,   Learn GDScript From Zero. The link's in  the description. Without further ado,   download the latest version of Godot 4 and  the project you'll need for this tutorial.   It's linked in the description. Then grab a cup of  something, get comfortable, and let's get started.  
+
+
+00:02:37
+After downloading the Godot engine and the files  from the website, we'll need to import the project   files into the Godot editor. To do that, we first  have to extract the project files from the zip you   downloaded.
+
+
+00:02:51
+ So a zip file is a compressed archive  that brings multiple files and folders together   in a format that's easy to share and fast to  download. To extract the contents you can. Right click the zip file on most systems  and select an option like extract here,   extract all on Windows. So that's what I'm going  to do. And on macOS you can double click the zip   file and this will create a new folder next to it.
+
+
+00:03:15
+  This contains all the character images and all it   will need in the project. Then to open Godot you  don't need to install it. You can just double   click the executable file you downloaded from  the website. If you don't have any projects yet,   it will offer you to open the asset library  to download some examples. You can click   cancel because we don't want to do that.  What we want to do is import our project.  
+
+
+00:03:45
+Click the import button at the top left and  then you need to navigate to the files you   extracted. So in my case it's in downloads,  2D project start and we want to double click   project.Godot. If Godot recognizes the  project it will give you a green check   mark in which case you can click Import and  Edit. This will open the Godot project List.
+
+
+00:04:06
+Now we are going to go to the video editor where  we can get started. Before importing the project,   you will be presented with this empty  3D view. This is what Godot does when   your game is still early in development  and you don't have a level or something   for it to open. This will change in a moment  but first let's go around the interface.
+
+
+00:04:20
+ So   in the top left you have the Scene Dock and  this is where we will create our character,   our slimes and the other entities in the  game. In the bottom left, you can see the   files that we included in the project in the  File System Dock. You can double click any   folder you see there to expand it and you'll  see there are a bunch of files for characters,   for the pistol of the player and so on.
+
+
+00:04:49
+ On  the right you can see a dock named Inspector   and this is where you will be able to inspect the  different game entities that you'll create in the   Scene Dock. Let's do that and get started with the  player character to see how the inspector works. So to get our scene, our player entity  started, Godot gives us three handy options,   2D, 3D and User Interface, but we  don't want these default options,   instead we will click other node.
+
+
+00:05:22
+ This brings  up a window where you can see all of the nodes,   all the basic building blocks of Godot games  that Godot has. And there are loads of them   so you don't really want to search through them  manually. Instead, we will use the search bar at   the top. So you can click the search bar to  highlight it. If it isn't already selected,   start typing character.
+
+
+00:05:48
+ One way to create  characters in Godot is to start with a   character body 2D node. So you can press  enter or click create with the character   body 2D node selected to create your scene. And  you can see that Godot switches to the 2D view. The middle mouse click and drag to center  the view on the little dots that we have   here that represents our character body.
+
+
+00:06:15
+  And we'll give it some visuals instantly   by going to the file system doc in the  bottom left. Expand the characters folder,   happy boo. This is the player character. And  you have a file named happyboo.tscn. This is   a pre-made construct that we've made for you to  have the character already animated. Click and   drag this tscn file. You can drag it in the view  and see your character.
+
+
+00:06:43
+ I'll use my mouse wheel   to scroll in. Or you can drag the file directly  onto your character body 2D node. And this will   create a copy of this template, this scene as  Godot calls it that we named happyboo. This   only gives us visuals. Now if we want a character  that moves and that can interact with the world. We will use the character body 2D node.
+
+
+00:07:11
+ This one  needs to have a collision shape as a child of it   that defines the shape the physics engine will  use to prevent you from going through walls and   so on. To add a collision shape we select the  character body 2D node by clicking on it. And   then we can click the plus icon in the top left  of the scene dock or press Ctrl A or Command   A on Mac on our keyboard. This brings up the  add node dialog you saw before.
+
+
+00:07:39
+ And this time   we are going to search for collision to find  the collision shape 2D node. And again press   enter to add it. So on the left, you see in the  scene dock the collision shape node appeared and   the warning that was next to the character  body 2D node disappeared because it expects   at least one of these collision shape nodes.  Now if you select the collision shape 2D node.
+
+
+00:08:12
+By clicking it in the inspector on the right  of the editor, you will see some information   about it. And the shape slot is currently  empty. The shape slot is what will define   the collision shape that this collision shape  node has. You can click on empty to see the   options that Godot gives you by default.
+
+
+00:08:33
+ And  we can use a circle, a rectangle, a capsule,   you know there are different geometric  shapes that the physics engine of Godot   can use to detect collisions with walls and  other enemies. We'll use a circle shape 2D   to start with so click that. In the view you  will see a tiny little circle so I'm going to   use my mouse wheel to scroll up to get closer  to this.
+
+
+00:08:58
+ And you will see that this circle has   a little dot on the right. And click and drag  on that dot to interactively change the size. Note that for this to work you need to have the  select tool selected in the toolbar at the top   of the viewport. There's another way to change  the size of the circle by clicking the circle   shape 2D resource in the inspector.
+
+
+00:09:29
+ And when  you do that it expands and gives you a radius   property. And on that radius property you can  click and drag and see the size of your circle   change. So when you click and drag the dots in  the view it changes the radius of the shape in   the inspector as well. And that is all we need to  get coding. But before we can write code on our   character we want to save our progress.
+
+
+00:09:57
+ To save  the character we created as a template that Godot   calls a scene we can press Ctrl S on our keyboard  or Command S on Mac. This brings up the foul... ...the browser that allows us to save files in  our project. To name this one player.tscn tscn   is the file format Gudu uses for scenes and  click the save button. The character we have   created right now will not do anything.
+
+
+00:10:28
+ The  nodes we have allow us to add code to control   the character but without that code they do  not move by themselves. So we need to attach   code to our character. To do this, we're going  to select the character of body2d node and click   this icon in the top right of the scene dock,  the attach script icon. We can also right click   on the node and select attach script.
+
+
+00:10:56
+ This  brings up a window where we can choose where   to save the script if we want to use some  template code that Godot provides and some   more information like technical information. so  first, please make sure to turn off the checkbox. Next to template, otherwise it will give us  some code that we don't want and then for the   path you can save to res colon slash slash so  this is the root of your project files and then   player dot gd and click create this will create  an empty script with the line extends character   body 2d this line means that this code that we  are going to write adds code on top of all the   code that Godot has in character body 2d  inside of the engine and actually you can   control click on this label character body  2d to open its technical documentation page  
+
+
+00:11:58
+its class reference Godot has this built-in  technical help that developers can use to   see all of the functions and properties that  are available on every node and this can be   accessed by control clicking text in the editor or  going to help, search help which lets you break. I'm going to close the documentation page and we  can get coding the first thing we want to do is   to define the physics process function write  a function we start with the func keyword in   this case we want to start with an underscore  and start typing physics and you'll see that   Godot suggests physics process in parentheses  delta press enter to confirm and complete this   line and this function is known as physics update  or something like that in other engines it's one   you find in pretty much every game engine and  this is a function that the engine will hook  
+
+
+00:13:03
+onto and call each time it needs to calculate a  physics update because games update physics and   update the general game state many times  per second to produce individual images. And so we use these update functions to run  our code many times per second, which allows   us to move characters, for example.
+
+
+00:13:24
+ We'll start  by calculating the desired movement direction   of the player, and for that we'll use the feature  from Godot. So first, let's create a variable that   will name direction, and we'll use that to store  the movement direction. We write the equal sign   to assign to it, and then input with the capital  I, dot getVector. Okay, so input is an object,   an entity that Godot provides, that you have  access in all your script to call some built-in   functions that help you check for player input.
+
+
+00:14:01
+  And getVector is very handy because it calculates   a direction vector as a 2D vector value. So  it takes four arguments that are input named. InputMapActions, as Godot calls them, these are  labels that we give to our input. And we made a   few in this project, so we're going to use them  right now, and then see how you can create and   edit your own.
+
+
+00:14:32
+ So start by writing quotes, and  then Godot will give you a list of the input   labels registered in your project. So we created  the top four, move down, left, right, and up,   which we'll use, and some for the user interface  come by default and are used by the Godot editor.   Anyway, this function asks us first which input  action corresponds to the left direction. So   this is move left, then we write a comma, and  we're going to then give the right action,   and you can see that I'm not inventing them.
+
+
+00:15:07
+  These are told to me by Godot as I write the   function argument. So I'm going to put another  comma, and then for the third input action, Top direction, which Godot calls negative y,  and finally the down action, which Godot calls   positive y. So this will give us a vector  that we can use to move our character,   and we can check that pretty quickly.
+
+
+00:15:35
+ So the  character body2D that we are working with has   a property, a variable called Bellicity that  is built-in, and this allows us to give the   character both a speed and a direction in the  form of one 2D vector. So we write Bellicity,   you can see that this turns slightly blue because  this is one of the properties of our character 2D,   and we write equals, and then we can say direction  times whatever value you want.
+
+
+00:16:05
+ So you could say   600, something like that. So this would mean  move in the input direction at 600 pixels. Okay, so we give the character a velocity,  and then we need to call a function for Godot   to move it, and this one is also built into the  character body2D and it's called move and slide.   You can just call it, and if we run the scene by  clicking this icon in the top right or pressing F6   on our keyboard, you're going to see while the  character is in the top left, but if you press   the WASD keys, you're going to be able to move the  character already with just three lines of code. So this is the basic way of moving a character  body. And note that this will automatically  
+
+
+00:17:06
+take walls and other collisions we will add to  our game into account. See where these labels,   the input actions come from in the project. So we  go to project, settings, so you can click that,   and then you'll land on the general tab, but  you want to go to the second tab, input map,   and here you can see move left, move right,  move up, move down.
+
+
+00:17:29
+ So we just define them   for you. See how you can define your own.  Let's say that you want a different action   named jump because your game has a jump  or perhaps like shoot because you have a   gun. You type the action name in this bar right  above the panel, click add or you press enter,   and you'll see a new entry gets added.  By default, it doesn't have any key.
+
+
+00:18:02
+On the keyboard or gamepad buttons or anything  mapped to it. So we need to register those. To   do so we go to the plus button on the right  of our label and click it and this gives us   a menu where we can search for the kinds of  inputs we want. So let's say we want the left   mouse button to shoot so we can expand mouse  button and select left mouse button and click   OK. And you'll see shoot is now associated with  the left mouse click.
+
+
+00:18:28
+ And we can do more than   that actually the beauty of this system is that  we can associate multiple inputs with one label   which makes our code very easy to work with. So  I'm going to click the plus button again and now   I'm going to say we can shoot with the space  bar. So I'm just going to press the space bar   on my keyboard and Godot recognizes it and then  I click OK and this adds the space bar on the.
+
+
+00:19:03
+Keyboard. And to press plus again and let's  say I have a gamepad and I want the Rb button   so maybe I'm going to click the filter input  in there and say Rb which is the right bumper   on the Xbox controller and you can see that  Godot suggests it after searching for it and   so I'm going to click OK there and now I have  three different inputs that can trigger the   shoot action clicking the left mouse pressing  the space bar and the right bumper on an Xbox   controller or right shoulder on PlayStation or  switch controller. All right so this gives you   an example of how you can add a new input  actions. You can also add new inputs to   existing actions using their plus button right  there and well I'm just going to delete this   shoot action because we will not use it in our  game and close the input map. Our character can.
+
+
+00:20:06
+Move but it would be much nicer if it played  animations. So, if we go to the Scene Dock,   you'll see that there's a Camera Slate icon  next to Happy Boo. And this tells you that   this entity is an instance of a template that  Guddu calls a Scene. So it's a Scene Instance.   And you can click the Camera Slate to open the  source scene in the editor.
+
+
+00:20:27
+ So let's click it,   and we'll open Happy Boo. And we can go to  the 2D screen at the top of the interface,   and use the middle mouse click and mouse  wheel to zoom on the character. And you'll   see in the Scene Dock in the top left, that the  character is composed of many of those nodes   that we have created before.
+
+
+00:20:54
+ And most of these  are sprite nodes, the one with the happy face   there. It means they are individual images  that we can move and display on the screen. So this is how we make a character, typically  in games, with a bunch of sprite nodes. And this   scene has something called an Animation Player.  And if you click the Animation Player, a new   interface pops up at the bottom of the screen.
+
+
+00:21:21
+  It's an interface that allows you to design   animations. So we'll cover the Animation Editor in  another video. In this project, we have prepared   the animations for you. And so if you click the  drop-down menu at the top of the Animation Editor,   you'll get a list of the character animations. And  what we prepared for you is called Walk.
+
+
+00:21:42
+ On the   bottom right of the editor, you can click the bar  next to the zoom icon to control the zoom level   of the animation timeline. And you can use the  playback controls in the top left of the editor   to play the animation. So if I click Play on the  walk animation, you'll see my character walks. And so we can access this animation player  with code to play animations.
+
+
+00:22:11
+ And we've done   that for you in the script that we attached to the  Happy Boo character. So we're going to click that   script to see that we defined two functions  for you there. Play idle animation and play   walk animation. We can call these from our player  script. So I'm going to close the Happy Boo scene   by clicking the X arrow next to it.
+
+
+00:22:43
+ I'm going to  follow the Animation Editor at the bottom of the   screen. I'm also going to right click on the  happyboo.gd script and close it for now. Okay,   so we are back to the player.gd script.  From there, we need to do a couple of   things. We're going to try playing an  animation on the Happy Boo character. The script that we have is attached to our  player node, to our character body2d node.  
+
+
+00:23:19
+And we want to call functions on this other  Happy Boo node that represents the character   visuals. To do that in Godot, we first need  to get a reference to access the Happy Boo   node from our script. So I'm going to click  the player.gd script again. And the function   that we use to get another node is called  get underscore node.
+
+
+00:23:41
+ And from there we can   get one called Happy Boo. We can get the node  by name or by path that we write as a string.   And then it gives us access to this node so  we can call its function. So you could say   dot play underscore walk underscore animation. And  this is a function that we defined in the script. Happy boo which is why we can call it on the happy  boo note.
+
+
+00:24:13
+ If we press F6 or click this button in   the top right to run the current scene. Now as  we move, you'll see the character is playing the   walk animation and it constantly plays it, which  is not necessarily what we want, right? We want   to play walk only when the character is walking.  To do that we use a condition. So above the line   when I play the walk animation I'm going to use  the if keyword to define a condition and then we   need to write an expression that will be either  true or false.
+
+
+00:24:50
+ And what we can do is only play   the walk animation if the velocity vector is long  enough. This will be an indication that the player   is walking. So we can write velocity dot and then  we can call the length function on that vector. And this will give us the length of the vector as  a decimal number.
+
+
+00:25:17
+ So we can write if velocity dot   length is greater than zero. We need to add a  colon at the end of the line. And then we need   to indent the following line to be part of this  block of code. So in GD script it works a bit as   in Python. The spacing that you have at the start  of lines is meaningful. And so to put lines inside   of a condition or inside of a function you need to  give the lines after the if, for example, an extra   tab character at the start. And this is how the  language knows how to group code together. So the   condition says if the velocity vector has a length  greater than zero We play the walk animation. And this works because our velocity multiplies  the input direction by a number. Now,  
+
+
+00:26:26
+if we don't press any keys, the direction  vector will have a length of zero, and zero   multiplied by six hundred is going to give us  a vector of length zero. This is not enough,   though, because if we play the game, if we  start moving, the character keeps playing   the animation. It doesn't revert back to not  animating.
+
+
+00:26:46
+ So, what we can do is go back one   indentation level, same level as the if, and  write else. If this condition is fulfilled,   we play the walk animation. Otherwise, else we  can play the idle animation. To do that easily,   we can click on the line where we play the  walk animation, Press CTRL C to copy the line. Click the line after Else, and press CTRL  V to duplicate the line we copied.
+
+
+00:27:18
+ We can   select the word that says Walk and change it to  Idle. If we press F6 and I move the character,   it's going to animate walking. If I stop, it's  going to play the Idle animation. Before we   move on to creating the game scene, I want to talk  about Getting Nodes because it's something central   to Godot.
+
+
+00:27:47
+ When we use the Get Node function,  we pass not just the name of the node we want,   but the path to the node. Let me show you what  happens if I change the hierarchy of nodes in   my game. If I press F6 to run the scene,  now I get an error. And the error tells   us basically that the Get Node didn't find  the node that we were looking for. So now,   because Happy Boo is a child of a collision  shape 2D, we can't just write Happy Boo.
+
+
+00:28:20
+If we do that, we have to write Collision shape 2D  slash Happy Boo. We give the name of a node slash   to look at its children, then the name of the  child node, and we can make this path as short   or as long as we want. This means that each time  you re-parent the node, you have to change these   paths in your code. We're going to see a feature  that works around that and makes our lives easier.  
+
+
+00:28:47
+But first, notice one more thing it's that, if I  change the code in both instances, and press F6,   the error still works fine, just as expected.  And this tells you that the hierarchy of nodes   and how you organize them is going to be up  to you and what makes sense to your game. So   you'll need to experiment with that.
+
+
+00:29:09
+ Of course, in  this example, it's probably more natural to have   Happy Boo next to the collision shape because  they need to have a parent-child relationship. OK, so now I need to revert the path here and  get node to just happy boo, because now it's   not a child of the collision shape 2D anymore.  So here's another trick. If I select some text,   I can press Ctrl D, select other copies  of the same text in my script.
+
+
+00:29:40
+ So now I   have two selections and I can just edit my text  and see it edits my text instead. Two selections   and I can just edit my text and see it edits both  instances simultaneously. So I'm back to the code   we had at first. So there are two more things  I want to show you here. There's a shortcut,   the Get Node function, that people in the  Godot community use a lot.
+
+
+00:30:01
+ It's the dollar   sign. So I'm going to select the whole function  call Get Node Happy Boo and press Ctrl D. And   I'm going to replace that with dollar happy boo  without quotes. And this is the shortcut. When   you do that, it's like calling the Get Node  function so our code works just the same. Okay, great.
+
+
+00:30:24
+ But because it's a shortcut to  calling Get Node, if I reparent my Happy Boo   again, I play the game and I get the same  error as before. So I mentioned that there   was a feature we could use to work around that.  It's called marking nodes as unique name in the   scene. You can right click any node and click  access as unique name. And when you do that,   Godot will automatically find the node and keep  it stored in memory for fast access for you.
+
+
+00:30:51
+ You   can see when you do that, a person sign appears  next to the node. And so we can, in our code,   use that person sign instead of the dollar sign.  So I'm going to select the first dollar sign,   press Ctrl D, select the other one, and type  person sign on my keyboard. When I do that,   you can see that I'm not passing the full path  to the node just a name yet if I play the game...
+
+
+00:31:25
+It's a great feature to use on the nodes you  need to access in your script. It also has a   performance benefit for you because Godot  will get the node only once at the start   of the game for you. And when you call  the getNode function, instead many times,   Godot has to do the calculations to find  the node each time.
+
+
+00:31:53
+ With this feature,   it does not. Now the limitation of this feature  is that it only works within that scene, within,   you know, the script's attached character  body and all, and when we start to create   the mob and the game, we will not be able to  access this happy boo node from other places   in our code base. Next up, we will create the  main game scene. To start with, I want to.
+
+
+00:32:25
+Rename the character body 2D node because  when we add the player to the main game,   this is the name that will display. You can  double click on the name of the node and   select the text and write whatever you want in  there to rename and then press enter to confirm. I'll save with ctrl-s, command-s on Mac, and we  can get creating our main scene.
+
+
+00:32:46
+ Go to scene,   new scene, to create an empty tab in the editor  and then we'll click on 2D scene to create a new   node 2D at the root of our game. There again, I'm  going to click the name and change it to game. It   will be a bit more explicit and press ctrl-s,  command-s to save the scene. We could call it a   survivor's game, for example, because this is the  kind of game we're making. Press enter.
+
+
+00:33:18
+ The next   thing we want to do is head back to the 2D view.  To do that, I'm going to click 2D at the top of   the editor and we can add our player in there.  So I'm going to fold the character's directory   in the file system dock and click and drag  player.tscn to the center of the rectangular area. That's the area in the editor.
+
+
+00:33:48
+ This  area represents our game window or,   you know, the screen, the area  that will be displayed in the game. The background is currently gray and very ugly.  We want to change that and to do so we're going   to add a new node. So with the game node selected,  press ctrl-a or command-a to bring the add node   dialog and start typing color rec.
+
+
+00:34:14
+ This is a  user interface node that Godot provides that   displays a rectangular area with the desired  color. Click create to add it and you'll see   a small rectangle in the top left. If you have  the select mode active, see these dots and you   can click them to resize the node and if you  pull on the bottom right dot, you will be able   to resize to cover the entire game area.
+
+
+00:34:46
+ Now, the  problem is it displays in front of the player so   we can click and drag to To reorder the node  in the Scene Dock, place it above the player, So that it draws behind. Because the drawing  order, by default, is from top to bottom. So   ColorRect is going to draw first, and then the  player draws after it, so it draws on top of the   color rectangle.
+
+
+00:35:14
+ Let's add trees to the Scene,  which will give us two things, nicer visuals,   and also a way to test the collisions of  the player. In the file system dock, in the   bottom left, you'll find a trees directory with  a pine tree image. You could absolutely click and   drag that image onto the game area to place pine  trees. The thing is, this creates sprite2D nodes,   and these only give us visuals, they don't  give us any collision information for the   physics engine.
+
+
+00:35:50
+ So instead, we will create  a new Scene that uses this image and it has   collisions. So we go to Scene, New Scene, to  create the Scene, And we're going to start with. Another node. This time we are looking  for Static Body 2D. As the name suggests,   it's a way to describe a static thing in  the game that is going to have collisions   and block player characters, for example.
+
+
+00:36:18
+  Like the character body node, this needs a   collision shape to function. So, we can press  control A and look for collision shape 2D. And, like before, we need to give a specific shape  to this node. So, in the inspector on the right,   we click the empty slot, click the circle shape.  On top of that, I'm going to reselect the Static   Body 2D, and click and drag my fine tree onto  the scene.
+
+
+00:36:45
+ And we can zoom in a bit, to see it   more closely, and try to center the base of the  tree on the crossing axes in the editor. These   axes represent the position that the tree will  have when we drag and drop it into the game. So,   this will allow us to place the base of the  trees, basically, inside our scene easily.   You'll notice that the collision shape appears  behind the tree, so we can change the order to   see it in front of the tree, and then click and  drag on the dot to make the collision match the   base of the tree. This means that the player  will only collide with this circular area. Because we want the player to pass behind the  top of the tree, right? The collision should only   be around the base, which is what is going to be  blocking you. On top of that, we're going to add  
+
+
+00:37:47
+a nice little shadow to the tree, which will allow  us to see another trick. First change the color of   a sprite. So, in the file system dock, we have a  shadow sprite, but instead of opening the folders   individually, one thing you can do to find a file,  is to click the filter files field, and look for a   certain name.
+
+
+00:38:10
+ In this case, if we look for shadow,  we will find the ground shadow sprite, and click   and drag it onto the game scene, and it appears  in front of the tree, so I'm going to click and   drag ground shadow behind the tree. One thing  we can do that's pretty cool with the handles   that you can see here, is we can scale down an  image, just like we did through other things. Let's go back to our color rectangle, which  we can scale down to the color rectangle,   so you can click and drag on one of the dots  to scale down the shadow.
+
+
+00:38:37
+ Now, the thing is,   if you do that, it's going to push the size  towards the opposite corner, so instead,   you can press the alt key, and the shift key  down together, while clicking and dragging,   and this will give you an appropriate size for the  tree. The shadow is white, so it doesn't really   look like a shadow right now, and actually, making  sprites white, allow us to recolor them directly   in Godot, so this is why we made the shadow white.
+
+
+00:39:16
+  If you select the ground shadow node, by clicking   it in the view, or by clicking it in the scene  dot, in the inspector on the right, you can see it   has a bunch of properties, of settings, that you  can change, many of which are behind the window. So, we want to expand visibility, and  there you will see a slot named modulate,   that has a color next to it.
+
+
+00:39:44
+ This is a feature  that allows us to tint the color of the shadow,   and if it's white, by default, the modulate  property will effectively replace the color   of the shadow. So, click on the white color to  bring up a color picker, and then on the right,   you can click and drag on the vertical band, to  change the brightness of the color, making it   darker and darker, so we want to make it slightly  darker, and then in the circle in the middle,   you can move the slot, you can click and drag,  to select a different hue for your shadow.
+
+
+00:40:18
+ It   could be slightly blue, for example. Click in  the viewport, to deselect the color picker,   and you can see that now, the shadow is slightly  blue, and this will contrast well with the window. Okay, let's save our scene. After renaming  the node, we're going to rename it to tree,   or it could be pine tree, because it's tree  precisely, and press ctrl s to save the scene   into pinetree.tscn.
+
+
+00:40:54
+ If we go back to the survivors  game, now, I'm going to clear the file filter in   the file system dock, and fold everything, and  now I can click and drag my pine tree to the   game area. So I'm going to click and drag the  couple, I can even group them in clumps, I'm   going to have bunch, you know, draw them however  you'd like, and now, if I press F6, or click the   camera slate icon in the top right, I can run  my current scene and move the character, and if   I move against the trees, You will see that the  character can get blocked or kind of slide again.
+
+
+00:41:43
+And this is what the move and slide function  of the player's script does for us It handles   collisions automatically for us Now you'll  notice one problem It's that sometimes I can   go behind the trees And that's great, that's  what we want, right? When I'm behind the base   of the tree But when I move down, the character  is still drawing behind the pine tree So we can   move all the pine trees up the hierarchy In  the scene dock so that they draw behind the   character But then they would always be  behind the characters What would be ideal   is that if I am in front of a tree, I draw in  front And if I go up, I draw behind the tree,   the player that is And Godot can do that for us  We can select the game node here And expand the   ordering category in the inspector And you  will see a checkbox next to Y sort and then.
+
+
+00:42:45
+So if you hover any of these properties, you will  get a technical description of how they work. It's   more of a description for experienced developers,  but it explains how the feature works. So if we   select the game node and turn Y sort enabled on  it.
+
+
+00:42:59
+ Now, if I move the character around the view,   even in the editor, you can see a preview of  the effect. So if the player is below the tree,   it draws in front, and if I go above  a tree, the player will draw behind.   And any character or mob that we will add  to the scene will do that. If I zoom in,   notice how this works. You can see the cross  that represents the position of the player.  
+
+
+00:43:31
+And you remember how I told you we wanted the  crossing axes to be at the base of the tree. Well,   this is because this determines the  position of the tree in the game level. This is what the Y sorting feature will use as  a reference for the drawing order. So notice,   if I move the player up right above the  base of the tree, instantly the character   draws behind. And if I go below the base of  the tree, the player draws in front.
+
+
+00:43:58
+ Now,   the good thing is that we have collision shapes  right for the player and the tree. So what will   happen is that player will not be able to go,  you know, just above the tree like this because   they can't overlap due to the collision.  So the player will slide around the tree   and move around the trees collision circle. We  can press F six to test that.
+
+
+00:44:23
+ And you can see   that it looks a little more natural when playing  the game, thanks to the collision shapes. Okay,   one last thing I want us to do at this stage  is to set this as our project main game scene. And we can do that by clicking the play icon  in the top right of the editor or pressing   the shortcut F five.
+
+
+00:44:53
+ This will bring a pop-up  that offers us to set the current theme that's   highlighted in the editor as the main scene. And  it will play our scene just like when pressing   F six. Now, the reason we do that is that we often  want to go work on a different scene. For example,   I want to change the collision shape of my trees.
+
+
+00:45:14
+  I'm going to make it way bigger and I want to be   able to test how it plays in the game. So now  I can press F five to play the main game scene   and test that. And now you can see that player  cannot move as close to the trees anymore. Okay,   I'm going to press control Z to undo this  and head back to the main game scene. If   you want to change the main scene of your  game, if you set another one by mistake   like the player or something, any time  you can go to project, project settings.
+
+
+00:45:51
+And then click on run. And this is where the  main scene is selected. So anytime you could   change the path there or you could click the  folder icon and go select another main scene,   click open, and this will change the path  for your project. Next up, we'll work on   mobs that chase the player. Scene, new scene to  create a new scene for them.
+
+
+00:46:11
+ And we're going to   create a character body 2D node. So click  on other node and in the add node window,   search for character body 2D. This is perfect  to move the mob around and to make them collide   with the trees as well. Okay, so we can  already rename the node to mob or having   a clear name. And next we will add the slime  we prepared for you as a child of that.
+
+
+00:46:39
+ So   expand the characters directory and there you  want to expand slime and you'll find slime. So if you want to apply that to your blog or  website, you can drag and drop it onto the mob   node. And like before, this is a scene that has  a bunch of sprites, as you can see if I zoom in,   and an animation player that's going to  have animations for when the slime is hurt,   when the slime is walking, and so on.
+
+
+00:47:12
+ We  can expose them as functions, play walk,   play hurt in the script attached to the slime  node. So I'm going to close this and head back   to the 2D view, the animation editor. And there  we need to add one more thing. What is that? Well,   it's the collision shape as usual. The warning  tells us that next to the mob node. So select   the mob node, press CTRL-A, Command-A on Mac,  and search for collision shape 2D.
+
+
+00:47:40
+ And once   more we go to the inspector, click the empty  slot, and create a circle shape for the slime. This will be what the slime uses to collide  but also to damage the player upon touching   the player. So we want to place the circle  so that it encompasses the slime as best as   possible.
+
+
+00:48:10
+ This will also be used as the  collision shape for touching the slime   with the player's bullets. That's our scene  done so we can save it as a mob.tsn will be   fine. And we're going to add a script  to move the mob. Select the mob node   and click the attach new script button.  Again, we don't want the template so make   sure that the checkbox is turned off.
+
+
+00:48:38
+  And we can save it to the default path,   mob.gd. Click create to create the script and we  can get coding. I'm going to close the other tabs   in here. We're going to have code that's a bit  different from the players because the mob is.... Is an artificial intelligence. It's not going to  listen to player input. Then we're going to make   calculations to move it towards the player.
+
+
+00:49:04
+  So first, to make those calculations we need   to store a reference to the player to find the  position of the player and follow them. For that,   at the top of the script we create a new member  variable and a property of our script that we'll   call player. For now we can leave it empty and  get coding. Assume that in this variable we will   get the player node, the character body2d node,  of our player.
+
+
+00:49:32
+ So I'll head back to the script   editor and click on script or press ctrl F3  to do that. And we will define, once again,   the physics process function because there  are collisions involved when the mob and the   player move. We need to use the physics  process function to synchronize their. Motion with the physics engine. So type funk  underscore physics process entered complete.  
+
+
+00:50:07
+And then inside of the function, we will calculate  the desired movement direction of the mob. This is   the direction from this mob to the player that we  can type a new variable that will name direction.   And this one we'll use the position of the mob and  we will type global position.
+
+
+00:50:22
+ This is where this   mob is in the game world. So this is a property  that comes with many nodes, including sprites or   character body 2D that we have access to in our  scripts. Dot, first this position is a 2D vector   coordinates. So it comes with a bunch of vector  specific functions. So we can write dot direction   two. It's a function that will calculate the  direction to a point. And that point will be the.
+
+
+00:51:02
+The position of the player so we  can type. Air dot global position. And so this will give us the direction each  physics frame to the player. Then velocity of   our mob will be equal to direction times some  value. So something smaller than the speed   of the player is good here. So 300 is half as  fast.
+
+
+00:51:24
+ So mobs don't crawl onto the player too,   too fast. And finally, once again, we can call  move and slide. So you can see how to move an AI   or the player code can be pretty similar. Our code  is not done because currently the player variable   is empty. We need to get a reference to the  player. There are a couple of ways we can do that.   There is the more hard coded way and the more  flexible way.
+
+
+00:51:57
+ We'll start with the simple hard   coded way. And for that we need to save the file,  move back to the survivors game scene and I'm. Moving to move to the 2D screen and add one of  our mobs while hold the characters directory and   click and drag mob dot DCN on to the game board,  right? And so let's see what happens first. If we   played with f5, of course we get an error because  we have nothing stored in the player variable.
+
+
+00:52:26
+ So   player dot global position like this is a global  position of nothing. It's not valid code. Now, if   I play the game again, I'm going to stop here with  the error. And if you look in the top left, you   will see our scene doc changed a bit. We have one  tab called local and another one called remote.  
+
+
+00:52:57
+Click remote. You will be able to see not the  nodes of the scene you're editing in the editor,   but instead the nodes of your running Godot game.  So, there you can expand the hierarchy and see... ...it's exactly the node structure of your  entire game. Because, when you put all these   s
+
+
+00:53:18
+cenes together at runtime... ...could've just  created all the corresponding nodes... ...from the   templates that you provided. And it adds a special  one at the top called root. And so using this   root, we can reliably find the path to the player  node. It's root, slash, game, slash, player. So,   we can get that node in our player variable,  right? So we can say get node, and we can type...   .
+
+
+00:53:48
+..so the way you write for the root, you start  with a forward slash... ...then you type root,   slash, game, slash, player. Okay, let's try  playing again after doing that. And we get an   error. And this one is a bit longer. Basically,  it tells you to use the add on ready annotation,   blah blah blah. So this error tells  you, you're trying to get this node. But this is too early in the state of the  running game.
+
+
+00:54:15
+ And this gets me to how getting   nodes and how to create these nodes in your  game. So, Godot, when you launch the game,   is going to immediately run this code before  even having added all the nodes to the game.   The code that is outside of functions, gets run  very early when the game starts. So normally,   what we want to do is to wait for the engine  to have created all the nodes in the game,   and the way we do that is by using another  special function from Godot called,   ready. Ready guarantees that a given node  and all its children have been created. So,   inside of the ready function, we could write  player is equal to and then have our code to   get the node. And there again, if we try to play,  you can see that the slime can follow the player.
+
+
+00:55:18
+So that's cool we can get our node like this.  Now, there is a shorthand that's very commonly   used by Godot users. Instead of writing  the ready function or variables like these,   we can use what's called an annotation.  I'm going to reset the code to what we had   before. And in front of the bar keyword,  we're going to type at ready.
+
+
+00:55:38
+ And this at   on ready is equivalent to doing the ready  function and the line we had before, right? On ready makes the line of code execute  around the top of the ready function. And   it's a shorthand that you will find often  in Godot because we at least used in Godot   to use many of those kinds of lines of  code.
+
+
+00:56:07
+ And having on ready prevented us   from having to write two lines of code to set  the variables at the start of the game. So we   can do that. On ready player is equal to get  node root games slash player. And this works,   but this works not only for one mob. If I go  back to the 2D view and I duplicate the mob,   do that we can press control D and click and drag  on the mob, many times as we want.
+
+
+00:56:34
+ Notice that if   I play all the mobs follow the player and they  collide with one another and they collide with   the trees, great. So the good thing about  that is that the code that we wrote run. Individually on each of the individual mobs  and this is the power of game scripts. All   the code that you write implicitly runs on  the node to which you attach the script.
+
+
+00:57:14
+As I said, this way of writing the code is more  of the hard coded way. It works as long as the   player node is a child of the game node. But  if I reparent it to the color rec and press F5,   of course, I get errors. And actually, so when I  play the game and I get these errors, something   called the debugger here, it's a tool you can use  to inspect the state of your game, the variables   and all. So if you're just getting started,  it's going to be a bit overwhelming.
+
+
+00:57:42
+ But what's   important is that you can find a detailed log of  all the code errors that occurred in the errors   tab in there. And if you look, you can see that  it tells you on ready. So this corresponds to our   user on ready here node not found. So it didn't  find the player node at the path we provided   route slash game slash player. And this is  because the player is now a child of color rect.
+
+
+00:58:15
+If we move the player back in the hierarchy,  we will not get the error again. First,   how would you avoid this hard-coded option? Well,  typically would leave the player variable empty   like this. And when creating the mobs from some  other scripts, you would use code to create them,   which we'll do later.
+
+
+00:58:39
+ We would set the player  variable of the mob, and we will see how a   little later in the project. But for now, nothing  prevents us from leaving this line as a default.   First, we will not move the player, but also  even if we did, we can use this code as a good   default. And then, from our game script or some  other place, we will make sure that the player   variable is properly set. And with that,  you have mobs that move after the player.
+
+
+00:59:17
+Next up, how about we make the view follow the  character? We can do that using a new kind of   node, a camera node. So I'm going to click the  camera slate icon next to the player node to open   its scene. Select the player, press CTRL-A,  and you can look for camera 2D. Once you've   added this node, you're done. The view will follow  the player.
+
+
+00:59:39
+ So if you play the game and you move   around, the view stays centered on the player.  Nice. Except that the white background stays in   place, and so we end up seeing the dark grey that  Godot originally had. Okay, so we can make it so   this color rectangle does not move. For that, we  head back to our Survival's Game scene, and we're   going to add a new kind of node that's called a  canvas layer. So press CTRL-A to add the node.
+
+
+01:00:19
+Look for canvas layer. It has this white  icon with a brush, and create it. We want   to move it anywhere in the scene and add the  color rect as a child of it. And instantly,   you'll see that regardless of the color rect's  position in the hierarchy, the canvas layer and   the rectangle will draw in front of everything.
+
+
+01:00:40
+  What the canvas layer does is that it renders,   it bakes the children it has to some kind of  image and displays that image behind or in front   of everything else. That's why it's called the  layer. If you've used a graphic design program   before, they have this same notion where  layers draw on top of one another. Now,   the good thing is we can change the rendering  order of canvas layers.
+
+
+01:01:08
+ So you can click the   canvas layer node to select it, and in  the Inspector, expand the Layer category, And then change the layer. Currently, it's set  to 1, and that's what causing it to draw in front   of everything else. You can use any negative  number in there, like you can click and type   minus 30 or whatever. Press Enter, and now the  color rectangle will draw in the back.
+
+
+01:01:31
+ And the   good thing is that by default, canvas layers  do not follow the viewport. As you can see,   the follow viewport enabled property is turned  off. This means that it will stay in place even   when the view changes. So you can press F5 and  move around, and there will always be a white   background in your game.
+
+
+01:02:00
+ Next up, how about we  work on the player's weapon, the gun? To do that,   we're going to go to Scene, New Scene, and we'll  use another kind of node that we haven't used   yet. So let's click on the other node button,  or the root of our scene, and search for that. This is a node that allows us to detect  anything that's in an area, for example,   the slimes and range of the gun.
+
+
+01:02:30
+ This node, like  other physics nodes, like the character body, etc,   needs a collision shape. So let's press Ctrl A  and look for a collision shape 2D. And once again,   we'll create a circle-shaped 2D in the inspector,  and make the shape larger. You can make it really   large, because this circle represents the range  of your gun.
+
+
+01:02:53
+ It's not going to collide and prevent   the gun from moving into other things.  We prepared a sprite of a pistol for you,   so in the file system, you can search for  pistol.png, and click and drag the pistol   onto the view. And you can see that it's  really small compared to the range of the   gun. And note that you don't have to make this  circle very precise, you can come back anytime.
+
+
+01:03:24
+To change the size as we improve the  game, to make the gun shoot farther away,   or closer to the player. Alright, now we want a  way to rotate the gun around the player, right?   That when we rotate it, it doesn't rotate around  its own center, but it rotates all around the   character to shoot at enemies.
+
+
+01:03:49
+ There are a couple  of ways we can go about it, but a simple way to   do that is to give the pistol a parent node, and  to offset it from that node. Let me show you, I'm   going to select the area2D node that I'll actually  rename into gun, and add a new node as a child of   it.
+
+
+01:04:11
+ There's a node called the marker2D, which will  give us a visible cross in the view, and I'm going   to add the pistol as a child of it. I'm going to  call this marker2D weapon pivot, perhaps? Perhaps? I'm going to offset the pistol sprite from it.  So I select the pistol node and with the select   mode active, I'm going to click and drag to the  right and press the shift key on my keyboard to   constrain the movement to the horizontal  axis.
+
+
+01:04:40
+ OK, so if I rotate the pistol node,   it still rotates around its pivot point. But if  I select the weapon pivot node and I rotate it,   then it rotates the weapon with it. So this  kind of setup where you have nodes with a   parent child relationship is a very easy  way to offset the pivot of one or multiple   sprites. It's not the only way, but it's a  very common one.
+
+
+01:05:08
+ And we're going to add one   more thing. We're going to define a point  that's attached to the pistol from which   we will spawn bullets. And so I'm gonna  select the pistol node and add another. Marker 2D node as a child of it. And you'll see  it appears on the weapons pivot. And I'm going to,   well, I'm going to select the move tool.
+
+
+01:05:34
+ So  move mode, you can press W key to select it   or click the four direction arrow in the toolbar  and then click and drag to move the node. And you   can move it onto the mouth of the gun. And I'll  call this one shooting point. And we'll use that   in code to spawn bullets. Okay, I'm going to save  the scene as gun.tscn.
+
+
+01:05:56
+ And we're going to add it   as a child of the player node. So I'll open the  player scene. And to do that, you can go find it   in the file system dog. I wanted to show you this  nice shortcut, control shift O or command shift O   on macOS. And this shortcut allows you to find all  the scene files in your GoTo project and to type.
+
+
+01:06:28
+Right now, we're going to filter the list. So  you can look for the player scene this way and   press enter once it's selected. In the player  scene, I'm going to click and drag my new gun   node onto the player node. And you'll see we  get the area of the gun. We get the gun around   the player character and you can see that it's too  far to the right.
+
+
+01:06:47
+ And one cool thing we can do is   that we can click active to move the gun up to be  kind of aligned with the player character. Okay,   so back to the gun scene, I'm going to select  the pistol and move it to the left a bit to be   closer to the player and save. When I go back to  the player, it's a bit closer to the character,   a bit nicer.
+
+
+01:07:15
+ Now you might wonder why do we have  the gun as a separate scene? And the answer is,   well, what if you want an enemy to have a gun? Or  what if you want to have two guns on the player? Six guns! Actually on our website you'll find a  guide to have six guns as in the popular survivor   game Brotato. And this requires having the gun as  a separate scene, so this gives you flexibility.   This also helps with separate concerns because  when working on the gun I just have to worry   about a couple of nodes that are specific to  the gun entity.
+
+
+01:07:51
+ Alright, let's get coding and   the first thing we'll do is making the gun earn  to aim at the closest enemy. So we're gonna add   a new script to the gun node to the area node  and we'll name it gun.gd. It's fine. And here   we're going to define our physics process function  once again to earn the gun to find enemies each   frame. And now there's a very cool thing with  areas we don't need to get references in our.
+
+
+01:08:33
+Code to enemies the area node will detect  overlapping enemies for us. It has a function   called get overlapping buddies and this  function will find all of the character   buddy 2D nodes that are overlapping with  the area and return them as an array,   as a list of values.
+
+
+01:08:53
+ So we can store that in  a variable, so I'll call that variable enemies   in range for clarity. And now we can check,  are there enemies in range? And because this   returns an array, a list of values, we can  check for the size of the array. So we can   say if enemies in range dot size is greater  than zero, the size function of arrays will   give us the number of items in the array.
+
+
+01:09:22
+ So if  there are zero, we don't have enemies in range,   but if there are one or more, there are  some slimes in range and we can aim at them. So what I'll do there is find the enemy target so  I'll create a variable again for clarity. Let's   call it the target enemy and it's going to be the  first entry in the enemies in range array. So I'll   say enemies in range and there are a couple of  ways you could get the first item in an array.  
+
+
+01:09:56
+So you can call the front member function of  the array, it gives you the first element,   or you could use the syntax square brackets  and a zero inside of it which is also common   in other programming language. But I like the  function for some reason. And once we have that,   we can call a function that's available  in most 3D nodes in Godot, all of them,   it's called lookAt and it allows us to  look at a point.
+
+
+01:10:23
+ That point is going to   be the global position of something and  so in that case, it's our target enemies. Global position. Do write lookAt in  parentheses target enemy dot global   position. And one thing you may notice is  when I write the dot after the target enemy,   Godot doesn't know what the target enemy is and so  it doesn't give me completion suggestions for the   global position. This is because it doesn't know  the type of the value that we get from the array.  
+
+
+01:11:05
+And you'll notice that when I type the dots after  the target enemy, I don't get auto completion from   the engine. Reason is that Godot does not know  what kind of value we get when we call enemies   in a range dot front. It doesn't know that this  is going to be one of our slimes so that it has   a global position. This is why you don't get auto  completion.
+
+
+01:11:25
+ You don't get it by using a different   syntax where you specify the type of things but  this is not something we use in this series. Now if you try to play the game, you'll  notice that the gun turns to go down   and then it doesn't change direction.  This is a bit weird, isn't it? Well,   the reason for that is that the gun  is probably detecting the player,   which is a character body 2D, and so  it's aiming at the player, kind of,   right? Instead of only detecting the slimes. So we  need to change our game setup to be able to target   only the slimes with the gun. How do we do that?  With the physics, layers, and masks in Godot. Select the gun node, and in the inspector,  you want to expand the collision category.  
+
+
+01:12:26
+There you will see a list of layers and masks. The  layer RPT controls what can detect this gun area,   and the mask controls what our gun does  detect. And currently, it's on layer 1,   so anything that masks layer 1 can detect it.  We don't want that, we don't want anything to   detect the gun, so we can uncheck that.
+
+
+01:12:48
+ And then  it masks layer 1, so it detects anything on layer   1. It's physics layer 1, by the way. It's not the  same as our canvas layer from earlier. The problem   is that everything in our game is currently  on layer 1, including the player. That's why   it's always detecting the player. So we will  uncheck layer 1 and mask layer 2. And now,   if we play the game, the gun doesn't  turn because it never detects anything.
+
+
+01:13:37
+So we can select the character, and if we go  to the inspector, you will see a collision   category similar to the area node. There  you can see that the slime is on layer 1,   and it masks 1. We're going to change  that, we're going to set it to layer 2,   and leave it at masking 1.
+
+
+01:13:57
+ Mask 1 means that  it will collide with the player, and it will   collide with the trees, right? We don't want to  change that. But we want to change its layer to   2 so that the gun can aim at the slimes only.  So if you press F5 now, you will see that the   gun kind of hooks onto one of the slimes and  keeps tracking it. This will happen until we... Kill that slime, or it gets out of range. Also,  notice how the slimes stack up.
+
+
+01:14:23
+ This is due to   our configuration with physics layers and masks.  So we can remedy that by going to the mob scene,   select the mob node, and we can add mask 2, which  means that the slime will check for collisions   with other slimes which are on physics layer  2. And you can test that by playing the game,   and you'll see that slimes now stay apart from one  another.
+
+
+01:14:52
+ We have a gun, but without projectiles,   it's not very useful. So let's move on to  creating the bullets next. Go to scene,   new scene, and once again we're going to  use an area 2D node. So click on other node,   and search for area 2D. The area 2D is very  versatile because it can detect overlap with   basically anything. So for a bullet, we can use  it to detect when the bullet touches the mob.
+
+
+01:15:26
+I'll rename the node into bullet, and as a  child we need a collision shape once more.   So let's add a collision shape 2D node. And  in the shape slot, once again we're going to   create a circle shape 2D. We need some visuals  for the bullets, so for that we're going to   expand the pistol folder in the file system  dock, click and drag projectile.
+
+
+01:15:47
+png onto the   scene. I'm going to place a projectile behind the  collision shape just to see the collision shape,   align the bullet with the collision shape, and  also make the collision circle bigger. Note that   you can click to select the nodes, as we've seen  before, but you can only do so if you are in the   select mode.
+
+
+01:16:15
+ So if you are having trouble to  select things, it's perhaps because you don't   have select mode active. Okay, so making the  circle shape a bit larger will make it a bit. Easier to hit enemies and make the game feel a  bit more fair for the players. We're going to   add code to move the bullets, but before  that we need the bullets to hit enemies   and not only that we might want them to  stop when hitting a tree, for example,   but we don't necessarily want all the things  to detect them.
+
+
+01:16:48
+ We're going to add the code to   damage the enemies to the bullet because it's  easier in the context of this kind of game,   so let's expand the collision category after  selecting the bullet node, and we're going   to remove layers on it and we're going to add  masks one and two. Two is where the enemies are,   so this will detect the slimes and one would  be for the trees, and if you want bullets to go   through trees and through the background, you  could turn off one, up to you.
+
+
+01:17:17
+ Now let's add   some code to move the bullets, so once again  we're going to select the bullet node and. Click the attach new script icon and we  want to name the script bullet.gd. Also,   we're going to press Ctrl S to save the  scene, and we can get coding. So once   more we're dealing with a physics object,  so to move it to each frame we're going to   define the physics process function.
+
+
+01:17:51
+ And here  we are not dealing with a character body node,   so we don't have a move and slide function.  You can see that when I try to type it,   I don't get auto-completion for that. Instead,  when dealing with areas, we need to move them   using their position or global position property.  So we're going to do that right now. We're going   to use a trick with the bullets, we're going  to use the current rotation of the bullets to   move it, right? So, when we create a bullet,  we're going to have it rotated to match...
+
+
+01:18:32
+The head of the gun automatically, we don't have  to do anything for this to happen. But then we   want the bullet to move forward, and so if it's  rotated like this, we want to move it diagonally,   like that. And to achieve that, we need to take  the rotation of the bullet into account in our   code. Here's how we can do this.
+
+
+01:18:52
+ We could create  a direction variable once again, and this time,   we're going to start by taking the horizontal  axis. So we're going to create a 2D vector   value. We haven't seen them explicitly  so far, but we can construct any vector,   2D vector coordinates using the vector  two type that we write here. Then,   we can have a vector representing the  horizontal right direction by typing   dot right.
+
+
+01:19:27
+ This is a constant value  provided by the Godot engine for us, And with the control click on it, you will see  that vector2.write is equal to vector2 and in   parenthesis 1, 0. It means a vector with a value  of 1 on the x-axis and 0 on the y vertical axis.   And on that vector, we're going to call the  rotated function. So, this vector2 function   is going to return a new vector that is rotated  by the desired angle.
+
+
+01:19:56
+ And we can get that angle   from the rotation property of the bullet. Okay, so  this will give us the current direction in which   the bullet is pointing. And the good thing about  that is that we can multiply that direction by   some speed value as we've done before, and it  will move the bullet. So we can say, position   plus equals, we add to the current position  of the bullet. direction times some speed.
+
+
+01:20:36
+So, we could say i don't know 1000 pixels per  second or you can type just 1000 and then we   have to multiply that value by the delta  provided by the physics process functions.   We can say times delta. This makes the motion  time dependent as opposed frame dependent. So,   this is again something that you can learn  in our free course learn to code from zero.  
+
+
+01:21:03
+We didn't use delta when setting the velocity  in our player character but here we need to   do that. Why? Because the character body  with its move and slide function applies   delta automatically for us. In other areas  of our game we will need to apply delta like   this manually.
+
+
+01:21:24
+ Ok, so this will make  the bullet move forward based on its   rotation and we can test that and the editor  by selecting the bullet and by rotating it. You can select the rotate mode in the toolbar or  press E on your keyboard and click and drag to   rotate the bullet. And if you play the scene with  F6 you will see the bullet shoot forward. So this   is what this tricky code is all about.
+
+
+01:21:51
+ It might  be a bit painful to think about at first but this   kind of code once you learn to manipulate and work  with it will make your game code much shorter and   easier than you might see in other game engines  tutorials. There's one more thing that we want to   do with the bullet.
+
+
+01:22:13
+ We want it to have a limited  range and one reason for that is just to limit   the range of the gun. But another reason is that  as the player shoots lots of bullets in the game   we need to at some point destroy them other  ways they will accumulate and accumulate as   the game is running and they will start to  affect performance. so back to our script. We can add a new variable that will put outside  of the function so that the value stays around   we'll call it travelDistance and it will start  with a value of zero and then each frame we   will increase the travelDistance value based  on the current speed of the bullet so we can   write travelDistance plus equals and it would be  1000 times delta now, it's not the best practice   to keep numbers duplicated in our code then we  can create a constant that we will use to name  
+
+
+01:23:16
+the value write joystick to NST and we can name  it the convention is to make it uppercase like   this so it will be our speed and it's going to  be equal to 1000 now we can select the 1000 we   have in our code and press ctrl D to select the  next instance and we can type speed to replay. And replace both instances simultaneously.
+
+
+01:23:45
+Okay, we're going to similarly have a maximum  range for the bullet so we could add a new   constant and name it range and give it a  value of whatever, 1200 pixels here this   is so that we can check for the current travel  distance and if it's greater than the range,   we destroy the bullet like so we're going  to say if travelDistance is greater than   the range value we add a colon at the  end and then we go to the next line,   indented and to destroy the bullet, we can  call the cube-free function and we can test it,   I think so if I rotate the bullet to go diagonally  I press F6 and yeah, you can see that it gets   destroyed after traveling 1200 pixels on the  screen to avoid doing too much back and forth   between the scenes and script Let's add the code  that will make the bullet damage the enemies.
+
+
+01:24:46
+Next, we're going to use a new feature of Godot  called signals. So select the bullet node,   the area2d node, and next to the inspector on  the right, you will find a node tab. Click it,   and you should see the signals sub-tab  highlighted. This lists a bunch of what   Godot calls signals. They are messages that the  node will emit when something specific happens.  
+
+
+01:25:13
+They are equivalent to events in JavaScript, or  to the observer pattern that you find in some   programming languages. They are messages  you can connect to, and when you do that,   you can call code when the signal gets emitted.  In this case, we want to connect the body-entered   signal. This one gets emitted whenever the area  touches a physics body, like a character body2d.  
+
+
+01:25:41
+This is the kind of node that we use for our  mop. So double click on the body-entered signal. And a window pops up and asks you to select a  node to connect, and what they call a receiver   method. It is a function that will be called by  the engine when the signal emits. You can leave   the defaults and select the bullet, and click  connect.
+
+
+01:26:02
+ This takes us to the script editor,   where Godot added the function we selected  for us. It would either use an existing   function or define the function for us if  it doesn't exist. In the margin on the left,   you can see a new brain icon. This one means  that a signal is connected to this function   in the editor.
+
+
+01:26:27
+ So you can click this icon to  see which node, which signal is connected to   which other node. So the bullet's body-entered  signal is connected to this same bullet node. Now, inside of that function, we can write the  code we want to call when the bullet hits an   enemy or something. The first thing we want to  do is call viewFree again as we did in physics   process. This will destroy the bullet, but it  will wait for when frame to do so.
+
+
+01:26:58
+ It allows us   to put other code after this line. And what  we're going to do is check if the body that   we touch that is passed to us as a function  argument has a function named Eggdame. If so,   we call that function. We can use this code to  do so. If body.hasMethod, this is a function that   Godot provides on all of its nodes.
+
+
+01:27:30
+ In quote,  we can write the name of the function we want   to check. Call it takeDAMAGE, then a colon at  the end of the line and if so we'll call body. Take damage. This is something we call duck typing  that we have access to in Godot. It's a way to   check if a given code entity, a node, something  like that that we receive in our code has some   properties, some function. If so, we can safely  call it.
+
+
+01:28:00
+ Next, we will work on the code to shoot   the bullets. Let's head back to the gun scene and  this opens the gun.gd script for us. And in there,   we're going to define a new function that we will  call to shoot one bullet. I'll call it shoot. So,   right, fun shoot parentheses colon. Side  of that, we want to create new copies of   the bullet scene that we created.
+
+
+01:28:29
+ To do that,  we're going to head to the bullet scene on a file   system and we can click and drag a file to  get its path in the code and we're going to   need that to load the file. So there are two  functions you can use in Godot to load files. In your code, one is load and the other  one is preload. It is kind of static,   so you have to pass an absolute path to the  file you want to preload.
+
+
+01:28:55
+ And it will be   preloaded at the start of the game. And the load  function works by loading the file on demand,   so it will not load until this line of  code is executed. While with preload,   it will be loaded as soon as the game starts.  So we're going to use preload, and so you can   write preload, parent sees, and you can click  and drag your bullet inside of the parent sees,   and it will insert the path to the file for  you.
+
+
+01:29:25
+ Now we want to store that in a variable,   RA constant, to be able to create instances  of that loaded resource. So let's write const,   bullet, before that, remember that the invention  for constants is to use uppercase letters. And   this allows us to store a reference to our loaded  resource. Then we're going to create an component. We're going to create a new bullet from that  loaded template scene file.
+
+
+01:29:52
+ So we're going   to write var newBullet, and we're going to  call bullet.instantShade. Instantiate is the   function you have on loaded scenes to create a  new instance of that scene. And we store this   instance in a new variable, because we're  going to need to make a couple of calls or   applications on that bullet.
+
+
+01:30:18
+ So we need to place  that bullet at the location of the shooting point,   right? We define that in our scene. And  so we need to access the location of   that shooting point in our code. What we're  going to do, like before, is right click on   it and use access as unique name. We can  click that, see the person sign up here,   and back in our script, we're going to write  newBullet.LogoPosition equal to shooting point.
+
+
+01:30:55
+And when we complete that, it's going  to add the full path and go to 4.1,   but we can just delete the part we don't want,  the shooting point.GlobalPosition. This will   move the bullet to the location of the shooting  point. And we use GlobalPosition in both cases,   because the regular Position property is relative  to the parent node, so to the pistol in this case,   while GlobalPosition is the absolute position  in the entire game world.
+
+
+01:31:20
+ And finally, we will   add our bullet. We can add it as a child of the  shooting point. So we're going to copy this bit,   shooting point, .addChild, and we're  going to add the new bullet. This code   that we have here is roughly what the editor  does when we do this, when we drag and drop   bullet.tscn onto shooting point. It creates a  new instance of the bullet, it loads it, need it.
+
+
+01:31:57
+It sets the location to match that of the shooting  point, and it adds the bullet instance as a child   of the shooting point. But we are doing that  dynamically in code so that we can create as   many bullets as we need. In this game, we  want the attacks to be automatic. We want   them to happen at regular time intervals.
+
+
+01:32:16
+ To  do that, we will use another kind of node,   a timer. Let's select the gun node and press  Ctrl A or Command A on Mac to add a new timer   node. Press Enter, and on the right side, we  need to switch back from the Node tab to the   Inspector tab. This will give us the properties  of the now selected timer node. The timer tracks   down the time that is being spent, and it emits  a signal each time it times out.
+
+
+01:32:46
+ By default,   a timer in Godot is also running in a  cycle, so it will emit a signal each time. We will also emit this timeout signal at  regular time intervals. The time interval   is determined by the wait time property, and  this will be the cool down of our gun. We   can lower the value by clicking on the field  and writing something like 0.
+
+
+01:33:10
+3, for example,   to attack around 3 times per second. And we will  also set the timer to start automatically by   turning on the auto start property. Next, let's  head to the Node tab because, as I told you, the   timer emits a timeout signal. And we can use that  to trigger our shoot function. So double-click the   timeout signal and connect it to the gun node.
+
+
+01:33:39
+  This will create, by default, a function named   onTimerTimeout. So let's click connect. And  once we have this function, from it, we can   directly call shoot. Now let's press F5 to run  the game, and you will see that there are bullets. That appear, but they are very strangely  laced. Why is that? Well, this is due to   how positioning of nodes work.
+
+
+01:34:08
+ To create a  new bullet, its position is relative to the   shooting point. So when we set its global  position to that of the shooting point,   it gets offset. Also, when we rotate the gun,  all the bullets we shot are rotating with it   at an offset. Okay, this is not great.  How can we remedy that? Well, luckily,   Godot has a feature to help us.
+
+
+01:34:34
+ We can head back  to the bullet scene, select the bullet node,   turn on the inspector tab, and we're going to  look for a property named topLevel. So you can   click the filter properties field at the top  and look for top. This will not unfold the   sections for you, so you have to click on  visibility to find the topLevel property. This will make the bullet move independently  from its parent node.
+
+
+01:35:02
+ So now, if you press F5,   you will see it works a bit better, but all the  bullets shoot to the right. And now the problem   is that, well, we only set the global position of  the bullets, but we do not change their rotation   in the code upon creating them. We have to head  back again to the gun, open the script by clicking   the script icon next to the gun node, and then  we add a new line after the one where we change   the global position.
+
+
+01:35:35
+ So let's put our cursor on  the line with nothing selected, press Ctrl-C and   Ctrl-V to duplicate the line. And now we're going  to select the global position text, press Ctrl-D   to select the second instance of it, and change it  to global rotation. And now our bullet will rotate   to match the shooting point.
+
+
+01:35:58
+ So you can play the  game, And you will see that now, the gun shoots- It shoots bullets towards the slimes. If I go back  to the bullet for a second, we check if the hit   body, the slime in general, has a function named  take damage. And if so, we call it. But currently,   the mob does not have the take damage function.  So we will add it next.
+
+
+01:36:20
+ You can click on the mob   scene at the top and we'll open the scene  and the corresponding script. And in here,   we will define a new function named take damage.  So func take and dissolve damage. And this   function takes no arguments. And here we will  do a couple of things. First, it would be nice   if our mob had health. So we need to hit them  a couple of times to kill them.
+
+
+01:36:47
+ So we can add,   around the top of the script, a new variable named  health. And you can set it to how many hits you   want the mob to take before dying. Two or three  should be fine. Then, when the mob takes damage, We can set this value to 20, even though we  can't see it now. So we can set the value to 10,   and we can set the value to 20, and we can  set that value to 20.
+
+
+01:37:19
+ And then we can set   the value to 20. So we can set the value to  20. And then we can set the value to 20. And   then we can set the value to 21. And then  we can set the value to 20. And then we can   set the value to 20. And then we can set  the value to 20. then we're going to do. And that's already a start, that's enough  for us to test if Bob gets hit 3 times,   it dies Great! But it's a bit rigid and it doesn't  look and feel too great So we have a slime in the   scene so I'm going to head back to the 2D view for  a second I created a script and animations on the   slime just like we did for the player so if I open  the slime itself it has a hurt animation where it   takes damage and a walk animation that we're not  using at the moment gonna remedy that I'm going  
+
+
+01:38:21
+to close the slime scene, head back to the mob  and in the slime script you can see we have two   functions play walk to play the walk animation of  the slime and play hurt, play the hurt animation   and it resumes the walk as soon as the hurt  animation ends So, I'm going to do two things... We're going to make the slime play the walk  animation.
+
+
+01:38:45
+ And we're going to do that in the   ready function. Remember the ready function  is called by Godot when the mob is created.   When it's added to the game. So there we  need to access the slime and I'm going to,   as we have done before, right click, accesses  unique name so that they can write percentage   sign slime dot play walk, right? That will  make the slimes play their walk animation,   already a bit nicer. And then when the slime takes  damage, each time they take damage.
+
+
+01:39:17
+ I'm going to   do a person sign slime dot play. Remember we can  call these functions because they are defined on   the script attached to the slime node. So now,  each time a slime takes a bullet, they play the   heart animation. Okay, great. They disappear a  bit fast and so one thing we've done for you. Is provide a smoke explosion as well.
+
+
+01:39:48
+ It's a  visual effect that you'll find in the smoke   explosion directory in the file system doc.  And we are going to instantiate it to add   it via code. When the mob dies, it will hide  the mob disappearing and it's a common kind   of visual effect we use in games. I'll expand  the smoke explosion directory and there you can   see a smoke explosion dot ESCN scene. That's  the template for the smoke.
+
+
+01:40:14
+ So like before,   we are going to preload the smoke and  we are going to create an instance of   it and place it and add it the game. It's  very similar to how we create bullets from   code. So I'm going to control click and drag  on smoke explosion dot ESCN onto my script,   which will add this preload line. so I'm  going to store it in a constant smoke scene.
+
+
+01:40:48
+And then we're going to create a concrete  copy of that. So I'll create a new variable,   I'll call it smoke, and I'll use smoke scene  dot instantiate, which creates a new copy,   produces a new smoke explosion from the template  scene. Then we need to add the smoke to the scene,   to the hierarchy of nodes in our game.
+
+
+01:41:10
+ And so  one way to do that would be to call add child,   and then add the smoke. The problem with  that is that it would add the smoke as   a child of the mob node. But then we have  called queue free that will delete the mob,   and deleting a node also deletes all its children,  including the smoke explosion that we have just   created. So we can't do just that.
+
+
+01:41:37
+ But what we  do instead in those cases is do something like   this. There's a function called get parent  that will find the parent node to the mob. So it will go one level up in the node  hierarchy in our game. And then we can   add the smoke as a child of that. Effectively,  it will add the node as a sibling of the mob,   instead of having it as a child of  the mob.
+
+
+01:42:01
+ Even if we delete the mob,   this will not delete the smoke. The last thing we  need to do is to position the smoke onto the mob,   because now we have added it as a  sibling of the mob, so it will not   share its position automatically. So we can write  smoke.globalPosition is equal to globalPosition,   and in this case, it's the globalPosition of  the mob when it dies.
+
+
+01:42:26
+ You can now play the game   to test this. And, well, the mobs snap a bit  to the player, but you can see that it looks   much nicer like this with the mobs having the  little explosion that hides them disappearing   instantly. The player now can damage the enemies,  but the other way around, it's not the case. So, we're going to add health management to  the player.
+
+
+01:42:51
+ So let's head back to the player   scene and player.gdscript and we're going  to add a variable to represent the player's   health. But I want it to work as in Vampire  Survivor. So, as slimes stick to the player,   they constantly damage them frame after frame. And  for that, we're going to use a decimal number. You   can write it as just 100, but .
+
+
+01:43:17
+0, adding a decimal  place, tells the computer that we want to work   with a decimal number, not with a whole number.  Then, what we're going to do is each frame,   we're going to check how many mobs are touching  the player. And the way you do that in a game   engine like Godot is by using another area.  So, we're going to add a new area node as   a child of the player that will represent  its damage box. So, select the player node.
+
+
+01:43:51
+In the scene, press Ctrl A and look for area  2D again. And I will rename this into hurtbox.   This is a common name for these damage areas.  This one will have its collision set to be on   no pathological layer and mask layer 2. That  is, it will detect enemies touching it. Then,   as a child of the hurtbox, we need to add  collision shape.
+
+
+01:44:14
+ And you can make the hurtbox   any shape you'd like. Guess what I'll use? Yes,  a circle, once more. I'll make it a little larger   than the collision circle. Note that you have a  debug color field in the inspector. Then, you can   click to change the color of your hurtbox. So,  when two collision shapes overlap like that, the   drawing is not going to be perfect, but I'm going  to change it to red or something to distinguish   it from the other areas. Okay, so we have our  hardbox. Now we can use it in our code to check.
+
+
+01:44:53
+Yeah, I'm going to try when enemies are touching  this box and inflict damage to the player. So   I'm going to right click on the hardbox node,  access as unique name, which will let me access   the hardbox using the person sign. And then  click back on the player script. Each frame,   I can find the overlapping mobs like this.
+
+
+01:45:11
+  I'm going to create a variable to store   them. Overlapping mobs is going to be equal to  hardbox.getOverlappingBodies. So we've seen this   before, this function is going to give us a list,  an array of the overlapping slimes. And we can use   the number of slimes to damage the player.
+
+
+01:45:36
+ So the  more slimes are sticking to the player, the more   damage they take. We're going to have some kind  of damage rate for the player. It's the amount of   damage that'll take per enemy per second. So I'll  create a new constant that I'll call damage... ...they could take 5 damage per enemy per  second so that the health doesn't go down   too fast. Then we can do a check like this. So  if OverlappingMobs.
+
+
+01:46:00
+thighs is greater than zero,   actually we don't absolutely need the condition  we can do without. But we're going to subtract   to health. If there are OverlappingMobs, health  is going to be minus equals damage rate times   the number of mobs. So OverlappingMobs.thighs  is going to tell us that number times delta.   Because otherwise, if we lose 5 health per  frame without taking into account delta,   health is going to go down to zero in  an instant.
+
+
+01:46:38
+ So what we can do then is   check if the health is lower or equal to  zero. In that case, we're going to have   GameOver. But we don't want to code the  GameOver and display the GameOver score. We don't want to use the GameOver screen right  here. So what you would typically do in Godot   is emit a signal for the user interface to catch  and display the GameOver screen.
+
+
+01:47:01
+ So for now, we   are just going to emit the signal and we're going  to define a custom signal. To define the signal,   you have to go to the top of the script and write  the keyword signal followed by the signal name.   So in that case, we're going to call it health  depleted. And so, back to the bottom of our code,   if the health is lower or equal to zero, we can  use the health depleted signal and call its emit   function.
+
+
+01:47:36
+ And this is how you can create a custom  signal in Godot and emit it whenever you want,   which has the same effect as all the built-in  signals. We can then see the new signal in the   editor. We can connect to it and we can  run code when the signal gets emitted. I'm going to bump up the damage rate  to, let's say, 500 and I'm going to add,   I'm not going to add a print, I'm going to add a  breakpoint to my code.
+
+
+01:48:05
+ You can see when I hover   in the margin next to the code on the left, I  get these red dots that appear. And if I click,   I'm going to create a breakpoint. This  means that the game execution will pause,   just like when you get an error. When this line  of code is about to run and this allows us to   check if some code runs, but also inspect the  state of the game as it is running using the   debugger. So I had a very high damage rate.
+
+
+01:48:39
+  So as soon as an enemy touches the player,   they die. So we reach this line of code  and it does get emitted. So we could check   that it is running, even if it has no particular  effect. shortcut, for breakpoints you can press. F9 to toggle them on and off. And that  way you can check if any line of code   gets executed.
+
+
+01:49:05
+ And you can see you get the  same interface as when you have an error,   which is the debugger. So you can use that to help  you and inspect everything that's happening in   your game. See all of the variables in your  script right there. It's really useful. And   so if I press f7 to keep running the game, the  enemies just keep touching the player, and the   health is in the negatives right now. But nothing  happens because we're just emitting a signal.
+
+
+01:49:41
+Okay, let's add a health bar now to the player  so that we can at least visualize the health   going down. And I'm going to lower back down  the damage rate. So back to the player's scene,   I'm gonna click the 2D main screen to head back  there. I'm going to add a new node. There are   nodes built into Godot to represent health  or progress bars.
+
+
+01:49:59
+ Select the player node in   the Scene dock. Ctrl A, command A on Mac, to  add a new progress bar node. This progress   bar is used for loading or those kinds of  things. So with the select mode turned on,   I'm going to scale it a bit so that you can  see that it has, you know, 0% marked on it.   And I'm going to move it up with the shift  key pressed to center it above the character.
+
+
+01:50:34
+And we're going to change the style a  bit. So with the progress bar selected,   go to the Inspector. And the first thing  we're going to uncheck is showing the   person sign because we don't really want  that to show. And then in the Inspector,   you will see a range section with a bunch of  properties.
+
+
+01:50:47
+ And so it has a minimum value,   maximum value. So the minimum is zero. So this  means that the bar cannot go below that zero   mark. The maximum value by default is 100. It's  perfect, it's what we want for our health. And   then the value, you can click and drag to pull  it up. And you can see that as you change it,   the bar fills and empties.
+
+
+01:51:11
+ Now the problem we  have is that the fill of the bar is currently   gray. It's the default color, and it would  be much nicer with green. We can change that   by going down to the theme overrides category.  And there we want to go to styles. So this is. The system of theme and theme overrides  is a very powerful feature of Godot for   user interface creation actually the Godot  editor is made with the system so all the   styles the icons everything you see in there is  controlled by the system but as a result it's   a pretty complex and deep system that you'll  have to learn bit by bit styles are provided   for some nodes to create these rectangles that  make our bar. You can see there are two slots   background and fill and the background is the  dark gray area and the fill is the light gray  
+
+
+01:52:17
+area of the bar. We want to change the fill  so we're going to click on the empty slot next   to it want to create a new style box. It's the  tool that Godot provides to create these field   rectangles and then you can click the style  box to expand its properties and edit them. The first thing we want to change is the  background color the first property so you   can click that color and change it to a nice  brain.
+
+
+01:52:42
+ You can pick whatever color you want   and in this project we included a Godot add-on  that gives you a color palette for easy access   to nice colors. Then you can go down to the  corner radius this allows us to round the   corners of the health bar so we have to set the  four corners and we're going to set them all to   I think eight pixels is a good default and  can see that now the bar has some roundness.  
+
+
+01:53:16
+We can click the style box again to fold its  properties and then do something similar for   the background which is currently transparent so  we can click on the empty slot at a new style box   flats to expand its properties and then or the  background color I'm going to choose the dark   gray in my color palette. I'll navigate  down and add some corner radius, so 8.
+
+
+01:53:40
+Pixels on all corners, it'd be a bit hard  to see with the progress bar selected,   but if you click in the empty space in your  scene dock, you can deselect the progress bar   and better see the round corners. And then you  can reselect the progress bar and press Alt on   your keyboard and click and drag to resize it  uniformly horizontally by clicking on the side   handles.
+
+
+01:54:06
+ Remember that to have these handles  you need to have the select mode active and   the toolbar above the viewport. Okay, so this  gives us the progress bar and that's great,   but now we need to change its value from code  whenever we subtract health to the player. So   I'm gonna go up the inspector right now and  the first thing I want to do is set the value   to 100 of the bar so that at the start  of the game it matches the health of the   character and the bar is full. Then we're going  to change its value from code.
+
+
+01:54:37
+ So what do we do? Click on the progress bar node and access as  unique name. We reopen player script and in the   player script, when we subtract health, so after  the line that removes health, we're going to use   person sign progress bar dot value is equal  to health. And notice one interesting thing   is that if we go to the inspector, we have  a property named value.
+
+
+01:55:08
+ And in our script,   we use the value property of the progress bar  node. While the inspector actually displays all   of the properties you can access from  your code, if you hover any of these,   you will get the technical description. But  also notice how it's written property colon   value in lowercase.
+
+
+01:55:32
+ And this is what you can use  in your code to change this value you see in the   inspector for properties that have multiple words  that are capitalized. You can see how the curse. Corresponding text encode is the same expression,  but with underscore instead of the space and   everything in lowercase. So we could do something  like progress bar dot max underscore value is   equal to whatever 500 and that would set the  maximum value of the progress bar to 500.
+
+
+01:56:01
+ So   you could use that to control the maximum  health of the player, for example. Anyway,   with this code addition now when enemies  touch the player, you can see that the bar   progressively empties up. To turn our demo into  more of a game, we're gonna add random spawning   of monsters around the player.
+
+
+01:56:26
+ So I invite  you to select the survivors game scene again,   and I'm gonna head back to the 2D view and  also close the other scene. So if you do that,   I can right click on the tab and select  close tabs to the right and it's going to   close the other scenes. We want to have  mobs that come from outside of the view. We want to have mobs automatically flock to  the player.
+
+
+01:56:49
+ All we need to do is to define a   kind of place where we want the monsters to spawn  that is outside of the camera view. To do that,   we'll use a feature built into Godot that allows  us to draw a path to the editor. Select the game   node and press Ctrl A or Command A and look for  the path to the node. This allows us to draw a   path and for that we can use the contextual  options that appear in the toolbar above   the view.
+
+
+01:57:25
+ There's a green icon with a plus  button and this one allows us to add points,   so select it and then you can click anywhere  far enough outside of the main game frame to   add a point. We're going to draw a rectangle that  is larger than the game view. Monsters will spawn   on this path, so I invite you to do four clicks,  and don't worry if the edges aren't too aligned. We're going to fix that in a moment.
+
+
+01:57:53
+ Once you  have four points, you have an open curve and   you can click the rightmost icon in the  toolbar that closes the curve. It's going   to add an extra point there. Then we can  use the leftmost icon to select and move   the point. If you click and drag on one of the  points, you can move it and you want the shape   to be roughly rectangular. It does not need  to be perfect because it's outside the view.  
+
+
+01:58:21
+This is where the mobs will spawn, so it's  completely fine if it's slightly off. Ok,   so we have a path. Now we want a way to sample  random positions on that path. And there again,   Gudet has you covered. As a child of the  Path2D node, we're going to add a new node,   so press ctrl A, and select the PathFollow2D  node.
+
+
+01:58:39
+ This is a built-in tool in Gudet that   allows you to follow along the path. So notice  with the PathFollow2D node selected, we have… …a little position icon there, and in the  inspector we have a progress and progress ratio   property. We can use the slider on either of these  and notice how this changes the position of our   PathFollow2D node along the path.
+
+
+01:59:10
+ So the progress  property lets us work with pixels and the progress   ratio with a value between 0 and 1, 0 representing  the start of the path, and 1 representing the end   of the path. So by generating a random number  between 0 and 1, we can assign that to the   progress ratio and get random spawn positions  for the mobs. Ok, so let's go to the code next   to add that.
+
+
+01:59:40
+ So the first thing we'll do is right  click on the PathFollow2D node and access it as a   unique name, because we will need to change its  progress ratio property, access its position. Then we want to scroll back up to the  game node and attach a new script to that,   and this default name works fine so I'm going  to create the script. And there we will write   a function to spawn one mob.
+
+
+02:00:05
+ So let's write  func spawn underscore mob is a good name,   and we will first create a new mob instance.  So how do we do that? We go find our mob scene,   mob.tscn, and we control click and drag  onto the script editor to preload it,   and we're going to store that into a constant. Or  perhaps we can directly create an instance this   time just to switch things up again.
+
+
+02:00:35
+ So we can  create a new mob variable is equal to preload,   mob.tscn.instantiate. Right, we can combine the  loading and call to instantiate to generate our   new mob. And remember that this call to preload,  it's not going to be run each time once. The computer has loaded them up once good, we'll  keep it in memory and smartly use the preloaded   mob each time. So it's good performance wise.
+
+
+02:01:02
+  Now we need to generate a random position for   our mob. And the way we do that is by getting  the path follow to the node. So if you type   the person sign and that follow to the, it's  going to complete the full path to the node.   But because we use the person sign, we can remove  the first path component. And now we want to set   the progress ratio of the path follow 2D to a  random value between 0 and 1.
+
+
+02:01:28
+ And the function   to generate such a value is called randf. It's  a function built into the GDScript language that   produces a number between 0 and 1, a decimal  number. Okay, so this will update the position   of the path follow 2D along its parent path.  Then we can use that position to move the mob. So we can say new Mob dot  global position is equal to,   and we're going to write that  follow to the dot global position.
+
+
+02:02:07
+And finally, to have the mob be part of the game,  we need to add it to the node tree. And for that   we can call the add child function. We call add  child new Mob. And this will add the Mob as a   child of the game node, just like the ones we have  manually placed. Okay, so now we need to spawn a   couple of mobs.
+
+
+02:02:29
+ One thing we could do is in the  ready function just for testing, we could call   the spawn mob function a couple of times, right?  Right spawn mob control C and then press control V   several times to duplicate the function call. And  I'm going to delete the mobs I had created before.   So I select the four nodes with click shift, click  in the scene dock, then press the delete key on my   keyboard and press enter to confirm.
+
+
+02:02:56
+ And so if  everything works fine, five slimes should come   from outside the screen. So let me press F5 to try  and see the slimes come so the spawn mob function. Is working fine. Now we need to keep spawning  mobs as the game progresses. Ideally, we would do   that every couple of seconds or, you know, split  seconds. How can we do that? With a timer node,   the same node we used to shoot with the gun.
+
+
+02:03:29
+ To  select the game node in the scene dock and press   control A, command A to add a new timer node.  Remember that this timer, by default, will run   in a cycle and emit the timeout signal. We can  control how often it emits the signal by changing   its wait time property. So I'm going to lower  that to have one mob every point three seconds   or something to have mobs come constantly and a  bit of the feel of those survivor games.
+
+
+02:04:00
+ Then I'm   going to select auto start to automatically  start the timer at the start of the game. And connect its timeout signal.  For that we go up to the node tab,   double click on the timeout signal and we  want to connect it to our game node. We'll   call the on timer timeout function each  time the signal emits, so click connect.
+
+
+02:04:31
+And in the on timer timeout function, all we need  to call is spawn mob. If we try the game now,   I've deactivated the camera so you can see  the mobs keep coming from outside the screen   and they accumulate and accumulate, giving you  more and more challenge. Now after adding back   the player camera, you'll notice that as I move  around, the mobs keep spawning.
+
+
+02:04:51
+ And a problem is   that the path is not fixed on the character so  it stays fixed around the original game area.   But we really want the monsters to keep spawning  around the player and we don't want to see them   popping. How could we do that? Well, nodes follow  the position of their current by default. So if we   repair in the path 2D to be a child of the player  node, it's going to follow the player.
+
+
+02:05:20
+ Do that,   you want to click and drag on the path 2D node and  then you can use your mouse wheel to scroll up. And if we do that, look at what happens, I can't  see the mobs spawning again, at least not too   much. If you do see them, it means that you need  to make your path a little wider, but you can see   how the mobs now still spawn from below, above,  the right, etcetera of the player.
+
+
+02:05:49
+ Of course,   they tend to accumulate in an area because they  are all chasing the player. The last piece is   adding a game over train. So when the health of  the player depletes, we want to pause the game   and just show a quick game over. For that, we're  going to add a new canvas layer node and we'll   put some text on top of it. So select the game  node and press Ctrl A to add a new canvas layer.
+
+
+02:06:27
+And we'll call that the game over or game  over screen. Child of the canvas layer,   we will actually add two nodes. The first one  is going to be a color rectangle and we will use   that to have some kind of shade to dim down the  screen. And as a child of the color rectangle,   we can press Ctrl A and add a label node. This is  a node that displays text in the user interface.  
+
+
+02:06:56
+And this will allow us to explore the layout  options of user interface nodes. So first,   let's select the color rec node, I'll head  back to the inspector on the right and I'm   going to give it a black color. So I click on the  color, I click and drag on the right slider down   to getting a black color and then I want to make  this a bit transparent.
+
+
+02:07:17
+ So can see there are four   channels that we can click and drag to change  the color through individual color components. And the last one is called A for alpha, which  means transparency. And so we can click and drag   on this horizontal slider to make the color more  transparent. It's a bit hard to see right now,   so I'm going to change the color rec settings so  that it fills the entire screen.
+
+
+02:07:42
+ With the color   rec selected, you can click the cross in a circle  icon in the toolbar to get layout options. And we   want to click the one in the bottom right, full  rect, which will make it take the entire screen.   Now you can see how our transparent color  dims down the screen. As a child of that,   we have a label node. And we want this one to  display text game over.
+
+
+02:08:07
+ So we select the label   node and in the inspector, we have a text field  in which we can write the text game over. Now,   the problem is the text appears in  the top left corner of the screen,   but we want it centered. So with  the label selected again, we use. The layout options that we have in  the toolbar, and this time we want to   click the center dot icon that will  center the text in its parent node,   the color rack.
+
+
+02:08:44
+ So because the color rec is taking  the entire screen, when we center the label,   it centers it on the entire screen just to show  you the power of these layout options. See how   when I resize the color rack, the label  stays centered, right? So these options   are dynamic and they will automatically adapt to  different screen sizes. So it doesn't matter if   your player has a white screen or a small screen.  The text will stay centered automatically.
+
+
+02:09:11
+ Okay,   another problem is that the text is really small.  So let's change its size, select the label again.   And in the inspector, we want to go down to  theme overrides, font sizes, and then we can. Change the font size property there. It's set to  the default, which is pretty small. But if you   click and drag, you're going to resize the text  and you can play with, you know, different text   sizes that work for you. And with that, you have  a game over screen.
+
+
+02:09:45
+ Now we need to display it when   the player's health is depleted. So we're going to  do a couple of things. First, the eye icon next to   the game over screen, so that it's invisible by  default. We're going to access it from our code.   So we right click on it, access as unique name,  and this will allow us to easily access the game   over screen.
+
+
+02:10:12
+ And the next thing we want to do  is to connect to the health depleted signal we   had created on the player. So let's go back to  the player node, select it. And in the node tab   on the right, we want to double click the health  depleted signal and connect it to the game node. This will create a new function named on  player health depleted. So I'll connect   to that. And in this function, we want  to do two things.
+
+
+02:10:39
+ First, we're going to   get the game over node with the person sign  game over and set it to visible. So we can   say game over that visible is equal to true.  And then we want to pause the game. That way,   the mobs will stop moving and the player will  not be able to move either. To pause the game   in Godot, we need to access an entity called  the scene tree.
+
+
+02:11:06
+ It's the root or the basis   for all of your game nodes. To access it, you  can use a function called get underscore tree.   Can access this function from many nodes. And  this is on the scene tree that you will find a   property called paused. So get tree dot pause,  and you're going to set that to true as well. Turn on the pause. Okay, so doesn't lose a health  very, very fast.
+
+
+02:11:37
+ So what I'm going to do is open   the player script and the damage rate. I'll  set it to 500 again so that when enemies spawn,   I can go to them and I can die really quickly. And  see that we get the game over and the player is   stuck. It cannot move and enemies stop spawning.  And with that, we kind of have the complete game   loop. You need to press f8 and f5 again to replay  the game. Right, you have a nice running game.
+
+
+02:12:17
+I hope you enjoyed following this tutorial and  making a roguelike shoot them up. Don't hesitate   to get adventurous and build on it to really make  it your own. Remember, tutorials only work if you   copy, customize, and then create. If you're just  getting started with gamedev, remember to check   out the Great Godot 4 Starter Kit.
+
+
+02:12:34
+ This course  bundle will take you from zero and teach you the   foundations of both 2D and 3D game development.  In addition, it will provide you with a precious   almanac that helps you make the best of Godot's  nodes to recreate over 100 game mechanics. Don't   forget you can add up any easter egg coupons  you found in the video to get a discount on it!
+

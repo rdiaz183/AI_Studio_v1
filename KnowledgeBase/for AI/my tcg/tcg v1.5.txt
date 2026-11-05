@@ -1,0 +1,60 @@
+Your TCG concept blends high-pacing mechanics with clear anti-snowball protections, but it contains a few design tensions to refine before playtesting.
+Core Mechanics Breakdown & Rating
+Commander & Ranking System (8/10): The Rank 0 to 3/4 progression directly addresses power creep and turn-1 blowout combos by forcing a cost/rank paywall. Making the Commander targetable only after clearing the 5-monster front line creates clear tactical depth. Tension: Ending the game immediately upon Commander destruction creates a sudden-death threat that conflicts directly with your prize system.
+Prize Pool System (8.5/10): Taking damage to draw from a 6â€“8 prize card pool mirrors modern comeback mechanics. It rewards taking damage with hand option elasticity to prevent snowballing.
+Energy & Resource System (9/10): The fixed +1 energy gain per turn (starting at 2) managed via a single die eliminates mana screw (MTG) and turn-1 over-extensions (Yu-Gi-Oh!). Providing Player 2 an extra energy on turn 1 cleanly balances the first-turn advantage.
+Deck Limits & Composition (7.5/10): A 50-card main deck with a 4-copy limit balances consistency and resource conservation. Color-locking cards via the Commander keeps deck-building archetypes distinct.
+Interaction & Speed (7/10): Sorcery vs. Item timing and LIFO chain priority offer solid back-and-forth. Tension: The tiebreaker rule (defender dies, attacker survives on equal ATK) heavily favors aggressive strategies, making defensive walls difficult to maintain.
+Comparing Against Top 10 TCGs
+TCG
+Resource System
+Board / Win Condition
+Key Structural Similarity
+Cardfight!! Vanguard
+Ride deck / Grade progression
+Vanguard unit + Rearguards
+Highest similarity: Your Rank 0â€“3 Commander progression mirror Vanguardâ€™s Ride Deck mechanics.
+One Piece CG
+DON!! deck (+2 per turn)
+Leader card + 5 Character slots
+Leader card locked to deck colors, similar to your Commander color locking.
+Digimon CG
+Memory Gauge counter system
+Digivolve stack + Security Shield pool
+Direct similarity: Shield/Prize damage system giving card draws to the defender.
+Star Wars: Unlimited
+Resource zone conversions
+Leader unit + Space/Ground arenas
+Leader-based win condition and structured energy curve.
+Flesh and Blood
+Pitching cards for action points
+Hero card with equipment slots
+Hero-centric combat focus with tactical defense windows.
+Magic: The Gathering
+Land mana cards
+20 Life points
+Color pie identity restrictions (Commander format).
+Yu-Gi-Oh!
+Open resources (no mana)
+5 Monster zones + Extra Deck
+LIFO chain resolution, 10-card Extra Deck, 5-monster board limit.
+Disney Lorcana
+Inking cards for Ink pool
+First to 20 Lore points
+Color-locked inks (Inkable choices).
+PokÃ©mon TCG
+Energy attachments
+Active + 5 Bench / 6 Prize Cards
+Prize card pool taken upon scoring knockouts.
+Dragon Ball Super: Fusion World
+Energy zone cards
+Leader card awakenings
+Leader-centric combat scaling with defensive combos.
+Is There a Game Set Up Exactly the Same?
+No single game has this identical combination, but your design is a direct hybrid of Cardfight!! Vanguard and One Piece Card Game:
+Vanguard: Identical Grade/Rank progression (0 to 3), mill mechanic at start, and central commander concept.
+One Piece: Identical Leader color-locking rules, 5-monster board limit, and ramping energy system without main-deck resource cards.
+Digimon: Identical prize-card damage engine.
+Critical Design Adjustments Needed for Playtesting
+Win Condition Conflict: If taking damage draws a card from the 6â€“8 prize pool, but attacking the Commander directly kills it, clarify when direct attacks are allowed. If direct attacks can happen while prize cards remain, the prize pool becomes redundant. Consider having Commander attacks reduce the prize pool count instead.
+Tiebreaker Combat: Standardizing attacker survival on equal ATK heavily nerfs defensive play. Testing mutual destruction (both cards die on equal ATK) will preserve board balance.

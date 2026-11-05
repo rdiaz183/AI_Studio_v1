@@ -1,0 +1,345 @@
+Here are 6 pre-built deck lists designed specifically to test the core mechanics, color interactions, and balance thresholds of **Aegis Breach**.
+
+Each deck highlights a unique strategic archetype, stays within your deckbuilding guidelines (50-card Main Deck, 3-copy cap, matching Leader color identities), and utilizes the **Inverse Rank-Based Stat Matrix** and **Dynamic Cost-to-Impact Scaling**.
+
+---
+
+### Deck 1: Red/Grey "Ignis Aggro & Penetrate"
+
+* **Focus:** High-tempo early aggression, leader push, and board clearing using `[PENETRATE]`.
+
+
+* **Leader Stack:** Ignis (Rank 0: 5k ATK / 15k Shield $\rightarrow$ Rank 1: 8k ATK $\rightarrow$ Rank 2: 10k ATK $\rightarrow$ Rank 3: 15k ATK)
+
+
+
+**Main Deck (50 Cards):**
+
+* **3x Ember Vanguard** (Rank 0 | Cost: 1 | Red | ATK: 5,000 / Shield: 15,000) — `[ON DEPLOY]`: Target ally gains +2,000 ATK.
+
+
+* **3x Ash Scavenger** (Rank 0 | Cost: 1 | Red | ATK: 5,000 / Shield: 15,000) — `[GUARD BREAK]`: Pay 1 Mana: Gain +1 Reserve Mana.
+
+
+* **3x Firebrand Initiate** (Rank 0 | Cost: 1 | Red | ATK: 5,000 / Shield: 15,000) — Vanilla early guard anchor.
+
+
+* **3x Flame Interceptor** (Rank 1 | Cost: 2 | Red | ATK: 8,000 / Shield: 10,000) — `[INTERCEPT]`
+
+* **3x Ignited Striker** (Rank 1 | Cost: 2 | Red | ATK: 8,000 / Shield: 10,000) — `[ON DEPLOY]`: Deal 3,000 damage to an enemy Vanguard unit.
+
+
+* **3x Pyro Enforcer** (Rank 1 | Cost: 2 | Red | ATK: 8,000 / Shield: 10,000) — `[GUARD BREAK]`: Pay 1 Mana: Deal 4,000 damage to target unit.
+
+
+* **3x Searing Dragoon** (Rank 2 | Cost: 3 | Red | ATK: 10,000 / Shield: 5,000) — `[PENETRATE]`
+
+* **3x Volcanic Brute** (Rank 2 | Cost: 4 | Red | ATK: 13,000 / Shield: 5,000) — Beatstick.
+
+
+* **3x Magma Titan** (Rank 3 | Cost: 5 | Red | ATK: 15,000 / Shield: 5,000) — `[ON DEPLOY]`: Destroy target unit with 8,000 or less ATK.
+
+
+* **3x Scorched Earth** (Rank 2 | Cost: 3 | Red Support) — `[CONTINUOUS]`: Red Vanguard units gain +1,000 ATK.
+
+
+* **3x Ignition Charge** (Rank 1 | Cost: 1 | Red Spell) — Target unit gains +5,000 ATK during this battle.
+
+
+* **3x Prismatic Shield** (Rank 0 | Cost: 1 | Grey Fast Interrupt) — Target defending unit gains +6,000 Shield.
+
+
+* **3x Shatter Step** (Rank 2 | Cost: 2 | Grey Item) — Destroy 1 target enemy Support card.
+
+
+* **3x Null Pulse** (Rank 1 | Cost: 3 | Grey Fast Interrupt) — Negate target `[ON DEPLOY]` or `[GUARD BREAK]` trigger.
+
+
+* **2x Blazing Outburst** (Rank 3 | Cost: 4 | Red Spell) — Clear all enemy units with 5,000 or less ATK.
+
+
+
+---
+
+### Deck 2: Blue/Grey "Tide Control & Stun"
+
+* **Focus:** Defensive stall, high Hand Guard management, board suppression, and `[STUN]` locks.
+
+
+* **Leader Stack:** Aquaria (Rank 0: 5k ATK / 15k Shield $\rightarrow$ Rank 3: 15k ATK)
+
+
+
+**Main Deck (50 Cards):**
+
+* **3x Tidal Defender** (Rank 0 | Cost: 1 | Blue | ATK: 5,000 / Shield: 15,000) — `[GUARD BREAK]`: Pay 1 Mana: Draw 1 card.
+
+
+* **3x Reef Sentry** (Rank 0 | Cost: 1 | Blue | ATK: 5,000 / Shield: 15,000) — `[INTERCEPT]`
+
+* **3x Mist Watcher** (Rank 0 | Cost: 1 | Blue | ATK: 5,000 / Shield: 15,000) — Vanilla high-shield anchor.
+
+
+* **3x Glacial Guard** (Rank 1 | Cost: 2 | Blue | ATK: 8,000 / Shield: 10,000) — `[ON DEPLOY]`: `[STUN]` target enemy Rank 1 or lower unit for 1 turn.
+
+
+* **3x Siren Submerger** (Rank 1 | Cost: 2 | Blue | ATK: 8,000 / Shield: 10,000) — `[ON DESTROY]`: Draw 1 card.
+
+
+* **3x Frost Binding** (Rank 1 | Cost: 2 | Blue | ATK: 8,000 / Shield: 10,000) — `[GUARD BREAK]`: Pay 1 Mana: `[STUN]` an attacker.
+
+
+* **3x Abyssal Warden** (Rank 2 | Cost: 3 | Blue | ATK: 10,000 / Shield: 5,000) — Gains +2,000 Shield while tapped.
+
+
+* **3x Leviathan's Reach** (Rank 2 | Cost: 4 | Blue | ATK: 13,000 / Shield: 5,000) — `[ON DEPLOY]`: `[STUN]` target enemy unit.
+
+
+* **3x Tsunami Behemoth** (Rank 3 | Cost: 5 | Blue | ATK: 15,000 / Shield: 5,000) — `[ON DEPLOY]`: Return target enemy Vanguard unit to hand.
+
+
+* **3x Icewall Bastion** (Rank 2 | Cost: 2 | Blue Support) — `[CONTINUOUS]`: Your Leader gains +2,000 Base Shield.
+
+
+* **3x Flash Freeze** (Rank 1 | Cost: 2 | Blue Fast Interrupt) — `[STUN]` an attacking unit (negates current attack).
+
+
+* **3x Prismatic Shield** (Rank 0 | Cost: 1 | Grey Fast Interrupt) — Target defending unit gains +6,000 Shield.
+
+
+* **3x Shatter Step** (Rank 2 | Cost: 2 | Grey Item) — Destroy 1 target enemy Support card.
+
+
+* **3x Null Pulse** (Rank 1 | Cost: 3 | Grey Fast Interrupt) — Negate target trigger on stack.
+
+
+* **2x Deep Surge** (Rank 3 | Cost: 3 | Blue Spell) — Draw 2 cards.
+
+
+
+---
+
+### Deck 3: Green/Grey "Swarm, Repair & Buffer"
+
+* **Focus:** Wide Vanguard board generation, high unit survival using `[REPAIR X]`, and value trading.
+
+
+* **Leader Stack:** Sylvanus (Rank 0: 5k ATK / 15k Shield $\rightarrow$ Rank 3: 15k ATK)
+
+
+
+**Main Deck (50 Cards):**
+
+* **3x Sprout Guardian** (Rank 0 | Cost: 1 | Green | ATK: 5,000 / Shield: 15,000) — `[ON DEPLOY]`: `[REPAIR 2,000]` to target unit.
+
+
+* **3x Mossbark Sentinel** (Rank 0 | Cost: 1 | Green | ATK: 5,000 / Shield: 15,000) — Vanilla guard anchor.
+
+
+* **3x Flora Interceptor** (Rank 0 | Cost: 1 | Green | ATK: 5,000 / Shield: 15,000) — `[GUARD BREAK]`: Pay 1 Mana: Deploy 1 Rank 0 unit from hand.
+
+
+* **3x Thornwood Ranger** (Rank 1 | Cost: 2 | Green | ATK: 8,000 / Shield: 10,000) — `[ON DEPLOY]`: `[REPAIR 3,000]` to target unit.
+
+
+* **3x Canopy Protector** (Rank 1 | Cost: 2 | Green | ATK: 8,000 / Shield: 10,000) — `[INTERCEPT]`
+
+* **3x Verdant Handler** (Rank 1 | Cost: 2 | Green | ATK: 8,000 / Shield: 10,000) — `[ON DESTROY]`: Put top card of Main Deck into Grave, `[REPAIR 2,000]` Leader.
+
+
+* **3x Overgrowth Charger** (Rank 2 | Cost: 3 | Green | ATK: 10,000 / Shield: 5,000) — `[PENETRATE]`
+
+* **3x Ironwood Goliath** (Rank 2 | Cost: 4 | Green | ATK: 13,000 / Shield: 5,000) — High base stats.
+
+
+* **3x Ancient Elderwood** (Rank 3 | Cost: 5 | Green | ATK: 15,000 / Shield: 5,000) — `[ON DEPLOY]`: `[REPAIR 5,000]` to all allied units.
+
+
+* **3x Great Oak Sanctuary** (Rank 2 | Cost: 2 | Green Support) — `[CONTINUOUS]`: Allied Vanguard units gain +1,000 Shield.
+
+
+* **3x Nature's Infusion** (Rank 1 | Cost: 1 | Green Spell) — Target unit gains +3,000 ATK and `[REPAIR 2,000]`.
+
+
+* **3x Prismatic Shield** (Rank 0 | Cost: 1 | Grey Fast Interrupt) — Target defending unit gains +6,000 Shield.
+
+
+* **3x Shatter Step** (Rank 2 | Cost: 2 | Grey Item) — Destroy 1 target enemy Support card.
+
+
+* **3x Null Pulse** (Rank 1 | Cost: 3 | Grey Fast Interrupt) — Negate target trigger on stack.
+
+
+* **2x Vitalizing Bloom** (Rank 3 | Cost: 3 | Green Spell) — Search deck for 1 Rank 1 or lower Green Unit and add to hand.
+
+
+
+---
+
+### Deck 4: Yellow/Purple "Aegis Shield & Grave Manipulation"
+
+* **Focus:** Heavy Hand-Guard manipulation, defensive stacking, and retrieving resources from the Grave.
+
+
+* **Leader Stack:** Solaris/Nyx (Yellow/Purple Dual) (Rank 0: 5k ATK / 15k Shield $\rightarrow$ Rank 3: 15k ATK)
+
+
+
+**Main Deck (50 Cards):**
+
+* **3x Radiant Acolyte** (Rank 0 | Cost: 1 | Yellow | ATK: 5,000 / Shield: 15,000) — `[GUARD BREAK]`: Pay 1 Mana: Target unit gains +4,000 Shield this turn.
+
+
+* **3x Shadow Initiate** (Rank 0 | Cost: 1 | Purple | ATK: 5,000 / Shield: 15,000) — `[ON DESTROY]`: Return 1 Rank 0 card from Grave to hand.
+
+
+* **3x Dusk Vanguard** (Rank 0 | Cost: 1 | Purple | ATK: 5,000 / Shield: 15,000) — High Shield Guard anchor.
+
+
+* **3x Luminary Defender** (Rank 1 | Cost: 2 | Yellow | ATK: 8,000 / Shield: 10,000) — `[INTERCEPT]`
+
+* **3x Graveweaver** (Rank 1 | Cost: 2 | Purple | ATK: 8,000 / Shield: 10,000) — `[ON DEPLOY]`: Retrieve 1 Spell from Grave to hand.
+
+
+* **3x Twilight Enforcer** (Rank 1 | Cost: 2 | Yellow/Purple | ATK: 8,000 / Shield: 10,000) — `[GUARD BREAK]`: Pay 1 Mana: Target enemy unit loses -3,000 ATK.
+
+
+* **3x Solar Paladin** (Rank 2 | Cost: 3 | Yellow | ATK: 10,000 / Shield: 5,000) — Gains +3,000 Shield when defending.
+
+
+* **3x Nether Executor** (Rank 2 | Cost: 4 | Purple | ATK: 13,000 / Shield: 5,000) — `[ON DEPLOY]`: Destroy 1 enemy unit with 5,000 or less ATK.
+
+
+* **3x Celestial Seraph** (Rank 3 | Cost: 5 | Yellow | ATK: 15,000 / Shield: 5,000) — `[ON DEPLOY]`: Add 1 card from Grave to your Hand.
+
+
+* **3x Temple of Light & Dark** (Rank 2 | Cost: 2 | Yellow/Purple Support) — `[CONTINUOUS]`: Intercepting units give an additional +1,000 Shield.
+
+
+* **3x Aegis Fortification** (Rank 1 | Cost: 1 | Yellow Spell) — Target defending unit gains +5,000 Shield.
+
+
+* **3x Soul Reclaim** (Rank 2 | Cost: 2 | Purple Spell) — Take 1 unit from Grave and put it into hand.
+
+
+* **3x Prismatic Shield** (Rank 0 | Cost: 1 | Grey Fast Interrupt) — Target defending unit gains +6,000 Shield.
+
+
+* **3x Null Pulse** (Rank 1 | Cost: 3 | Grey Fast Interrupt) — Negate target trigger on stack.
+
+
+* **2x Shatter Step** (Rank 2 | Cost: 2 | Grey Item) — Destroy 1 target enemy Support card.
+
+
+
+---
+
+### Deck 5: Pink/Grey "Wind Tempo & Hand Disruption"
+
+* **Focus:** Bouncing enemy Vanguard units, controlling the opponent's options, and tempo advantage.
+
+
+* **Leader Stack:** Zephyr (Rank 0: 5k ATK / 15k Shield $\rightarrow$ Rank 3: 15k ATK)
+
+
+
+**Main Deck (50 Cards):**
+
+* **3x Zephyr Scout** (Rank 0 | Cost: 1 | Pink | ATK: 5,000 / Shield: 15,000) — `[ON DEPLOY]`: Look at top card of Main Deck. You may put it on bottom.
+
+
+* **3x Gale Sentry** (Rank 0 | Cost: 1 | Pink | ATK: 5,000 / Shield: 15,000) — Vanilla guard anchor.
+
+
+* **3x Breeze Guard** (Rank 0 | Cost: 1 | Pink | ATK: 5,000 / Shield: 15,000) — `[GUARD BREAK]`: Pay 1 Mana: Return target Rank 0 enemy unit to hand.
+
+
+* **3x Tempest Interceptor** (Rank 1 | Cost: 2 | Pink | ATK: 8,000 / Shield: 10,000) — `[INTERCEPT]`
+
+* **3x Galeblade Runner** (Rank 1 | Cost: 2 | Pink | ATK: 8,000 / Shield: 10,000) — `[ON DEPLOY]`: Return target enemy Rank 1 or lower unit to hand.
+
+
+* **3x Whirlwind Striker** (Rank 1 | Cost: 2 | Pink | ATK: 8,000 / Shield: 10,000) — `[ON DESTROY]`: Opponent must discard 1 card if they have 6 or more cards in hand.
+
+
+* **3x Aero Duelist** (Rank 2 | Cost: 3 | Pink | ATK: 10,000 / Shield: 5,000) — `[PENETRATE]`
+
+* **3x Tornado Behemoth** (Rank 2 | Cost: 4 | Pink | ATK: 13,000 / Shield: 5,000) — High base stats.
+
+
+* **3x Sky sovereign Griffon** (Rank 3 | Cost: 5 | Pink | ATK: 15,000 / Shield: 5,000) — `[ON DEPLOY]`: Return target enemy unit (any Rank) to hand.
+
+
+* **3x Windstream Conduit** (Rank 2 | Cost: 2 | Pink Support) — `[CONTINUOUS]`: Whenever an enemy unit is returned to hand, target ally gains +2,000 ATK this turn.
+
+
+* **3x Gust Blast** (Rank 1 | Cost: 2 | Pink Spell) — Return target enemy Vanguard unit with 8,000 or less ATK to hand.
+
+
+* **3x Prismatic Shield** (Rank 0 | Cost: 1 | Grey Fast Interrupt) — Target defending unit gains +6,000 Shield.
+
+
+* **3x Shatter Step** (Rank 2 | Cost: 2 | Grey Item) — Destroy 1 target enemy Support card.
+
+
+* **3x Null Pulse** (Rank 1 | Cost: 3 | Grey Fast Interrupt) — Negate target trigger on stack.
+
+
+* **2x Slipstream Step** (Rank 2 | Cost: 1 | Pink Fast Interrupt) — Return an allied Vanguard unit to hand to absorb an incoming attack.
+
+
+
+---
+
+### Deck 6: Red/Blue Dual "Volcanic Frost Midrange"
+
+* **Focus:** Balanced combat deck testing dual-color identity rules, board control via burn/stun, and mid-game power spikes.
+
+
+* **Leader Stack:** Ignis-Aquaria Dual (Rank 0: 5k ATK / 15k Shield $\rightarrow$ Rank 3: 15k ATK)
+
+
+
+**Main Deck (50 Cards):**
+
+* **3x Steam Vanguard** (Rank 0 | Cost: 1 | Red/Blue | ATK: 5,000 / Shield: 15,000) — `[ON DEPLOY]`: Target unit gains +1,000 ATK and +1,000 Shield.
+
+
+* **3x Ember Defender** (Rank 0 | Cost: 1 | Red | ATK: 5,000 / Shield: 15,000) — High Shield Guard anchor.
+
+
+* **3x Tide Watcher** (Rank 0 | Cost: 1 | Blue | ATK: 5,000 / Shield: 15,000) — `[GUARD BREAK]`: Pay 1 Mana: Draw 1 card.
+
+
+* **3x Thermal Interceptor** (Rank 1 | Cost: 2 | Red/Blue | ATK: 8,000 / Shield: 10,000) — `[INTERCEPT]`
+
+* **3x Pyre Frostbite** (Rank 1 | Cost: 2 | Red/Blue | ATK: 8,000 / Shield: 10,000) — `[ON DEPLOY]`: `[STUN]` target unit with 8,000 or less ATK.
+
+
+* **3x Scalding Striker** (Rank 1 | Cost: 2 | Red | ATK: 8,000 / Shield: 10,000) — `[ON DESTROY]`: Deal 3,000 damage to target unit.
+
+
+* **3x Boiler Enforcer** (Rank 2 | Cost: 3 | Red/Blue | ATK: 10,000 / Shield: 5,000) — `[PENETRATE]`
+
+* **3x Glacial Crusher** (Rank 2 | Cost: 4 | Blue | ATK: 13,000 / Shield: 5,000) — Beatstick.
+
+
+* **3x Elemental Overlord** (Rank 3 | Cost: 5 | Red/Blue | ATK: 15,000 / Shield: 5,000) — `[ON DEPLOY]`: Deal 5,000 damage to 1 unit AND `[STUN]` another unit.
+
+
+* **3x Pressure Engine** (Rank 2 | Cost: 2 | Red/Blue Support) — `[CONTINUOUS]`: Front-Line units gain +1,000 ATK during your turn and +1,000 Shield during opponent's turn.
+
+
+* **3x Vapor Shock** (Rank 1 | Cost: 2 | Red/Blue Spell) — Deal 4,000 damage to target unit and `[STUN]` it if it survives.
+
+
+* **3x Prismatic Shield** (Rank 0 | Cost: 1 | Grey Fast Interrupt) — Target defending unit gains +6,000 Shield.
+
+
+* **3x Shatter Step** (Rank 2 | Cost: 2 | Grey Item) — Destroy 1 target enemy Support card.
+
+
+* **3x Null Pulse** (Rank 1 | Cost: 3 | Grey Fast Interrupt) — Negate target trigger on stack.
+
+
+* **2x Scalding Blast** (Rank 2 | Cost: 3 | Red Spell) — Deal 6,000 damage to target unit.

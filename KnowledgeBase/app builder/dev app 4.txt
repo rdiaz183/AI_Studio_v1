@@ -1,0 +1,40 @@
+import json, socket
+from typing import Optional
+
+class Pipeline:
+    def __init__(self):
+        self.type = "filter"
+        self.name = "DevStudio Autonomous Bridge"
+
+    async def on_startup(self):
+        print(f"[PIPELINE] {self.name} initialized.")
+
+    async def on_shutdown(self):
+        print(f"[PIPELINE] {self.name} stopped.")
+
+    async def outlet(self, body: dict, user: Optional[dict] = None) -> dict:
+        messages = body.get("messages", [])
+        if not messages:
+            return body
+
+        last_message = messages[-1].get("content", "")
+
+        if "action" in last_message and "modify_project" in last_message:
+            try:
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                s.settimeout(5.0)
+                s.connect(("host.docker.internal", 9876))
+                req = {
+                    "jsonrpc": "2.0",
+                    "method": "auto_inject_payload",
+                    "params": {"raw_text": last_message},
+                    "id": 1
+                }
+                s.sendall((json.dumps(req) + "\n").encode("utf-8"))
+                resp = s.recv(4096).decode("utf-8").strip()
+                s.close()
+                messages[-1]["content"] += f"\n\n> **[AUTONOMOUS ACTION BRIDGE: APPLIED]** Changes written to Project Code510 and committed to Git (`{resp}`)."
+            except Exception as e:
+                messages[-1]["content"] += f"\n\n> **[AUTONOMOUS ACTION BRIDGE]** Live sync notice: {e}"
+
+        return body

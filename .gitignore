@@ -1,0 +1,40 @@
+﻿# Models, Blobs & Weights (Strictly Local)
+models/
+cache/
+
+# Large Archives, AppImages & Binaries
+*.AppImage
+*.iso
+*.zip
+*.tar.gz
+*.7z
+*.rar
+*.exe
+*.dll
+
+# Media Assets
+*.mp3
+*.wav
+*.mp4
+*.mkv
+*.avi
+*.mov
+
+# Virtual Environments & Databases
+.venv*/
+open-webui-data/
+logs/
+*.log
+*.tmp
+stack_state.json
+
+# Unreal Engine Build & Intermediate Artifacts
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vscode/
+.vs/
+*.sln
+*.VC.db
+*.opendb

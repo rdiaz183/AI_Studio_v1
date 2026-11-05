@@ -1,0 +1,84 @@
+
+00:00:01 - 00:01:03
+web application remote control is in my   opinion mostly valuable for virtual   production you could think of some usage   for game development but as it is an   editor only feature I believe it will   remain used mostly for video   producers no one stops you from creating   your own solution for the game and we've   seen that in the past that's what   multiplayer is based on but that is not   a remote control AP in   unreal before we dive into API and   remote control presets let's imagine we   are directing a live online event maybe   it is an esport event and we are going   to Showcase a car that some player is   going to drive he is one of the crew   members and we don't know who will be   the driver or maybe the cars are   assigned to players randomly and each
+
+
+00:01:00 - 00:02:01
+  team has different colors in that case   we may have to change the text over the   car and also car and text   colors similar case would happen if we   were making a live giveaway to random   users perhaps to our twitch supporters a   winner would be picked randomly and we   would have to modify the text on the go   that means we would like to have a   simple interface for changing all the   parameters   we don't want to manually go through   selecting actors and changing their   details and that is exactly what we are   going to do in this   video Let's suppose we are changing the   driver name maybe we want elen musk to   drive   it I believe yellow doesn't fit elen for   some reason I think blue would be way
+
+
+00:01:58 - 00:02:59
+  better so let's change the car   color then the text render color and   maybe we should also adjust color of the   light so we have some nice contrast what   about this pink vibee and what if we   want to get rid of the light completely   we can just turn intensity to zero   that's great but we also should allow   some camera movement we need some   Dynamics so maybe we want it to move   left or right or maybe we want to change   speed of that movement because right now   it is a bit too slow and now it is way   better what if we want to move a bit up   in that case my interface doesn't fit   properly in the UI but we do have it so   let me scale the window of the
+
+
+00:02:55 - 00:03:57
+  browser and now we can move the camera   up we already have set up a look at   object in detail stop of the camera so   we don't have to correct the camera   rotation but we may want to change zoom   and that also can be exposed we just   have to expose focal length of the   camera I have also exposed current   aperture and that means we can have a   blurry background but because there is   not much detail in that background you   may not really see how it works like and   also those values that are adjustable   here are not very realistic but   hopefully we can always go to exposed   properties select any of those and   change minimal and maximal   value and that's all we are going to
+
+
+00:03:54 - 00:04:54
+  cover in this video so without further   Ado let's start with a clean project Pro   and if you don't want to create a setup   yourself there is a starting point   virtual production demo project created   with unreal   5.3 attached to the course files this is   a VP demo unreal 5.3 starting point it   is attached in a zip file and was   created using a virtual production   preset it is a bit different and still   requires a little modification the   preset automatically enables some   plugins for virual production but skips   one that we need so let's go to edit   plugins and as you can see remote   control API is enabled by default   however remot control web interface is
+
+
+00:04:51 - 00:05:54
+  not and that is the plugin that we need   to start creating that web browser   widgets for controlling our   scene so let me enable it and then   restart the editor I'm done with the   restart let me show you the little   modifications I introduced to this   project the first thing that you noticed   is that I added a car model don't worry   about it there is no copyright because   it is from public domain we also have   some text and some light and I also   removed all those text from the preset   that had a list of enabled or disabled   plugins and other   settings the last thing is the camera   and camera has actually some nice   modifications that you may want to   introduce in your project as well so if   we select the
+
+
+00:05:51 - 00:06:53
+  camera and start moving it you will   notice that it always tracks our Lotus 7   model   also it makes sure that it is in Focus   how to do that just scroll to look at   tracking settings enable it and then   select actor to track and pick some   object that you want to track that's it   same thing with focusing scroll to focus   settings by default Focus method was   probably set to manual so just change it   to tracking then pick actor to track and   in my case that's the car   actor that's it we can start exposing   all things we would like to be able to   modify using the web browser widget so   head to content browser right Mouse
+
+
+00:06:49 - 00:07:50
+  button scroll to remote control and pick   remote control   preset let's open it and I like to keep   it docked in the main screen we can   start with exposing camera settings for   sure I would like to expose location the   only thing I have to do is to click on   that I icon and it will be automatically   exposed if you want to let your user   tweak maybe only the vertical axis you   have to use those three dots and expose   the AIS and as you can see you can have   two separate   controls for the data that is actually   belonging to the same property and that   is fine and you can even start tweaking   it right here in the remote control   preset so it's probably already more
+
+
+00:07:47 - 00:08:48
+  convenient than clicking through all   those actors and opening detail tabs if   you don't need web application but you   want to have five actors with some basic   properties to be controlled with you can   just bind them expose them   here okay I don't want that c-axis so I   will right Mouse button on it and delete   I will leave the   location let's also expose focal let me   search for it um I have a wrong   component selected now it will work   let's expose focal length and maybe up   aperture because I am a lens   freak okay we already have three   properties exposed and I think in future   there will be more of   them it's hard to keep that clean and
+
+
+00:08:46 - 00:09:47
+  need if it's all in the same group so   let me add a new one and call it camra   now we have to go to the all group and   just drag and drop one property by one   if you're unsure where some property is   you can always get back to the all   category and search for   it that's it you can also enable   filtering and filter even by a data type   Maybe by an array but remember that if   you can't see anything in your groups   then you just probably have forgotten   that you clicked on of those filters and   you can always go back there and press   reset filters that's it let me create a   new group for the light the pink light
+
+
+00:09:42 - 00:10:43
+  that LS our car so new group lights CU   maybe there will be multiple of them in   future let's pick the   light it's the   spotlight and now let's EXP post   location and as you can see it is   automatically added to the group that   was active so we don't have to do that   all drag and dropping let's also expose   intensity and the light   color the last things   is branding we want to have specific   driver text and car color for the driver   so let's call the group team   branding and now the first thing to   adjust would be text so let's expose the   text value and also the color and the
+
+
+00:10:41 - 00:11:43
+  last thing is   car I would like to adjust material   color car paint to be specific and when   that asset when that actor is selected I   don't see any eye icon nor free dots we   have an information   that we have to override the material in   order to expose this property to remote   control but that information may be   ambiguous to   you if you start thinking about how we   use materials you will remember that a   material may have some property exposed   like this parameter called base color   but you should override it using a   material instance and that is what we're   going to do just go back to content   browser   you can use that browse to asset   icon right Mouse button on that glass   paint or gloss paint create material
+
+
+00:11:40 - 00:12:40
+  instance and we're going to assign the   instance instead of the material   Master now we still don't get any   override button oh maybe we do can   expose the property and we can go here   to remote control but that means that I   can change material   completely and that's not what I wanted   to do I wanted to change the color so   let me remove it from here delete and   instead I can open this material   instance in   editor go to Global Vector parameter   values and expose That Base color   property once we have it   done we have it in our remote control   preset   and before doing anything else let me go   to file and save all because now after
+
+
+00:12:38 - 00:13:40
+  modifying all those assets and modifying   the remote control preset I am really   scared of having any troubles or crashes   so that CS me covered I would say we are   almost done we can start creating the   web interface and the only thing we have   to do is to click on that web app button   in remote control preset editor it opens   a website this website can be opened   with any browser and leads to your local   host and then some Port if this port is   taken for any reason because maybe one   of your tools uses it you can always   change it just go to   edit project   settings search for   remote   control and and in those settings you   can change the port and as you can see   there is also a web server so if you
+
+
+00:13:37 - 00:14:37
+  have any issues with that you can start   playing with the   settings and now let's get back to the   browser we have only few choices and the   first one seems obvious build your own   UI so let's click here and the tab is   empty that is because we are in control   mode which is not meant for editing   after clicking on that button we are in   design mode we have to pick the preset   we only have   one and then we can start creating the   widgets you can go to widgets Tab and   start selecting widgets manually but   each time you do it you have to modify   some settings maybe you will have   to set the property that is used by the   slider you have to pick uh for instance
+
+
+00:14:34 - 00:15:35
+  intensity and doing that for 10 or 20   parameters would be too annoying so let   me select it press delete on the   keyboard get rid of those and do it all   in a nicer way just go to properties and   drag and drop properties you'd like and   guess what you don't even have to track   them one by one instead you can just   drag a whole category so let me drag all   of   them and we are almost done I would like   to reorganize all of it and maybe also   change the display of some properties   for instance current aperture doesn't   have to be a slider maybe I want to have   a   dial same with current focal   length and those two could even   have some more settings because aperture
+
+
+00:15:33 - 00:16:34
+  shouldn't be a negative number it also   shouldn't be a zero or too low so let me   set minimum as 1.2 and maximum let it be   32 similarly with focal length let's set   minimum minimum to8 and Max to   300 we can also start playing with   relative location of things   and this one   is going to be maybe   joystick oh and let me make another one   as joystick as   well let's also   reorganize color parameters so they are   in the single   row here is the text here is the light   intensity that's it so we can already
+
+
+00:16:32 - 00:17:33
+  start playing with those parameters when   we are in the design mode we can start   changing uh maybe the text color to pink   or base color of the car but if you are   done just disable   design and that's it let's change light   intensity maybe light   color and let's set in intensity to a   higher number and as you can see having   20 as a maximum isn't working well so   let me go back to the design tab let's   find   intensity and maximum should be   400 now I can go back to control   mode find that intensity and now we have   a nice blue   light I would say that we are done but I   would like to also tell you that you can
+
+
+00:17:29 - 00:18:30
+  always set the default widget type in   unreal so next time when you create your   UI you will have it you will have the   property being for instance a dial so we   can find maybe light intensity go to   details make it a bit   bigger let me select intensity once   again and we can change the range or   change the   dial now it is a dial I can even add   some description like theard   corner and when I get back to my   UI it will be already   modified and I no longer have an issue   of not knowing what that intensity is   for because for instance here we have
+
+
+00:18:27 - 00:19:30
+  two relative Lo location properties and   I have no idea which one is which so we   can just go to camera   location and name it camera   location and when we are back to our web   UI it is already renamed I hope you will   find this video useful if you are making   mostly games and not a virtual   production related things and I think   that remote   control chapter in the course is still   for you because you can call pyone   functions remotely or even blueprints   it's just that that uh we don't really   do it using remote control presets I   mean you could but from my experience   using remote control preset in that case   usually isn't necessary at all and
+
+
+00:19:27 - 00:19:35
+  doesn't make your work easier   thank you and see you in the next video
+

@@ -1,0 +1,69 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: devstudio-open-webui
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - WEBUI_NAME=Dev Studio v1
+      - WEBUI_SECRET_KEY=devstudio_v1_secure_key
+      - ENABLE_SIGNUP=false
+      - WEBUI_THEME=dark
+      - OPENAI_API_BASE_URL=http://devstudio-pipelines:9099
+      - OPENAI_API_KEY=0p3n-w3bu!
+      - AUDIO_STT_ENGINE=faster-whisper
+      - AUDIO_STT_MODEL=base.en
+      - WHISPER_DEVICE=cpu
+      - ENABLE_IMAGE_GENERATION=True
+      - IMAGE_GENERATION_ENGINE=comfyui
+      - COMFYUI_BASE_URL=http://devstudio-comfyui:8188
+    volumes:
+      - "D:/DevStudio_v1_Workspace/open-webui:/app/backend/data"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main
+    container_name: devstudio-pipelines
+    restart: unless-stopped
+    ports:
+      - "9099:9099"
+    volumes:
+      - "D:/DevStudio_v1_Workspace/pipelines:/app/pipelines"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  comfyui:
+    image: yanwk/comfyui-boot:cu124-megapak
+    container_name: devstudio-comfyui
+    restart: unless-stopped
+    ports:
+      - "8188:8188"
+    environment:
+      - CLI_ARGS=--listen 0.0.0.0 --port 8188 --medvram --preview-method auto
+    volumes:
+      - "D:/DevStudio_v1_Workspace/inventory_downloads/comfyui_models:/home/runner/storage-models/models"
+      - "D:/DevStudio_v1_Workspace/assets_vault/images:/home/runner/storage-user/output"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  adguard-home:
+    image: adguard/adguardhome:latest
+    container_name: devstudio-adguard
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "3001:3000/tcp"
+      - "80:80/tcp"
+      - "853:853/tcp"
+    volumes:
+      - "D:/DevStudio_v1_Workspace/adguard/work:/opt/adguardhome/work"
+      - "D:/DevStudio_v1_Workspace/adguard/conf:/opt/adguardhome/conf"

@@ -1,0 +1,127 @@
+Aegis Breach: Comprehensive Technical Rulebook & System Manual (v3.5 Final Edition)1. Game Overview & Victory ConditionsAegis Breach is a high-tempo, 100% digital cross-platform trading card game designed for PC, iOS, and Android. Matches feature zero manual health/HP bookkeeping, automated mana growth, rank-gated deployment, and reactive off-turn decision windows. Matches are played in a Best of 3 format consisting of 3 matches per set.Loss ConditionsA player instantly suffers a Match Defeat if either condition occurs:Damage Defeat: Receiving a direct hit while holding 0 remaining cards in your Damage Zone.Deckout Defeat: Being forced to draw a card when your Main Deck contains 0 cards.2. Playmat Architecture & Zone LayoutThe playmat consists of a symmetric layout designed for visual clarity across mobile and PC displays. The Extra Deck rests on the field directly adjacent to the Grave, while the Side Deck remains entirely off-board during gameplay.Plaintext==================================================================================================
+                                    AEGIS BREACH: FIELD LAYOUT
+==================================================================================================
+
++------------------------------------------------------------------------------------------------+
+|                                         OPPONENT SIDE                                          |
++------------------------------------------------------------------------------------------------+
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |  LEADER ZONE (0-3)    |     |         SUPPORT ZONE          |     |     MAIN DECK      |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [Rank 0-3 Stack]     |     |  [Continuous Support Cards]   |     |  [50 Cards Face-   |   |
+|   |  Avatar & Passives    |     |  Tamer-Style Board Buffs      |     |   Down]            |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |      DAMAGE ZONE      |     |     VANGUARD ZONE (MAX 5)     |     | GRAVE / EXTRA DECK |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [6 Shields Face-     |     |  [Unit] [Unit] [Unit] [Unit]  |     | [Discard] [Extra]  |   |
+|   |   Down]               |     |  Front-Line Combat Lane       |     | [15-Card Extra]    |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
++================================================================================================+
+|                                      CENTER COMBAT LINE                                        |
++================================================================================================+
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |      DAMAGE ZONE      |     |     VANGUARD ZONE (MAX 5)     |     | GRAVE / EXTRA DECK |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [6 Shields Face-     |     |  [Unit] [Unit] [Unit] [Unit]  |     | [Discard] [Extra]  |   |
+|   |   Down]               |     |  Front-Line Combat Lane       |     | [15-Card Extra]    |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |  LEADER ZONE (0-3)    |     |         SUPPORT ZONE          |     |     MAIN DECK      |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [Rank 0-3 Stack]     |     |  [Continuous Support Cards]   |     |  [50 Cards Face-   |   |
+|   |  Avatar & Passives    |     |  Tamer-Style Board Buffs      |     |   Down]            |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
++------------------------------------------------------------------------------------------------+
+|                                           YOUR SIDE                                            |
++------------------------------------------------------------------------------------------------+
+Leader Zone (Back-Left): Houses the 4-card non-deck Leader Evolution Stack (Rank 0 through Rank 3).Support Zone (Back-Center): Holds continuous Support cards granting board-wide passives or activated abilities.Main Deck Zone (Back-Right): Holds the player’s exact 50-card deck.Damage Zone (Front-Left): Holds 6 face-down cards set from the top of the deck at match start.Vanguard Zone (Front-Center): Holds up to 5 active combat Units.Grave & Extra Deck Zone (Front-Right): Receives destroyed units, spent items, resolved interrupts, and discarded guards. Houses the 15-card face-down Extra Deck adjacent to the Grave.Side Deck (Off-Board): Contains up to 10 cards kept off the playmat for post-match adjustments during Best of 3 sets.3. Deckbuilding, Extra/Side Mechanics & Pre-Game InitializationMain Deck: Exactly 50 cards. Maximum 3 copies of any card title.Leader Stack: Exactly 4 Leader cards (Rank 0, Rank 1, Rank 2, Rank 3) kept in the Leader Zone.Extra Deck: Exactly 15 cards kept adjacent to the Grave.Side Deck: Exactly 10 cards kept off-board.Hand Size Cap: 8-Card Hand Cap. Active players holding more than 8 cards must discard down to 8 cards during the Turn End Phase.Side Decking & Extra Deck Swapping ProtocolBetween games in a Best of 3 match, players may adjust their decks using the Side Deck:Side-to-Main Swapping: Players can swap cards between their Main Deck and Side Deck on a strict 1-for-1 basis (Main Deck size must remain exactly 50 cards).Side-to-Extra Swapping: Players can swap cards from their Extra Deck by removing cards from their Extra Deck and replacing them with cards from their Side Deck on a 1-for-1 basis (Extra Deck size must remain exactly 15 cards).Pre-Game Initialization & Mulligan ProcedureBoth players place their Rank 0 Leader face-up in the Leader Zone with Ranks 1–3 stacked face-down beneath it.Both players place their 15-card Extra Deck face-down next to their Grave Zone.Both players shuffle their 50-card Main Deck.Place the top 6 cards of the Main Deck face-down into the Damage Zone.Both players draw an initial starting hand of 5 cards.Pre-Game Mulligan Phase: Before Turn 1 begins, both players simultaneously choose any number of cards (0 to 5) from their hand to return to the Main Deck. Each player shuffles their deck and draws back the exact number of returned cards. This mulligan occurs exactly once per match.4. Color Identity, Stat Architecture & Dynamic ScalingColor System & Dual-Color Rules: Aegis Breach features seven core colors representing elemental themes. Colors reflect thematic affinity only and do not dictate or constrain strategic playstyles or deck archetypes.Leader Alignment & Playability: Main Deck cards must share at least one color with your Leader's color identity. For instance, if your active Leader is Yellow, you can play pure Yellow cards, or if a card is dual-color (e.g., Yellow and Blue), it remains fully playable since it shares at least one matching color trait.Dual-Color Cards & Client Indicators: Permitted in deckbuilding as long as at least one of their color traits matches your active Leader. Lightweight client-side visual badge indicators and cost-to-impact parameters appear dynamically in the card browser to assist pre-MVP deck composition.Dynamic Cost-to-Impact Scaling (All Cards): Every card in the game scales its Mana cost directly proportional to its effect strength (Low-Impact = 1 Mana, Mid-Impact = 2 Mana, High-Impact Interruption/Board Shift = 3+ Mana).Color / Elemental Theme Reference TableElemental ThemeColor Code / DesignationRedFireBlueWaterGreenNatureYellowLightPurpleDarkPinkWindGreyUniversal Utility (Neutral)Inverse Rank-Based Stat MatrixBase ATK tiers scale upwards by Rank, incorporating up to Rank 4 Extra Deck scaling, while base Shield values scale inversely:Rank 0 (Core / 1-Cost Utility): Base ATK 5,000 | Shield Value 15,000 | Premier Hand Guard & Defensive AnchorRank 1 (2-Cost Mid-Game): Base ATK 8,000 | Shield Value 10,000 | Balanced Interceptor & Moderate GuardRank 2 (3–4 Cost Heavy): Base ATK 10,000 | Shield Value 7,000 | Offense Beatstick / Fragile GuardRank 3 (Advanced Extra Tier): Base ATK 13,000 | Shield Value 6,000 | Heavy Pressure / Advanced VanguardRank 4 (Maximum Extra Tier): Base ATK 15,000 | Shield Value 5,000 | Maximum Offense / Glass-Cannon Guard5. Keyword Lexicon[GUARD BREAK]: When revealed from the Damage Zone upon taking direct damage, the card goes to your hand. Activating its effect requires paying a minor resource cost (such as 1 unspent Mana or exhausting an active unit), which is fully waived if the card was successfully previewed or seeded earlier via specific support effects. If skipped or unpaid, the card safely enters the hand as a standard shield without triggering its effect.[SUMMONING SICKNESS]: All newly deployed Vanguard units suffer from summoning sickness and cannot declare attacks on the turn they are deployed.[ON DEPLOY]: Triggers immediately when entering the Vanguard Zone from hand.[ON DESTROY]: Triggers when sent from the field to the Grave.[CONTINUOUS]: Active continuously while the card remains in play.[INTERCEPT]: Commit this Vanguard unit during combat to add its Shield to Total Defense (works whether tapped or untapped).[STUN]: Target card cannot attack or activate abilities for 1 turn.6. Visual Card Templates (Vanguard Full-Art / Glassmorphic Style)Cards feature borderless, full-bleed artwork extending to all four edges. UI components utilize translucent frosted glass overlays (35–40% opacity) with glowing borders to preserve visual clarity over dynamic art.Plaintext==================================================================================================
+                 AEGIS BREACH: CLEAN FULL-ART CARD TEMPLATES (VANGUARD-STYLE)
+==================================================================================================
+
+1. UNIT / MONSTER CARD TEMPLATE
++---------------------------------------------------+
+|  ( 1 )  ░░░░░ VOID BLADE GUARDIAN ░░░░░░░░░░░░░░  | <- Rank Circle & Glass Name Banner
+|  ====                                             |
+| | S  |                                            |
+| | H  |                                            |
+| | I  |              FULL-BLEED ARTWORK            | <- Completely unobstructed center
+| | E  |            EXTENDS TO ALL 4 EDGES          |
+| | L  |                                            |
+| | D  |                                            |
+| |5000|                                            |
+|  ====                                             |
+|            [ CLASS / FACTION SYMBOL ]             | <- Leader Class / Faction Symbol
+| +-----------------------------------------------+ |
+| | Deploy Cost: 0 Mana                           | | <- Translucent Glass Text Box
+| | [1 Mana]: Engage this unit to draw 1 card.    | |    (35-40% Opacity)
+| | [GUARD BREAK]: Add 1 Mana to reserve.         | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░░ ATK: 7,000 ░░░░░░░░░░░░░░░░░░░░░░ | <- Glass ATK Overlay (Bottom Center)
++---------------------------------------------------+
+
+2. LEADER CARD TEMPLATE (Ranks 0-3 Stack)
++---------------------------------------------------+
+|  ( 2 )  ░░░░░ IGNIS, ASCOLT OVERLORD ░░░░░░░░░░░  | <- Rank Circle & Glass Name Banner
+|                                                   |
+|                                                   |
+|             FULL-BLEED ARTWORK                    |
+|            EXTENDS TO ALL 4 EDGES                 |
+|                                                   |
+|                                                   |
+|            [ LEADER CLASS SYMBOL ]                | <- Leader Class Symbol
+| +-----------------------------------------------+ |
+| | ACTIVE EFFECT:                                | | <- Translucent Glass Text Box
+| | [2 Mana]: Deal 5,000 damage to 1 enemy unit.  | |
+| | INHERITED EFFECT (Rank 1):                    | |
+| | Front-Line units gain +1,000 ATK.             | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░░ ATK: 12,000 ░░░░░░░░░░░░░░░░░░░░ | <- Glass ATK Overlay (Bottom Center)
++---------------------------------------------------+
+
+3. SUPPORT CARD TEMPLATE (Continuous Backline)
++---------------------------------------------------+
+|  ( 2 )  ░░░░░ TACTICAL COMMAND NODE ░░░░░░░░░░░░░ | <- Rank Circle & Glass Name Banner
+|                                                   |
+|                                                   |
+|             FULL-BLEED ARTWORK                    |
+|            EXTENDS TO ALL 4 EDGES                 |
+|                                                   |
+|                                                   |
+|            [ CARD TYPE SYMBOL ]                   | <- Card Type Symbol
+| +-----------------------------------------------+ |
+| | CONTINUOUS EFFECT:                            | | <- Translucent Glass Text Box
+| | Placed in Support Zone. All Vanguard units    | |
+| | gain +2,000 Shield Value during opponent's    | |
+| | turn.                                         | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░ COST: 2 MANA ░░░░░░░░░░░░░░░░░░░░░ | <- Glass Mana Cost Bar (Bottom Center)
++---------------------------------------------------+
+
+4. ITEM / INTERRUPT CARD TEMPLATE (Fast Action)
++---------------------------------------------------+
+|  ( 1 )  ░░░░░ AEGIS PARRY ░░░░░░░░░░░░░░░░░░░░░░░ | <- Rank Circle & Glass Name Banner
+|                                                   |
+|                                                   |
+|             FULL-BLEED ARTWORK                    |
+|            EXTENDS TO ALL 4 EDGES                 |
+|                                                   |
+|                                                   |
+|            [ FAST INTERRUPT SYMBOL ]              | <- Card Type Symbol
+| +-----------------------------------------------+ |
+| | FAST EFFECT (Response Window):                | | <- Translucent Glass Text Box
+| | Play during opponent's attack phase using     | |
+| | unspent Mana. Target unit gets +8,000 Shield  | |
+| | for this battle.                              | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░ COST: 2 MANA ░░░░░░░░░░░░░░░░░░░░░ | <- Glass Mana Cost Bar (Bottom Center)
++---------------------------------------------------+
+7. Turn Structure, Draw Phase & Mana ScalingUniversal Mana & Draw Rules: Starting Base Mana: Both players start Game Turn 1 with 2 Max Mana. Turn Mana Increment: Each player gains +1 Max Mana at the start of their turn (capped at 10 Mana).Subsequent Turns (Turn 2+): Both players gain +1 Max Mana at the start of their turn and draw 1 card during their Turn Phase.First-Turn Aggression Balancer (Staggered Initiative & Reactionary Shield):Turn 1 Attack Restriction: Player 1 is restricted from declaring attacks on Turn 1, completely neutralizing the high-roll go-first snowball effect while maintaining standard deployment rules.Tactical Reserve Token: Player 2 receives a temporary, one-time-use Tactical Reserve Token on their opening turn. This token can be spent instantly to deploy a defensive card or trigger a reactive effect below resource cost, ensuring stable early stabilization.Turn Phase ProgressionDraw Phase: Active player automatically draws 1 card from Main Deck.Mana & Evolution Phase: Max Mana capacity increases by +1 (up to 10 Mana). Active player may advance their Leader by +1 Rank for 0 Mana.Main Phase: Deploy units, place Support cards, or play Spells up to active Leader's Rank.Combat Phase: Declare attacks against Vanguard units or opposing Leader (subject to Summoning Sickness and Turn 1 restrictions).End Phase: Hand size check. Discard down to 8 cards if holding excess. Unspent Mana carries over to fund off-turn responses during opponent's turn.8. Combat Engine & Vanguard-Style Resolution FlowVanguard Taunt Rule: Opponents cannot declare direct attacks against your Leader while you control 1 or more units in your Vanguard Zone.Tapping & Universal Intercept: Tapping (Resting): Rotates unit card horizontally to indicate an attack was declared. Universal Intercept: Any Vanguard unit can commit its printed Shield Value to defense, regardless of whether it is tapped or untapped.Combat Resolution Threshold:$$\text{Total Defense} = \text{Target Base ATK} + \sum \text{Hand Guards} + \sum \text{Field Intercepts} + \sum \text{Spells}$$Combat resolution uses the threshold rule where ties favor the attacker:Successful Hit ($\text{Attacker ATK} \ge \text{Total Defense}$): Unit Target: Defending unit is destroyed and sent to the Grave. Leader Target: Incurs 1 Direct Damage from the Damage Zone. Suffer Leader defeat penalties if applicable.Blocked Attack ($\text{Attacker ATK} < \text{Total Defense}$): The attack fails. Defending unit survives, while all committed Hand Guards, Intercepts, and Spells enter the Grave.9. Damage Shield Choice Resolution & Guard Break Tactical FrameworkWhen taking direct damage:Calculated Seeding & Previewing: Players can utilize early-game support cards and Rank 0 deployments to look at, rearrange, or peek at the top card of their Damage Zone ahead of time, turning blind RNG into a calculated risk-reward system.Conditional Resource Gating: The top card of the Damage Zone is revealed and added directly to the player's hand. If the card contains [GUARD BREAK], activating its effect requires committing a minor resource (paying 1 unspent Mana or exhausting an active unit) rather than triggering automatically for free.Synergy Reward Loop: If the player successfully previewed or seeded that specific card using a support effect earlier in the match, the resource cost for the Guard Break is fully waived or grants an enhanced tactical bonus.Failsafe Hand-Return: If the resource cost is not paid or the player lacks the required resource, the effect is suppressed, but the card safely remains in the hand to be deployed as a standard 15,000 Shield Hand Guard or Interceptor.10. Traditional TCG Resolution & LIFO Stack ArchitectureActivations resolve on a Last-In, First-Out (LIFO) chain using standard, streamlined TCG mechanics (mirroring Yu-Gi-Oh! and Cardfight!! Vanguard):No Re-Targeting Principle: If a card's primary target leaves the field or becomes illegal before chain resolution, the effect does not re-target and simply skips the invalid targeted interaction cleanly without complex backend overrides or guessing player intent.Independent Clause Separation: Multi-part card text evaluates independent non-targeted actions (such as drawing cards, milling decks, or adjusting mana pools) separately, allowing utility clauses to complete successfully while strict targeted components require absolute card legality at resolution.Cost Commitment & Resource Finality: Mana expenditures, card tappings, and material costs remain locked upon initial declaration without resource refunds, preserving the strict tactical risk of timing reactive interrupts.11. Digital Master Duel Clock Engine & Timer Overhaul (Optimized Pro-Feedback Build)Base Time Pool: 7 minutes of total main thinking time allocated per player per match to protect competitive pacing.Fischer-Style Action Bank & Chain Extensions: Scraps flat sub-timer caps. Grants each player a primary match clock alongside a Dynamic Action Reserve that provides a +2-second time increment for every successfully resolved legal action. During deep counter-wars, the engine opens a Chain-Specific Bank (a shared 30-second auxiliary pool for that specific stack resolution).Smart-Stop Priority System & Bluff Modifier: Replaces rigid auto-passing with a customizable "Hold Priority" hotkey and persistent UI toggle, preserving psychological bluffing depth while maintaining automated efficiency.Ambiguous Delay Mask: Implements a micro-latency window on automated passes so opponents can never deduce mathematical lockouts instantly from instant system responses.Penalty Framework: Implements an immediate soft-warning system for repetitive micro-pauses, escalating to a game-loss penalty if a competitor triggers three automated priority passes due to clock-running behavior within a single match round.
+
+Appendix: v3.5.1 System & Design Patch Notes1. Automated Latency Mask & Timer IntegritySystem-Enforced Buffer: The client-side latency delay mask is fully automated via a hard-coded, randomized system buffer window, removing all manual player adjustment vectors.Broadcast Pacing: This completely eliminates micro-optimization exploitation during priority passes, ensuring tournament matches maintain clean, predictable broadcast windows without sacrificing the psychological depth of the smart-stop priority system.  2. Guard Break Effect Power-BudgetingDesign Constraint: To safeguard competitive integrity against high-variance RNG blowouts, all Guard Break effects are strictly power-budgeted away from game-ending win-condition bombs.Localized Utility Focus: Guard Break activations are capped at tactical pivots—such as minor resource recycling, card cycling, or localized board repositioning—ensuring that a triggered shield rewards smart defensive positioning rather than functioning as a coin-flip lottery win.3. Control Mirror Stalemate Resolution via Dual-Color AccessCross-Pollination Mechanics: Slow control archetypes leverage the core dual-color card system to break late-game 10-mana counter-war standstills.  Hybrid Aggression: By allowing main decks to incorporate cross-color traits matching the active Leader's identity, defensive builds gain access to unexpected swift offensive triggers and alternative tempo outlets, preventing infinite-pass stalemates when unspent mana carries over into the opponent's turn.  

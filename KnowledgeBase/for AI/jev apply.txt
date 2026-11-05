@@ -1,0 +1,124 @@
+import { experimental_decide } from 'ai';
+import { createGatewayProvider } from '@ai-sdk/gateway';
+
+// Initialize the Vercel AI Gateway provider targeting TypeSafe's Jev model
+const gateway = createGatewayProvider({
+  baseUrl: 'https://ai-gateway.vercel.sh/v1',
+  headers: {
+    // Authenticates using your project's Vercel OIDC token
+    Authorization: `Bearer ${process.env.VERCEL_OIDC_TOKEN}`,
+  },
+});
+
+export async function POST(req: Request) {
+  const { ticketContext } = await req.json();
+
+  // Jev evaluates parallel questions on a single shared state
+  const response = await experimental_decide({
+    model: gateway.decisionModel('typesafe-ai/jev'),
+    state: ticketContext, 
+    questions: {
+      urgency: {
+        type: 'score',
+        description: 'Rate the customer urgency from 0 (low) to 5 (critical).',
+      },
+      category: {
+        type: 'choice',
+        options: ['bug_report', 'billing', 'feature_request', 'account_issue'],
+        description: 'Categorize the core issue of this support ticket.',
+      },
+      requiresHuman: {
+        type: 'boolean',
+        description: 'Does this issue require routing to a human agent immediately?',
+      }
+    },
+  });
+
+  return Response.json(response);
+}
+
+
+
+npm install ai @ai-sdk/gateway
+
+
+
+vercel login
+vercel link
+
+vercel env pull
+
+
+TypeSafe's Jev is a hosted "System One" decision model that does not expose its native weights for local deployment. Instead, it is consumed through Vercel AI Gateway.
+The open-source code for utilizing Jev through Vercel's framework is managed via the official Vercel Labs repository.
+
+Core Source Implementation
+
+To use Jev via the Vercel AI SDK, your primary implementation file (e.g., app/api/decision/route.ts) will rely on the experimental_decide API:
+typescript
+import { experimental_decide } from 'ai';
+import { createGatewayProvider } from '@ai-sdk/gateway';
+
+// Initialize the Vercel AI Gateway provider targeting TypeSafe's Jev model
+const gateway = createGatewayProvider({
+  baseUrl: 'https://ai-gateway.vercel.sh/v1',
+  headers: {
+    // Authenticates using your project's Vercel OIDC token
+    Authorization: `Bearer ${process.env.VERCEL_OIDC_TOKEN}`,
+  },
+});
+
+export async function POST(req: Request) {
+  const { ticketContext } = await req.json();
+
+  // Jev evaluates parallel questions on a single shared state
+  const response = await experimental_decide({
+    model: gateway.decisionModel('typesafe-ai/jev'),
+    state: ticketContext, 
+    questions: {
+      urgency: {
+        type: 'score',
+        description: 'Rate the customer urgency from 0 (low) to 5 (critical).',
+      },
+      category: {
+        type: 'choice',
+        options: ['bug_report', 'billing', 'feature_request', 'account_issue'],
+        description: 'Categorize the core issue of this support ticket.',
+      },
+      requiresHuman: {
+        type: 'boolean',
+        description: 'Does this issue require routing to a human agent immediately?',
+      }
+    },
+  });
+
+  return Response.json(response);
+}
+Use code with caution.
+
+Environment Configuration & Setup
+
+Because Jev runs securely through Vercel's infrastructure, you authenticate utilizing the Vercel CLI locally:
+1. Install dependencies:bash
+npm install ai @ai-sdk/gateway
+Use code with caution.
+2. Link to your Vercel Project:bash
+vercel login
+vercel link
+Use code with caution.
+3. Pull OIDC Credentials (Creates your local environment file populated with a 12-hour VERCEL_OIDC_TOKEN):bash
+vercel env pull
+Use code with caution.
+
+Community Reproductions on Hugging Face
+
+If you are looking for local model variants or community weights to bypass the hosted setup, you can audit open weights hosted on Hugging Face:
+• For CPU Pipelines: The Meanblock/JEV-CPU implementation provides local pipelines using Hugging Face's transformers.
+• For Unified System 1/2 Reasoning: The autotrust/JEV-9B repository integrates both classification and text generation backbones.
+Would you like help adapting this code block to fit a specific application workflow or different provider stack?
+
+
+
+
+
+

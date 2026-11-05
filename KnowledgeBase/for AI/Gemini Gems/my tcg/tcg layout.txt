@@ -1,0 +1,66 @@
+This game will be a controlled open format. this means the player will have the full creative control to make whatever deck they so wish.
+
+	The decks are colored locked, so if its a yellow theme the deck will be yellow.
+
+	Your commanders color will determine the color of the deck.
+ 
+	There will be mixed color cards and cards tied together, either by name or cost of payment to use a card.
+
+	There will be universal cards that will be colorless or grey and they will be able to be played in any color. I've chosen this option because its an easy and efficient way to balance decks and cards.
+
+	The bored is set up in a simple way (check out the image doc).This was done to give the player a clean and efficient experience with out over whelming new players with over complexity. 	
+	
+	You'll have your deck zone for testing. Reasons I have chosen a 50 card deck limit, it keeps game fast paced and eliminates the chances of dead draw. But also it serves these purpose of teaching new players to conserve  	resources. You can have up to 4 copies of a card. 
+
+	Your starting hand will be seven cards. From playing almost every TCG, a 7 hand count provides less of a chance of dead drawing and to double fight that from happening. We will throw in a Vanguard D series styled mill again at 	the beginning of the game.
+
+	The grave is self explanatory, but as you noticed unlike other TCG there is no banish pile for testing the first sets of card. I feel that should be held for maybe set 4 or 5
+
+	You'll have a extra deck of 10, after testing I will work on the ratios for this. I'm still trying to find a resource friendly way of including the extra deck.
+
+	Your prize zone is going to start at 6 or 8 (TBD upon testing). when you take damage you draw a card from your prize pool but when you hit 0, you lose. I noticed in games like Digimon, doing it this way it keeps it fair. In 	resources for the losing player, it leads to situations where you have to be careful. If you over extend it can be bad. An overall prize system keeps the pace controlled.
+
+	You'll have your commander zone ( this name is defiantly subject to change ) this will hold 4 cards every turn, when you draw you will rank up your commander to the next rank. It keeps the most broken strategies at bay behind a 	cost and rank pay wall.( I'm future proofing for any degenerate strategies people may come up with ). The rank system works like vanguard from 0 to 3 or maybe 4 depending on play testing. (your commander is you, so if you get 	hit directly its them attacking your commander). You can play your commander at rank 3 or 4 but if it dies you lose or it goes back to a rest like maybe 2 turns. 
+
+	Your field can have up to 5 monsters ( I may change this ). These monsters are your first line of defense, the opponent can't hit the commander unless all monsters on the bored are delt with. You place the card sideways to 	indicate its been used and you can block other monsters on the bored with your cards. The cards themselves will be the way I balance the game, like gaining resources drawing or even searching and special calling. Higher the rank 	the more powerful the effect (for now).
+
+	As I said before, each card has a color. These colors are attributes, yellow (wind), red (fire), green (nature), blue (water), purple (chaos), and grey (neutral).
+
+	There is a side deck of 10 cards, matches will be best 2 of 3 it gives player chances to fight back against bad matches as seen in Yu-Gi-oh.
+ 
+The energy system took a while to figure out,  if I went with a MANA SYSTEM, it would have either 1. filled the deck with unnecessary cards. Or 2. games could be stopped due to bad hands. If I went with a open resources format like Yu-Gi-oh.  It could lead to uncontrolled situations, where one player can overwhelm another (no one wants to see someone move cardboard for 20 minutes straight). Vanguard has the right idea but even that can lead to stalling situations that can break games, so I have chosen a hybrid system that requires nothing but a dice. Player 1 starts the game with 2 energy (10 or 12 max TBD) each turn the player can gain one energy and recover all spent energy. player 2 starts the same; 2 energy but to balance it for going 2nd, player 2 gains a energy on the start of their first turn. 
+
+
+
+This is the layout of the card (see image doc 2), the rank will be in the upper left corner and the name of the card displayed at the top. I will be going with as much transparent in the text boxes as I can, I want the art to be on full display. On the bottom will be the cards attack and attribute, not sure if I should add a (type of monster it is) or not. The effect of the card, if they have one will be displayed right above the attack. something like how vanguard does full arts. Im not sure if i will have a guard system or not. There will be 3 type of card items, monsters, and sorcery. sorcery can be played on any turn items, ONLY playable on your turn. monsters can be played only on your turn but you can play as much as you like. 
+	the rarities will be determined since this is in post development but since this is a digital game i can do a lot of alt art special rarities and such and make them tradeable amongst players.
+
+turn order will be as so 
+	1 draw and recover phase (reset your spent energy and gain 1 energy)
+	2 rank up phase your commander
+	3 main phase (make your plays i would make it like magic where main phase and battle are mixed but i need to power cap certain cards 
+	4 battle phase
+	5 end phase.
+
+this is the absolute way the phases will be done it keeps the game focused and heading to one direction with out over complicating things.
+
+all card designs and effects are still being developed as of now i have 4 decks played for the demo phase of developments this will be a full digital game and maybe if there is demand for it there can be a tcg so i designed it that you will need nothing but your cards. this game is complex enough for highly skilled players and simple enough for players just joining the tcg world. there will be a web toon tied to this im also doing the art work for. the game will cost players 30 to 40 and all dlc will be 20 you till get the set character skins and special rarities sleeves and mats.
+
+
+battle will be determined by who ever has the highest attack and in case of a tie the monster getting attack dies and the attacker survives. cards that are tapped will be how you indicate weather you attacked or cost of a effect.
+a guarding system is still being thought of in the back ground if testing shows not enough player interaction or it seems to easy to bored wipe or steam roll a player
+
+there will be chains effects like in yugioh. when it comes to the order of effects the order of priority will be in the order they were activated. there ill be sorcery (spells) items which will be made of equipment and one use spells or potions (you will have 4 heals in the deck in the form of potions).
+
+the theme of the game is to work hard practice and get better at the game. i want a game that is balance as best as possible
+easy enough for a noob to follow but enough complexity for a season vet. i want that luck factor removed from the equation, everything is aimed for the player to only rely on their skills and understanding of the game.
+the game is built with come backs in mind with out relying on a gambling mechanic. the themes and art will be following the story but with enough diversity that no 2 decks will be the complete same. im aiming for a box every 2 months with most of the prizes and apple will come from the rank rewords. i chosen the 2 month period because it gives me time to developed and test these cards before releasing them.
+players will determine who goes first either by coin flip or rock paper scissors.
+
+
+
+
+
+
+
+

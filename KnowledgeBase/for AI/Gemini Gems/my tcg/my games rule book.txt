@@ -1,0 +1,48 @@
+Official Quick-Start Demo Rulebook1. Game Overview & SetupVictory ConditionA player wins when they land a successful direct attack against an opposing player who has 0 cards remaining in their Damage Zone.Deckbuilding RequirementsMain Deck: Exactly 50 cards (Spells, Items, Tactics, and Standard Units).Commander Stack: Exactly 4 dedicated Commander cards (Rank 0, Rank 1, Rank 2, and Rank 3) stored in your extra Commander Deck.Match SetupPrepare Commander Stack: Place your dedicated 4-card Commander Stack (Rank 0 through Rank 3) face-down in your Breeding / Commander Zone, with Rank 0 on top. Reveal Rank 0 at game start.Setup Damage Zone: Shuffle your Main Deck and place the top 6 cards face-down into your Damage Zone (located on the top-left side of your field).Draw Initial Hand: Both players draw 7 cards from their Main Deck.Mulligan Step:Each player may select any number of cards from their hand and place them on the bottom of their Main Deck.Draw an equal number of cards to replace them, then shuffle the Main Deck.Initialize Memory Gauge: Place the shared Memory Gauge marker at 0. Flip a coin to determine who goes first.2. Field Architecture+----------------------------------------------------------------------------------------------------+
+|                                      SHARED MEMORY GAUGE                                           |
+|  [-10]  [-8]  [-6]  [-4]  [-2]  | 0 |  [+2]  [+4]  [+6]  [+8]  [+10]                             |
++----------------------------------------------------------------------------------------------------+
+|  [DAMAGE ZONE]        [SUPPORT 1]        [SUPPORT 2]        [SUPPORT 3]        [MAIN DECK]         |
+|  (6 Setup Cards)      (Back Row)         (Back Row)         (Back Row)         (50 Cards)          |
+|                                                                                                    |
+|  [BREEDING /          [VANGUARD 1]       [VANGUARD 2]       [VANGUARD 3]       [GRAVEYARD]         |
+|   COMMANDER ZONE]     (Front Row)        (Front Row)        (Front Row)        (Discard / Drop)    |
+|  (Safe Progression)                                                                                |
++----------------------------------------------------------------------------------------------------+
+3. Core MechanicsCommander Progression & KO RecoveryCommander Stack Ride: During your Ride Phase, take the next higher Rank card (Rank 0 $\rightarrow$ Rank 1 $\rightarrow$ Rank 2 $\rightarrow$ Rank 3) directly from your dedicated 4-card Commander Stack and place it on top of your Commander in the Breeding Zone.Rank-Gating: You can only call standard units from your hand whose Rank is equal to or lower than your Commander’s current active Rank.Commander Defeat / Recovery: If your Commander enters combat or the field and is Knocked Out (KO'd), it is not sent to the Graveyard. Instead, return it to your Breeding / Commander Zone. It enters a suppressed state and has all card effects negated for the rest of that turn.Resource Engine: Memory CostsUnit Calling (0 Memory): Calling standard units to Vanguard or Support slots costs 0 Memory (restricted strictly by your active Commander's Rank).Paid Actions (Requires Memory): Playing Spells, Items, and activating Card / Unit Effects costs specific amounts of Memory.Passing Priority: Playing cards or activating effects pushes the Memory Gauge marker toward your opponent by the indicated cost. Crossing 0 onto your opponent's side ends your turn immediately. Your opponent begins their turn with the excess Memory you passed them.The Pass Floor & Setters: Ending a turn at 0 Memory automatically shifts the marker to 3 on your opponent's side. If a player starts their turn with 2 or less Memory, passive "Setter" abilities set their starting floor to 3.4. Item Attachments & KeywordsThe Equip MechanicCard Placement: When playing an Item or card with the [EQUIP] keyword, pay its Memory cost and place the card underneath the target unit you are equipping it to.Inherited Stat/Effect Buffs: The equipped card tucked beneath the unit grants its listed stat additions (+ATK, +DEF) or passive text directly to the top unit.Equipment Removal: If an equipped unit is destroyed or returned to the Breeding Zone, all cards equipped underneath it are sent directly to the Graveyard.5. Turn Architecture[1. STAND PHASE] ---> [2. DRAW PHASE] ---> [3. RIDE PHASE] ---> [4. MAIN PHASE] ---> [5. END PHASE]
+Stand Phase: Ready (turn upright) all rested units on your field.Draw Phase: Draw 1 card from your Main Deck.Ride Phase: Place the next Rank card directly from your 4-card Commander Stack onto your active Commander in the Breeding Zone (Rank 0 $\rightarrow$ Rank 1 $\rightarrow$ Rank 2 $\rightarrow$ Rank 3).Main Phase: Perform any of the following actions in any order as long as you have available Memory:Call Units: Place units from hand into open Vanguard or Support slots (Cost: 0 Memory; gated by Commander Rank).Play Spells & Items: Pay the required Memory cost. Tightly slide [EQUIP] items underneath the targeted unit.Activate Unit / Commander Effects: Pay the required Memory cost.Declare Attacks: Rest active Vanguard units to initiate combat.End Phase: Triggers automatically the moment the Memory Gauge crosses 0 onto your opponent's side.6. Combat & Guarding SystemVanguard Frontline WallTargeting Lockout: You cannot declare a direct attack against an opposing player while any unit occupies their Vanguard slots.Frontline Universal Targeting: Attacking units can target any unit in an enemy Vanguard slot, regardless of whether that target is standing (active) or rested.Support & Commander Immunity: Support units and Commanders resting in the Breeding Zone cannot be targeted by standard physical attacks.Combat Resolution FlowDeclare Attacker & Target: Select an active Vanguard unit, turn it sideways (Rested), and choose an enemy Vanguard target (or the Player directly, if all enemy Vanguard slots are empty).Guard Step (Defending Player): The defender may pitch cards from hand to the Guard Circle to grant temporary Shield/DEF (+5000, +10000) to their attacked unit for this battle.Damage Comparison:$$\text{Attacker ATK} \ge \text{Defender ATK} + \text{Total Shield}$$Success: Defending unit is KO'd and sent to the Graveyard (or returned to the Breeding Zone if it was a Commander, negating its effects for the remainder of the turn).Failure: Defending unit survives. No damage is dealt.Direct Hit & Break ResolutionWhen an unblocked attack strikes a Player directly:1. Direct Attack Lands
+       │
+       ▼
+2. Select & Reveal 1 Card from Damage Zone
+       │
+       ├──────────────────────────────────────────┐
+       ▼                                          ▼
+[Card Has "Break" Keyword]           [Standard Card]
+       │                                          │
+       ▼                                          │
+Resolve Effect Immediately for FREE               │
+       │                                          │
+       └────────────────────┬─────────────────────┘
+                            │
+                            ▼
+               Add Card directly to Hand
+7. Card Design Layout+-------------------------------------------------+
+| [RANK: 2]                                       |
+|                                                 |
+|                                 [DEF / SHIELD]  |
+|                 [FULL ARTWORK]             +5000|
+|                                                 |
+|                                                 |
+| +---------------------------------------------+ |
+| | [TRANSPARENT TEXT BOX]                      | |
+| | [EQUIP]: Place under target Vanguard unit.  | |
+| | Equipped unit gains +3000 ATK.              | |
+| |                                             | |
+| | [COST: 2 MEMORY] [On Play]: Draw 1 card.    | |
+| |                                             | |
+| | [OVERDRIVE] (3 or fewer Damage remaining):  | |
+| | Target unit gains +10000 ATK this turn.     | |
+| +---------------------------------------------+ |
+|            [TYPE / ELEMENT / SPECIES]           |
+|                  [ATK: 10000]                   |
++-------------------------------------------------+

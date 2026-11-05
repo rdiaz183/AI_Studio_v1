@@ -1,0 +1,40 @@
+{
+  "system_version": "v1.0.0",
+  "project_name": "Code510_AI_Workspace",
+  "engine_target": "Unreal Engine 5.4",
+  "system_mode": "Hybrid System 1 / System 2",
+  "active_model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+  "embedding_model": "nomic-embed-text",
+  "telemetry": {
+    "gpu_utilization_target": 95,
+    "dedicated_vram_mb": 6144,
+    "total_gpu_memory_mb": 14233,
+    "ipc_port": 9876
+  },
+  "states": {
+    "idle": {
+      "next_states": ["rag_query", "code_compilation", "asset_generation"],
+      "handler": "Open_WebUI_Chat"
+    },
+    "rag_query": {
+      "next_states": ["system_2_synthesis", "idle"],
+      "handler": "Knowledge_Base_Retrieval"
+    },
+    "system_2_synthesis": {
+      "next_states": ["code_compilation", "asset_generation", "idle"],
+      "handler": "DeepSeek_R1_System_2"
+    },
+    "code_compilation": {
+      "next_states": ["idle", "error_handler"],
+      "handler": "Unreal_C++_Python_Bridge"
+    },
+    "asset_generation": {
+      "next_states": ["idle", "error_handler"],
+      "handler": "Inventory_Pipeline"
+    },
+    "error_handler": {
+      "next_states": ["idle"],
+      "handler": "Self_Correction_Loop"
+    }
+  }
+}

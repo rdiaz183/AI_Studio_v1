@@ -1,0 +1,38 @@
+import re
+from typing import Optional, Any
+
+class Pipeline:
+    def __init__(self):
+        self.type = "filter"
+        self.name = "Vague Prompt Interrogator"
+
+    async def on_startup(self):
+        print(f"[PIPELINE] {self.name} initialized successfully.")
+
+    async def on_shutdown(self):
+        print(f"[PIPELINE] {self.name} shut down.")
+
+    async def inlet(self, body: dict, user: Optional[dict] = None) -> dict:
+        messages = body.get("messages", [])
+        if not messages:
+            return body
+
+        last_message = messages[-1].get("content", "").strip()
+        is_short = len(last_message.split()) < 6
+        has_tech_keywords = any(keyword in last_message.lower() for keyword in [
+            "c++", "blueprint", "class", "function", "actor", "component",
+            "unreal", "physics", "vector", "json", "action", "modify_project"
+        ])
+
+        if is_short and not has_tech_keywords:
+            interrogation_injection = (
+                f"\n\n[SYSTEM INTERROGATION HOOK ACTIVE]: The prompt '{last_message}' is too vague for autonomous execution. "
+                "Before writing code or scaffolding assets, please ask the user 2-3 precise technical clarifying questions "
+                "(e.g., target engine class, specific physical units, or file paths) to flesh out the requirements."
+            )
+            messages[-1]["content"] = last_message + interrogation_injection
+
+        return body
+
+    async def outlet(self, body: dict, user: Optional[dict] = None) -> dict:
+        return body

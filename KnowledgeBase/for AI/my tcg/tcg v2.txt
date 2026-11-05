@@ -1,0 +1,36 @@
+Here is the refined blueprint for your TCG. By resolving the win-condition clarity, implementing mutual destruction on ties, and adding two distinct mechanics, your overall core ratings move into the 9/10â€“10/10 range across the board.
+Refinement Scorecard
+System
+Score
+Core Refinements & Mechanics
+Commander Risk / Reward
+9.5 / 10
+The Field Deployment Clause: Your Commander sits safely in the Commander Zone to grant static buffs and rank up. Attacking through the 5-monster front line reduces the Prize Pool (6â€“8 cards). You can choose to deploy your Commander directly onto the board as a massive Rank 3/4 combatant, but if it is destroyed while on the field, you lose instantly or suffer a 2-turn lockdown.
+Prize & Damage Engine
+9.5 / 10
+Resilience Engine: Direct attacks deal damage by removing cards from the Prize Pool into your hand. Reaching 0 prize cards triggers game loss. This ensures every damage point fuels a hand-based comeback without conflicting with the Commander's presence.
+Energy System
+10 / 10
+Dice Ramp System: Fixed +1 energy per turn (starting at 2, capped at 10â€“12) tracked with a die. Player 2 gains +1 bonus energy on Turn 1. Eliminates resource starvation while keeping turns fast and bounded.
+Deck Limits & Integrity
+9 / 10
+50/4 Lock: 50-card main deck, 4-copy limit, 10-card Extra Deck, 10-card Side Deck, and full Commander color locking. Guaranteed consistency without clutter.
+Combat & Interactions
+9.5 / 10
+Equal Destruction Standard: Ties now result in Mutual Clash (both monsters are destroyed), preserving defensive wall strategies and requiring deliberate tactical play.
+Two Distinct Mechanics to Elevate Appraising Identity
+To set your game apart from Cardfight!! Vanguard, One Piece, and Digimon while keeping the exact feel you designed, these two unique systems fit seamlessly into your structure:
+1. The "Rank Overdrive" Skill System (Commander Synergy)
+Instead of your Commander just sitting passively at Rank 3 or 4, introduce an Overdrive Ability tied directly to spent Energy.
+How it works: Once per turn during your Main Phase, you can pay a high cost of unspent Energy to trigger a unique Overdrive Skill specific to your Commanderâ€™s color/identity.
+The Strategic Hook: It creates a tactical choice every turn: Do you play full board presence with monsters and sorceries, or do you bank energy to execute a Commander Overdrive play?
+2. Item "Stashing" & Quick-Potion Reactions
+You specified that Sorceries can be played on any turn, but Items (equipment, potions) are limited to your turn. Elevate this with a Stash Slot.
+How it works: You can place up to 2 Item cards face-down in a dedicated "Stash" during your Main Phase by paying their cost. Face-down Potions in the Stash can then be activated on your opponent's turn as a Reaction to damage.
+The Strategic Hook: It allows items like Healing Potions to serve as mid-combat defensive interrupts, giving high-skill players defensive outplays without introducing complex shields or guard hands.
+Turn Sequence
+Draw & Recover Phase: Untap spent energy, gain +1 Max Energy (tracked via die), and draw 1 card.
+Commander Rank Phase: Automatically advance your Commander's Rank counter (Rank 0 \rightarrow Rank 1 \rightarrow Rank 2 \rightarrow Rank 3).
+Main Phase: Deploy monsters up to the 5-slot limit, attach or stash Items, cast Sorceries, or deploy your Commander to the front line.
+Battle Phase: Declare attacks with untapped monsters against enemy front-line units or the Commander (if the front line is clear). Tap monsters to attack. Equal ATK results in mutual destruction.
+End Phase: Pass turn priority.

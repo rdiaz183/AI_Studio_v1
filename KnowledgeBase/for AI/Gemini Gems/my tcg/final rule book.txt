@@ -1,0 +1,254 @@
+# OFFICIAL MASTER RULEBOOK
+
+---
+
+## 1. System Overview & Victory Condition
+
+### 1.1 Objective
+
+The objective of the game is to dismantle your opponent’s defenses and land a final direct hit against them when their Damage Zone is completely depleted.
+
+### 1.2 Victory Conditions
+
+A player instantly wins the match when any of the following conditions are met:
+
+* **Direct Elimination:** You declare a successful direct attack against an opposing player who has **0 cards remaining** in their Damage Zone.
+* **Deck Out:** An opponent is required to draw a card from their Main Deck during any phase but has no cards remaining in their Main Deck.
+
+---
+
+## 2. Deck Construction Guidelines
+
+Every player must bring two separate decks to a match: a **Main Deck** and a **Commander Stack**.
+
+| Deck Type | Exact Card Count | Restrictions & Rules |
+| --- | --- | --- |
+| **Main Deck** | 50 Cards | Contains Units, Spells, Items, and Tactics. Maximum 4 copies of any card with the same name. Governed strictly by Color Identity rules. |
+| **Commander Stack** | 4 Cards | Contains exactly 1 Rank 0, 1 Rank 1, 1 Rank 2, and 1 Rank 3 Commander card belonging to the same Commander line. Kept in the Commander Deck Zone. |
+
+---
+
+## 3. Field Architecture & Play Zones
+
+```
++----------------------------------------------------------------------------------------------------+
+|                                      SHARED MEMORY GAUGE                                           |
+|  [-10]  [-8]  [-6]  [-4]  [-2]  | 0 |  [+2]  [+4]  [+6]  [+8]  [+10]                             |
++----------------------------------------------------------------------------------------------------+
+|  [DAMAGE ZONE]        [SUPPORT 1]        [SUPPORT 2]        [SUPPORT 3]        [MAIN DECK]         |
+|  (6 Setup Cards)      (Back Row)         (Back Row)         (Back Row)         (50 Cards)          |
+|                                                                                                    |
+|  [BREEDING /          [VANGUARD 1]       [VANGUARD 2]       [VANGUARD 3]       [GRAVEYARD]         |
+|   COMMANDER ZONE]     (Front Row)        (Front Row)        (Front Row)        (Discard / Drop)    |
+|  (Safe Progression)                                                                                |
++----------------------------------------------------------------------------------------------------+
+
+```
+
+### 3.1 Zone Definitions
+
+* **Shared Memory Gauge:** Centered between both players. Tracks shared turn energy from -10 to +10.
+* **Damage Zone (Top-Left):** Stores 6 setup cards representing player life.
+* **Breeding / Commander Zone (Bottom-Left):** Protected zone where your active Commander resides and evolves safely.
+* **Vanguard Lanes (Front Row - Center):** Holds up to 3 active combat units. Vanguard units form the defensive wall protecting the player.
+* **Support Lanes (Back Row - Center):** Holds up to 3 utility units. Back Row units provide passive abilities, aura buffs, and resource manipulation. They cannot declare standard physical attacks nor be targeted by standard physical strikes.
+* **Main Deck Zone (Top-Right):** Houses your 50-card Main Deck face-down.
+* **Graveyard (Bottom-Right):** Face-up discard pile for destroyed units, spent Spells, discarded cards, and removed Equipment.
+
+---
+
+## 4. Game Setup Sequence
+
+1. **Place Commander Stack:** Place your 4-card Commander Stack face-down in the Breeding/Commander Zone. Reveal the top card (**Rank 0 Commander**).
+2. **Build Damage Zone:** Shuffle your 50-card Main Deck. Take the top 6 cards without looking at them and place them face-down into your Damage Zone.
+3. **Draw Opening Hand:** Both players draw **7 cards** from their Main Deck.
+4. **Mulligan Phase:**
+* Each player may choose any number of cards from their hand and return them to the bottom of their Main Deck in any order.
+* Draw an equal number of cards to replace them.
+* Shuffle the Main Deck thoroughly.
+
+
+5. **Set Shared Memory:** Place the Memory Gauge marker at **0**. Flip a coin or roll a die; the winner chooses who takes the first turn.
+
+---
+
+## 5. Resource Engine: Shared Memory Gauge
+
+```text
+[Opponent's Side]  <- (-10) ... (-1) |  0  | (+1) ... (+10) ->  [Your Side]
+
+```
+
+### 5.1 Memory Flow
+
+* All card costs and effect activations consume Memory, sliding the marker toward your opponent's side by an amount equal to the cost paid.
+* Your turn ends **immediately** when an action pushes the Memory marker past `0` onto your opponent's side of the scale.
+* Your opponent begins their turn with whatever excess Memory you passed to them (e.g., if you push the gauge to `-3`, your opponent begins their turn with `+3` Memory).
+
+### 5.2 The Turn Floor & Setter Rules
+
+* **The Pass Floor:** If a player passes their turn while the gauge is at `0`, the marker automatically moves to `3` on the opponent's side, guaranteeing a minimum of 3 Memory.
+* **Memory Setters:** If a player begins their turn with 2 or less Memory, any active "Memory Setter" effects immediately adjust their starting Memory gauge floor to `3`.
+
+---
+
+## 6. Turn Structure
+
+Turn priority cycles through five sequential phases:
+
+```text
+1. STAND PHASE ──> 2. DRAW PHASE ──> 3. RIDE PHASE ──> 4. MAIN PHASE ──> 5. END PHASE
+
+```
+
+### 6.1 Stand Phase
+
+Ready (turn upright) all Rested units on your field.
+
+### 6.2 Draw Phase
+
+Draw 1 card from your Main Deck. *(The player going first draws on Turn 1).*
+
+### 6.3 Ride Phase
+
+Once per turn, take the next higher Rank card directly from your Commander Stack (Rank 0 $\rightarrow$ Rank 1 $\rightarrow$ Rank 2 $\rightarrow$ Rank 3) and stack it on top of your current Commander in the Breeding Zone.
+
+### 6.4 Main Phase
+
+You may perform any of the following actions in any order as long as you possess available Memory:
+
+* **Call Units:** Call units from your hand to open Vanguard or Support slots (**Cost: 0 Memory**). *Restriction: You cannot call a unit whose Rank is higher than your Commander's current active Rank.*
+* **Play Spells & Items:** Pay the indicated Memory cost to execute Spell effects or attach Items.
+* **Activate Effects:** Pay Memory costs to trigger unit or Commander abilities.
+* **Declare Combat:** Rest active Vanguard units to declare attacks against enemy Vanguard units or the opposing Player.
+
+### 6.5 End Phase
+
+Triggers automatically the exact moment the Memory Gauge marker crosses `0` onto your opponent's side. Unresolved actions terminate, and turn priority shifts to your opponent.
+
+---
+
+## 7. Equipment & The Equip Keyword
+
+### 7.1 Attachment Process
+
+Cards featuring the **[EQUIP]** keyword are played during the Main Phase by paying their Memory cost and placing them **underneath** a targeted Unit in a Vanguard or Support slot.
+
+### 7.2 Inherited Traits & Stats
+
+* The top Unit gains all ATK/DEF bonuses and passive abilities printed on cards equipped underneath it.
+* A Unit may have multiple cards equipped under it unless explicitly restricted by card text.
+
+### 7.3 Discarding Equipment
+
+If an equipped Unit is KO'd, destroyed, or returned to the Breeding Zone/hand, all cards tucked underneath it are detached and sent directly to the Graveyard.
+
+---
+
+## 8. Combat & Guarding Architecture
+
+### 8.1 The Vanguard Frontline Wall
+
+* **Player Protection:** You **cannot** attack the opposing Player directly while *any* unit occupies an enemy Vanguard slot (Vanguard 1, 2, or 3).
+* **Clear Frontline Condition:** All 3 enemy Vanguard slots must be completely empty before a direct attack against the Player can be declared.
+* **Universal Vanguard Targeting:** Attacking units may target **any** unit standing in an enemy Vanguard slot, regardless of whether that target is active (upright) or Rested (sideways).
+* **Backline Protection:** Support units and Commanders in the Breeding Zone cannot be targeted by standard physical attacks.
+
+### 8.2 Combat Resolution Step-by-Step
+
+```text
+[1. Declare Attacker & Target] ──> Turn attacker Rested (sideways).
+             │
+             ▼
+[2. Guard Step (Defender)]     ──> Pitch cards from hand to Guard Circle for +Shield DEF.
+             │
+             ▼
+[3. Damage Comparison]         ──> Attacker ATK vs. (Defender ATK + Total Shield).
+             │
+             ├───────────────────────────────────┐
+             ▼                                   ▼
+  [Attacker ATK >= Defender]          [Attacker ATK < Defender]
+             │                                   │
+             ▼                                   ▼
+Defending Unit is KO'd/Destroyed.     Defender Survives. No Damage.
+
+```
+
+### 8.3 Commander KO Recovery Rule
+
+If your Commander is moved to a Vanguard slot and KO'd in combat:
+
+1. It is **not** sent to the Graveyard.
+2. Return it directly to your **Breeding / Commander Zone**.
+3. It enters a suppressed state: **All of its card effects and passive abilities are negated for the remainder of that turn.**
+
+---
+
+## 9. Damage, Break Triggers & Overdrive
+
+### 9.1 Damage Resolution (Direct Hit)
+
+When an unblocked attack lands directly on a Player:
+
+1. Select 1 face-down card from your **Damage Zone** and reveal it.
+2. **Break Check:** If the card features a **Break** keyword, resolve its effect immediately for **FREE** as an instant-speed response.
+3. **Hand Addition:** Add the revealed card directly to your **Hand**.
+
+### 9.2 Overdrive Mechanics
+
+Cards featuring **[OVERDRIVE]** text possess game-changing comeback abilities.
+
+* **Activation Condition:** Overdrive effects can **only** be activated if you have **3 or fewer cards remaining** in your Damage Zone (meaning you have sustained 3 or more damage).
+
+---
+
+## 10. Deck Building & Color Identity
+
+```text
+                         [7 ELEMENTAL FACTIONS]
+  Red (Fire)    Blue (Water)    Pink (Wind)    Green (Earth)    Yellow (Light)    Purple (Dark)
+                                 Neutral (Colorless)
+
+```
+
+### 10.1 The Inclusive Color Matching Rule
+
+Every non-Neutral card in your 50-card Main Deck must share **at least one color** with your designated Commander.
+
+* **Mono-Color Commander (e.g., Pure Red):**
+* **LEGAL:** Single-color Red cards, Dual-color cards containing Red (e.g., Red/Purple, Red/Yellow), and Neutral cards.
+* **ILLEGAL:** Pure Purple, Blue/Green, or any card lacking Red identity.
+
+
+* **Dual-Color Commander (e.g., Red/Blue):**
+* **LEGAL:** Single-color Red, single-color Blue, Dual-color cards containing Red OR Blue (e.g., Red/Purple, Blue/Green), and Neutral cards.
+
+
+
+### 10.2 Neutral (Colorless) Cards
+
+Neutral cards carry no color identity and can be placed in any deck regardless of Commander color.
+
+### 10.3 Archetype-Locked Neutral Commanders (The Prism Exception)
+
+Specific Neutral Commanders (such as Prism / Squad Commanders) feature a **Golden Rule Deckbuilding Clause** that overrides standard color restrictions:
+
+```text
+[COMMANDER RULE: PRISM SQUAD]
+Your deck may include cards of ANY color, provided every colored card 
+contains the archetype name "[ARCHETYPE NAME]" in its card title. 
+All non-archetype cards in your main deck must be Neutral (Colorless).
+
+```
+
+---
+
+## 11. Quick Reference Keyword Index
+
+* **Call:** Placing a unit from hand into a Vanguard or Support slot.
+* **Rest:** Turning a card sideways to signify it has attacked or used an ability.
+* **Stand:** Turning a Rested card upright to an active state.
+* **Shield:** Bonus defense value gained by pitching a card from hand during the Guard Step.
+* **Equip:** Placing an Item card underneath a unit to grant inherited stats and abilities.
+* **Break:** Trigger keyword on Damage Zone cards allowing free, instant-speed casting when revealed from damage.
+* **Overdrive:** High-potency abilities unlocked only when remaining Damage Zone cards $\le 3$.

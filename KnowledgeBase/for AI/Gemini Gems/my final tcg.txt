@@ -1,0 +1,288 @@
+page 1
+
+
+# Aegis Breach: Comprehensive Technical Rulebook & System Manual
+
+---
+
+## 1. Game Overview & Victory Conditions
+
+**Aegis Breach** is a high-tempo, 100% digital cross-platform trading card game designed for PC, iOS, and Android. Matches feature zero manual health/HP bookkeeping, automated mana growth, rank-gated deployment, and reactive off-turn decision windows.
+
+### Loss Conditions
+
+A player instantly loses the match if either of the following conditions is met:
+
+* **Damage Defeat**: Taking direct damage while holding 0 cards in the Damage Zone.
+* **Deckout Defeat**: Being forced to draw a card from an empty Main Deck.
+
+---
+
+## 2. Playmat Architecture & Zone Layout
+
+The playmat consists of a symmetric 6-zone layout designed for visual clarity on mobile and PC screens. Combat units face each other in the center lanes, while engine cards reside safely in the backline.
+
+```
+==================================================================================================
+                                    AEGIS BREACH: FIELD LAYOUT
+==================================================================================================
+
++------------------------------------------------------------------------------------------------+
+|                                         OPPONENT SIDE                                          |
++------------------------------------------------------------------------------------------------+
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |  LEADER ZONE (0-3)    |     |         SUPPORT ZONE          |     |     MAIN DECK      |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [Rank 0-3 Stack]     |     |  [Continuous Support Cards]   |     |  [40 Cards Face-   |   |
+|   |  Avatar & Passives    |     |  Tamer-Style Board Buffs      |     |   Down]            |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |      DAMAGE ZONE      |     |     VANGUARD ZONE (MAX 5)     |     |       GRAVE        |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [6 Shields Face-     |     |  [Unit] [Unit] [Unit] [Unit]  |     |  [Discard &        |   |
+|   |   Down]               |     |  Front-Line Combat Lane       |     |   Destroyed]       |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
++================================================================================================+
+|                                      CENTER COMBAT LINE                                        |
++================================================================================================+
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |      DAMAGE ZONE      |     |     VANGUARD ZONE (MAX 5)     |     |       GRAVE        |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [6 Shields Face-     |     |  [Unit] [Unit] [Unit] [Unit]  |     |  [Discard &        |   |
+|   |   Down]               |     |  Front-Line Combat Lane       |     |   Destroyed]       |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|   |  LEADER ZONE (0-3)    |     |         SUPPORT ZONE          |     |     MAIN DECK      |   |
+|   |                       |     |                               |     |                    |   |
+|   |  [Rank 0-3 Stack]     |     |  [Continuous Support Cards]   |     |  [40 Cards Face-   |   |
+|   |  Avatar & Passives    |     |  Tamer-Style Board Buffs      |     |   Down]            |   |
+|   +-----------------------+     +-------------------------------+     +--------------------+   |
+|                                                                                                |
++------------------------------------------------------------------------------------------------+
+|                                           YOUR SIDE                                            |
++------------------------------------------------------------------------------------------------+
+
+```
+
+* **Leader Zone (Back-Left)**: Houses the 4-card non-deck Leader Evolution Stack (Rank 0 through Rank 3). Serves as the player's core avatar.
+* **Support Zone (Back-Center)**: Dedicated space for continuous Support cards (Tamer-style continuous triggers).
+* **Main Deck Zone (Back-Right)**: Holds the player’s exact 40-card deck.
+* **Damage Zone (Front-Left)**: Holds 6 face-down cards set from the top of the deck at match start.
+* **Vanguard Zone (Front-Center)**: Holds up to 5 active Units (Monsters).
+* **Grave (Front-Right)**: Receives destroyed units, spent items, resolved interrupts, and discarded guard cards.
+
+---
+
+## 3. Deck Building & Match Initialization
+
+### Deck Requirements
+
+* **Main Deck**: Exactly 40 cards. Maximum 3 copies of any card title.
+* **Leader Evolution Stack**: Exactly 4 Leader cards (Rank 0, Rank 1, Rank 2, Rank 3) kept in the Leader Zone outside the Main Deck.
+
+### Initialization & Vanguard Mulligan Procedure
+
+1. Both players place their Rank 0 Leader face-up in the Leader Zone with Ranks 1–3 stacked face-down beneath it.
+2. Both players shuffle their 40-card Main Deck.
+3. Automatically place the top 6 cards of the Main Deck face-down into the **Damage Zone**.
+4. Both players draw a starting hand of 5 cards.
+5. **Vanguard Mulligan Phase**: Simultaneously, each player may choose any number of cards (0 to 5) from their hand to return to the Main Deck. Each player then shuffles their deck and draws back the exact number of returned cards. This mulligan can only be performed once per match.
+
+---
+
+## 4. Visual Card Templates (Vanguard Full-Art / Glassmorphic Style)
+
+Cards feature borderless, full-bleed artwork extending to all four edges. UI components utilize translucent frosted glass overlays (35–40% opacity) with glowing borders to preserve visual clarity over dynamic art.
+
+```
+==================================================================================================
+                 AEGIS BREACH: CLEAN FULL-ART CARD TEMPLATES (VANGUARD-STYLE)
+==================================================================================================
+
+1. UNIT / MONSTER CARD TEMPLATE
++---------------------------------------------------+
+|  ( 1 )  ░░░░░ VOID BLADE GUARDIAN ░░░░░░░░░░░░░░  | <- Rank Circle & Glass Name Banner
+|  ====                                             |
+| | S  |                                            |
+| | H  |                                            |
+| | I  |              FULL-BLEED ARTWORK            | <- Completely unobstructed center
+| | E  |            EXTENDS TO ALL 4 EDGES          |
+| | L  |                                            |
+| | D  |                                            |
+| |5000|                                            |
+|  ====                                             |
+|            [ CLASS / FACTION SYMBOL ]             | <- Leader Class / Faction Symbol
+| +-----------------------------------------------+ |
+| | Deploy Cost: 0 Mana                           | | <- Translucent Glass Text Box
+| | [1 Mana]: Engage this unit to draw 1 card.    | |    (35-40% Opacity)
+| | [GUARD BREAK]: Add 1 Mana to reserve.         | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░░ ATK: 7,000 ░░░░░░░░░░░░░░░░░░░░░░ | <- Glass ATK Overlay (Bottom Center)
++---------------------------------------------------+
+
+2. LEADER CARD TEMPLATE (Ranks 0-3 Stack)
++---------------------------------------------------+
+|  ( 2 )  ░░░░░ IGNIS, ASCOLT OVERLORD ░░░░░░░░░░░  | <- Rank Circle & Glass Name Banner
+|                                                   |
+|                                                   |
+|             FULL-BLEED ARTWORK                    |
+|            EXTENDS TO ALL 4 EDGES                 |
+|                                                   |
+|                                                   |
+|            [ LEADER CLASS SYMBOL ]                | <- Leader Class Symbol
+| +-----------------------------------------------+ |
+| | ACTIVE EFFECT:                                | | <- Translucent Glass Text Box
+| | [2 Mana]: Deal 5,000 damage to 1 enemy unit.  | |
+| | INHERITED EFFECT (Rank 1):                    | |
+| | Front-Line units gain +1,000 ATK.             | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░░ ATK: 12,000 ░░░░░░░░░░░░░░░░░░░░░ | <- Glass ATK Overlay (Bottom Center)
++---------------------------------------------------+
+
+3. SUPPORT CARD TEMPLATE (Continuous Backline)
++---------------------------------------------------+
+|  ( 2 )  ░░░░░ TACTICAL COMMAND NODE ░░░░░░░░░░░░░ | <- Rank Circle & Glass Name Banner
+|                                                   |
+|                                                   |
+|             FULL-BLEED ARTWORK                    |
+|            EXTENDS TO ALL 4 EDGES                 |
+|                                                   |
+|                                                   |
+|            [ CARD TYPE SYMBOL ]                   | <- Card Type Symbol
+| +-----------------------------------------------+ |
+| | CONTINUOUS EFFECT:                            | | <- Translucent Glass Text Box
+| | Placed in Support Zone. All Vanguard units    | |
+| | gain +2,000 Shield Value during opponent's    | |
+| | turn.                                         | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░ COST: 2 MANA ░░░░░░░░░░░░░░░░░░░░░ | <- Glass Mana Cost Bar (Bottom Center)
++---------------------------------------------------+
+
+4. ITEM / INTERRUPT CARD TEMPLATE (Fast Action)
++---------------------------------------------------+
+|  ( 1 )  ░░░░░ AEGIS PARRY ░░░░░░░░░░░░░░░░░░░░░░░ | <- Rank Circle & Glass Name Banner
+|                                                   |
+|                                                   |
+|             FULL-BLEED ARTWORK                    |
+|            EXTENDS TO ALL 4 EDGES                 |
+|                                                   |
+|                                                   |
+|            [ FAST INTERRUPT SYMBOL ]              | <- Card Type Symbol
+| +-----------------------------------------------+ |
+| | FAST EFFECT (Response Window):                | | <- Translucent Glass Text Box
+| | Play during opponent's attack phase using     | |
+| | unspent Mana. Target unit gets +8,000 Shield  | |
+| | for this battle.                              | |
+| +-----------------------------------------------+ |
+| ░░░░░░░░░░░░░░ COST: 2 MANA ░░░░░░░░░░░░░░░░░░░░░ | <- Glass Mana Cost Bar (Bottom Center)
++---------------------------------------------------+
+
+```
+
+---
+
+## 5. Leader Evolution & Defeat Mechanics
+
+### Rank-Gating Rule
+
+You cannot play, deploy, or activate any card (Unit, Support, Item, or Interrupt) whose printed Rank exceeds your active Leader's current Rank.
+
+### Free Evolution Curve
+
+* During your Main Phase, you may advance your Leader to the next rank (Rank 0 $\rightarrow$ Rank 1 $\rightarrow$ Rank 2 $\rightarrow$ Rank 3) once per turn at **0 Mana cost**.
+* Lower-level Leaders remain stacked beneath the active Leader, granting cumulative inherited skills, passive abilities, and base power scaling.
+
+### Leader Defeat & Stun Penalty
+
+If your Leader's Total Defense is overcome in combat or destroyed by a card effect:
+
+1. **Return**: The Leader is not sent to the Grave; it returns to the Leader Zone.
+2. **Rank Retention**: The Leader retains its current Rank (e.g., a Rank 2 Leader stays Rank 2).
+3. **Direct Damage Penalty**: You immediately take **2 Direct Damage** (reveal the top 2 cards of your Damage Zone, resolve any Guard Break triggers, and add them to your hand).
+4. **System Stun**: Your Leader enters a **Stunned State** for your **next 1 full turn**, losing all passive, active, and inherited skills.
+
+---
+
+## 6. Mana Scaling & First-Turn Balance
+
+### Starting Pool & Ramp
+
+* Both players start the match with a base capacity of **2 Mana**.
+* **Player 1 (Turn 1)**: Receives +0 Mana (plays Turn 1 with 2 Mana).
+* **Player 2 (Turn 1)**: Receives +1 Mana (plays Turn 1 with 3 Mana to offset Player 1's tempo advantage).
+* **Turn 2+**: At the start of each subsequent turn, max Mana increases by +1 up to a maximum cap of **10 Mana**.
+
+### Off-Turn Response Holding
+
+Unspent Mana at the end of your turn does not vanish; it remains in your reserve during your opponent's turn. If an action occurs and you hold sufficient unspent Mana, a *Master Duel / Dear Days* style **Yes/No Prompt** allows you to execute off-turn Interrupts or abilities.
+
+---
+
+## 7. Single-Stat Combat, Vanguard Taunt & Defense
+
+### Vanguard Taunt Rule
+
+Opponents **cannot declare direct attacks against your Leader** while you control 1 or more units in your Vanguard Zone. All Vanguard units must be cleared before the Leader can be targeted.
+
+### Zero-HP Combat & Unified Shield Values
+
+Units possess no HP or damage counters. Card attributes consist of **Base ATK** and a universal **Shield Value** (used during defense).
+
+### Defensive Guard Window
+
+When an attack is declared, the defender enters a response window and can combine three defensive methods:
+
+1. **Field Intercept**: Engage active units from your Vanguard Zone to commit their single Shield Value/Power to the defense.
+2. **Hand Guard**: Discard unit cards from hand to add their printed **Shield Value** to the defense.
+3. **Interrupt Spells**: Spend remaining unspent Mana to play fast combat spells.
+
+### Unified Combat Math
+
+$$\text{Total Defense} = \text{Target Base ATK} + \sum (\text{Defending Units' Shield Values}) + \text{Spell Modifiers}$$
+
+### Combat Resolution
+
+* **Attacker Power > Total Defense**: The attack succeeds.
+* *Targeting a Unit*: Target unit and all participating Field Interceptors are destroyed and sent to the Grave.
+* *Targeting the Leader*: Leader is defeated (suffer **2 Direct Damage** and apply **1-turn System Stun**).
+
+
+* **Attacker Power $\le$ Total Defense**: The defense holds.
+* All defending board units survive unscathed.
+* All discarded Hand Guards and spent Interrupt Spells go to the Grave.
+
+
+
+---
+
+## 8. Damage Zone & Guard Break Mechanics
+
+### Taking Damage
+
+Whenever direct damage is inflicted (via direct attack or Leader defeat penalty):
+
+1. **Reveal**: Uncover the top card of the **Damage Zone**.
+2. **Guard Break Check**: If the card features the **Guard Break** keyword, execute its effect instantly for **0 Mana**.
+3. **Hand Conversion**: Add the revealed card directly into your hand. Damage taken actively fuels your hand resources for subsequent guards and plays.
+
+---
+
+## 9. Comprehensive Card Classification
+
+| Card Category | Deck Source | Play Timing | Zone Placement | Functional Role & Costing |
+| --- | --- | --- | --- | --- |
+| **Leader (Ranks 0–3)** | Extra Stack | Main Phase (1/turn) | Leader Zone | Player avatar. Unlocks Ranks 0–3. Costs 0 Mana to evolve. Defines base power and persistent skills. |
+| **Units (Monsters)** | Main Deck | Main Phase | Vanguard Zone (Max 5) | **0 Mana to deploy** up to active Leader Rank. Possess Base ATK and universal Shield Values. Unit abilities cost variable Mana. |
+| **Support Cards** | Main Deck | Main Phase | Support Zone | Played directly to the Support Zone (Tamer mechanics). Remain on board continuously to grant passive or activated effects. |
+| **Items / Spells** | Main Deck | Main Phase | Resolves to Grave | One-time-use actions (removal, draw, buffs). Resolve instantly and go straight to the Grave. |
+| **Interrupts** | Main Deck | Action Prompt Windows | Resolves to Grave | Fast-speed counter actions cast from hand using unspent Mana during opponent turn triggers. |
+
+
+
+page 2
+

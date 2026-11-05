@@ -1,0 +1,983 @@
+1/19/26, 7:45 PM (Automatic) Curriculum Learning for RL 
+Search models, datasets, users... 
+Deep RL Course documentation 
+(Automatic) Curriculum Learning for RL 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+(Automatic) Curriculum Learning for RL 
+While most of the RL methods seen in this course work well in practice, there are some cases where using them alone fails. This can happen, for instance, when: 
+the task to learn is hard and requires an incremental acquisition of skills (for instance when one wants to make a bipedal agent learn to go through hard obstacles, it must first learn to stand, then walk, then maybe jump…) 
+there are variations in the environment (that affect the difficulty) and one wants its agent to be robust to them 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/curriculum-learning 1/5
+1/19/26, 7:45 PM (Automatic) Curriculum Learning for RL 
+TeachMyAgent 
+In such cases, it seems needed to propose different tasks to our RL agent and organize them such that the agent progressively acquires skills. This approach is called Curriculum Learning and usually implies a hand-designed curriculum (or set of tasks organized in a specific order). In 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/curriculum-learning 2/5
+1/19/26, 7:45 PM (Automatic) Curriculum Learning for RL 
+practice, one can, for instance, control the generation of the environment, the initial states, or use Self-Play and control the level of opponents proposed to the RL agent. 
+As designing such a curriculum is not always trivial, the field of Automatic Curriculum Learning (ACL) proposes to design approaches that learn to create such an organization of tasks in order to maximize the RL agent’s performances. Portelas et al. proposed to define ACL as: 
+“… a family of mechanisms that automatically adapt the distribution of training data by learning to adjust the selection of learning situations to the capabilities of RL agents.” 
+As an example, OpenAI used Domain Randomization (they applied random variations on the environment) to make a robot hand solve Rubik’s Cubes. 
+OpenAI - Solving Rubik’s Cube with a Robot Hand 
+Finally, you can play with the robustness of agents trained in the TeachMyAgent benchmark by controlling environment variations or even drawing the terrain   
+https://huggingface.co/learn/deep-rl-course/unitbonus3/curriculum-learning 3/5
+1/19/26, 7:45 PM (Automatic) Curriculum Learning for RL 
+https://huggingface.co/spaces/flowers-team/Interactive_DeepRL_Demo 
+Further reading 
+For more information, we recommend that you check out the following resources: 
+Overview of the field 
+Automatic Curriculum Learning For Deep RL: A Short Survey 
+Curriculum for Reinforcement Learning 
+Recent methods 
+Evolving Curricula with Regret-Based Environment Design 
+Curriculum Reinforcement Learning via Constrained Optimal Transport 
+Prioritized Level Replay 
+Author 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/curriculum-learning 4/5
+1/19/26, 7:45 PM (Automatic) Curriculum Learning for RL 
+This section was written by Clément Romac 
+<> Update on GitHub 
+Language models in RL Interesting environments to try ← → 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/curriculum-learning 5/5
+1/19/26, 7:46 PM (Optional) How to customize the environment 
+Search models, datasets, users... 
+Deep RL Course documentation 
+(Optional) How to customize the environment 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+(Optional) How to customize the environment 
+If you’d like to customize the game level, open the level scene res://scenes/level.tscn, then open the res://scenes/modules/ folder in the Godot FileSystem: 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unitbonus5/customize-the-environment 1/5
+1/19/26, 7:46 PM (Optional) How to customize the environment 
+The level contains 3 rooms made using the modules, robot, and some additional colliders which prevent the ability to complete the level by climbing on a wall in the first room and reaching the key that way. By adding the modules to the scene, you can add new rooms and items. 
+If you click on the Key node (it’s in Room3, you can also search for it), then click on Node > Signals, you will see that the collected signal is connected to both the robot and the chest. We use this to track whether the robot has collected the key, and to unlock the chest. The same system is applied for using the lever to activate the stairs, and if you add more levers/stairs/keys, you can connect them using signals. 
+https://huggingface.co/learn/deep-rl-course/unitbonus5/customize-the-environment 2/5
+1/19/26, 7:46 PM (Optional) How to customize the environment 
+If you switch to Groups, you will see that the key is a member of the resetable group. In the same group we have the raft, lever, chest, player, and can add any node that needs to be reset when the episode resets. 
+
+For this to work, every object that is in the resetable group also needs to implement the reset() method, which takes care of resetting that object. 
+Because we have multiple instances of the level scene for training, we don’t reset all resetables, but only those within the same scene. In level_manager.gd, we have a method 
+https://huggingface.co/learn/deep-rl-course/unitbonus5/customize-the-environment 3/5
+1/19/26, 7:46 PM (Optional) How to customize the environment reset_all_resetables() that takes care of this, and it is called by the robot script when resetting is needed. 
+After changing the level size, updating the level_size variable in robot_ai_controller.gd is also needed. For this, just roughly measure the longest dimension of the level, and update the variable. 
+If you change the amount of objects that need to be tracked by the AIController (levers, rafts, etc.), you will need to update the relevant code in the script, include export properties for those objects, then connect them in the inspector properties of AIController in the level scene: 
+
+After this, you may also need to update the same properties of the AIController in the demo record scene as well. 
+<> Update on GitHub 
+https://huggingface.co/learn/deep-rl-course/unitbonus5/customize-the-environment 4/5
+
+1/19/26, 7:46 PM (Optional) How to customize the environment 
+← Train our robot Conclusion → https://huggingface.co/learn/deep-rl-course/unitbonus5/customize-the-environment 5/5
+
+1/19/26, 7:41 PM (Optional) the Policy Gradient Theorem 
+Search models, datasets, users... 
+Deep RL Course documentation 
+(Optional) the Policy Gradient Theorem 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+(Optional) the Policy Gradient Theorem 
+In this optional section where we’re going to study how we differentiate the objective function that we will use to approximate the policy gradient. 
+Let’s first recap our different formulas: 
+1. The Objective function 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unit4/pg-theorem 1/4
+1/19/26, 7:41 PM (Optional) the Policy Gradient Theorem 
+
+πθ 
+2. The probability of a trajectory (given that action comes from ): 
+
+∇θJ(θ) = ∇θ ∑ P(τ ; θ)R(τ ) 
+So we have: 
+τ 
+https://huggingface.co/learn/deep-rl-course/unit4/pg-theorem 2/4
+1/19/26, 7:41 PM (Optional) the Policy Gradient Theorem 
+
+We can rewrite the gradient of the sum as the sum of the gradient: ∑ ∇ P(τ ; θ)R(τ ) 
+τ θ R(τ ) θ as is not dependent on 
+= ∑τ ∇θ(P(τ ; θ)R(τ )) = 
+
+P(τ ;θ) = 
+We then multiply every term in the sum by (which is possible since it’s = 1) 
+P(τ ;θ) 
+P(τ ;θ)θ 
+∑ ∇ P(τ ; θ)R(τ ) 
+τ P(τ ;θ) 
+P(τ ;θ)θ P(τ ; θ) P(τ ;θ) 
+
+P(τ ;θ)∇ P(τ ; θ) = 
+∇θP(τ ;θ) 
+
+We can simplify further this since . ∇θP(τ ;θ) ∑ P(τ ; θ) R(τ ) 
+
+Thus we can rewrite the sum as 
+P(τ ; θ) P(τ ;θ) = 
+∇θP(τ ;θ) 
+τ P(τ ;θ) 
+
+We can then use the derivative log trick (also called likelihood ratio trick or REINFORCE trick), a ∇xf(x) 
+∇xlogf(x) = f(x) 
+simple rule in calculus that implies that 
+∇θP(τ ;θ) ∇θlogP(τ ∣θ) 
+So given we have we transform it as 
+P(τ ;θ) 
+
+So this is our likelihood policy gradient: 
+∇θJ(θ) = ∑ P(τ ; θ)∇ logP(τ ; θ)R(τ ) τ θ 
+
+Thanks for this new formula, we can estimate the gradient using trajectory samples (we can 
+approximate the likelihood ratio policy gradient with sample-based estimate if you prefer). mθ(i) (i) τ(i) 
+
+∇θJ(θ) = ∇ logP(τ ; θ)R(τ ) m1 ∑i=1 
+where each is a sampled trajectory. ∇θlogP(τ ∣θ) 
+
+But we still have some mathematics work to do there: we need to simplify 
+
+H 
+(i) 
+(i) 
+(i)θ t(i)t(i) 
+
+We know that: 
+∇θlogP(τ(i); θ) = ∇θlog[μ(s0) ∏ P(s ∣s , a )π (a ∣s )] t=0 
+
+(i) 
+(i) 
+t+1 
+(i) 
+t 
+t 
+
+μ(s0) P(s ∣s , a ) t+1 
+Where is the initial state distribution and is the state transition dynamics 
+t 
+t 
+of the MDP. 
+
+We know that the log of a product is equal to the sum of the logs: 
+∇θlogP(τ(i); θ) = 
+
+∑Ht+1 (i) 
+(i) 
+(i) 
+∑Hθ t(i)t(i)] 
+
+∇θ [logμ(s0) + logP(s ∣s a ) + logπ (a ∣s ) 
+
+t=0 
+t 
+t 
+t=0 
+
+We also know that the gradient of the sum is equal to the sum of gradient: 
+∇θlogP(τ(i); θ) = 
+
+∑Ht+1 (i) 
+(i) 
+∑Hθ t(i)t(i) 
+(i) ∇θ logπ (a ∣s ) 
+
+∇θlogμ(s0) + ∇θ logP(s ∣s a ) + 
+
+t=0 
+t 
+t 
+t=0 
+
+https://huggingface.co/learn/deep-rl-course/unit4/pg-theorem 3/4
+1/19/26, 7:41 PM (Optional) the Policy Gradient Theorem θ 
+Since neither initial state distribution or state transition dynamics of the MDP are dependent of , the derivate of both terms are 0. So we can remove them: 
+
+H 
+(i) 
+(i) 
+(i)0 ∇θμ(s0) = 0 ∇θlogP(τ(i); θ) = 
+
+∇θ ∑t=0logP(s ∣s a ) = 
+Since: and 
+t+1 
+t 
+t 
+Hθ t(i)t(i) 
+∇θ ∑ logπ (a ∣s ) t=0 
+
+We can rewrite the gradient of the sum as the sum of gradients: Hθ θ t(i)t(i) 
+∑ ∇ logπ (a ∣s ) 
+t=0 
+∇θlogP(τ(i); θ) = 
+So, the final formula for estimating the policy gradient is: Hθ θ t(i)t(i) (i) 
+m ∑t=0 
+∇ log π (a ∣s )R(τ ) m1 ∑i=1 <> Update on GitHub 
+∇θJ(θ) = g^ = 
+
+Diving deeper into policy-gradient Glossary ← → 
+https://huggingface.co/learn/deep-rl-course/unit4/pg-theorem 4/4
+1/19/26, 7:42 PM (Optional) What is Curiosity in Deep Reinforcement Learning? Search models, datasets, users... 
+Deep RL Course documentation 
+(Optional) What is Curiosity in Deep Reinforcement Learning? 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+(Optional) What is Curiosity in Deep Reinforcement Learning? 
+This is an (optional) introduction to Curiosity. If you want to learn more, you can read two additional articles where we dive into the mathematical details: 
+Curiosity-Driven Learning through Next State Prediction 
+Random Network Distillation: a new take on Curiosity-Driven Learning 
+Two Major Problems in Modern RL 
+To understand what Curiosity is, we first need to understand the two major problems with RL: 
+First, the sparse rewards problem: that is, most rewards do not contain information, and hence are set to zero. 
+Remember that RL is based on the reward hypothesis, which is the idea that each goal can be described as the maximization of the rewards. Therefore, rewards act as feedback for RL agents; if they don’t receive any, their knowledge of which action is appropriate (or not) cannot change. 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unit5/curiosity 1/5
+
+1/19/26, 7:42 PM (Optional) What is Curiosity in Deep Reinforcement Learning? Source: Thanks to the reward, our agent knows that this action at that state was good 
+For instance, in Vizdoom, a set of environments based on the game Doom “DoomMyWayHome,” your agent is only rewarded if it finds the vest. However, the vest is far away from your starting point, so most of your rewards will be zero. Therefore, if our agent does not receive useful feedback (dense rewards), it will take much longer to learn an optimal policy, and it can spend time turning around without finding the goal. 
+https://huggingface.co/learn/deep-rl-course/unit5/curiosity 2/5
+
+1/19/26, 7:42 PM (Optional) What is Curiosity in Deep Reinforcement Learning? The second big problem is that the extrinsic reward function is handmade; in each environment, a human has to implement a reward function. But how we can scale that in big and complex environments? 
+So what is Curiosity? 
+A solution to these problems is to develop a reward function intrinsic to the agent, i.e., generated by the agent itself. The agent will act as a self-learner since it will be the student and its own feedback master. 
+This intrinsic reward mechanism is known as Curiosity because this reward pushes the agent to explore states that are novel/unfamiliar. To achieve that, our agent will receive a high reward when exploring new trajectories. 
+This reward is inspired by how humans act. We naturally have an intrinsic desire to explore environments and discover new things. 
+There are different ways to calculate this intrinsic reward. The classical approach (Curiosity through next-state prediction) is to calculate Curiosity as the error of our agent in predicting the next state, given the current state and action taken. 
+https://huggingface.co/learn/deep-rl-course/unit5/curiosity 3/5
+1/19/26, 7:42 PM (Optional) What is Curiosity in Deep Reinforcement Learning? 
+Because the idea of Curiosity is to encourage our agent to perform actions that reduce the uncertainty in the agent’s ability to predict the consequences of its actions (uncertainty will be higher in areas where the agent has spent less time or in areas with complex dynamics). 
+If the agent spends a lot of time on these states, it will be good at predicting the next state (low Curiosity). On the other hand, if it’s in a new, unexplored state, it will be hard to predict the following state (high Curiosity). 
+https://huggingface.co/learn/deep-rl-course/unit5/curiosity 4/5
+1/19/26, 7:42 PM (Optional) What is Curiosity in Deep Reinforcement Learning? 
+Using Curiosity will push our agent to favor transitions with high prediction error (which will be higher in areas where the agent has spent less time, or in areas with complex dynamics) and consequently better explore our environment. 
+There’s also other curiosity calculation methods. ML-Agents uses a more advanced one called Curiosity through random network distillation. This is out of the scope of the tutorial but if you’re interested I wrote an article explaining it in detail. 
+<> Update on GitHub 
+The Pyramids environment Hands-on ← → 
+https://huggingface.co/learn/deep-rl-course/unit5/curiosity 5/5
+1/19/26, 7:39 PM A Q-Learning example 
+Search models, datasets, users... 
+Deep RL Course documentation 
+A Q-Learning example 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+A Q-Learning example 
+To better understand Q-Learning, let’s take a simple example: 
+
+You’re a mouse in this tiny maze. You always start at the same starting point. 
+The goal is to eat the big pile of cheese at the bottom right-hand corner and avoid the poison. After all, who doesn’t like cheese? 
+The episode ends if we eat the poison, eat the big pile of cheese, or if we take more than five Ask HuggingChat 
+steps. 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 1/8
+1/19/26, 7:39 PM A Q-Learning example 
+The learning rate is 0.1 
+The discount rate (gamma) is 0.99 
+The reward function goes like this: 
++0: Going to a state with no cheese in it. 
++1: Going to a state with a small cheese in it. 
++10: Going to the state with the big pile of cheese. 
+-10: Going to the state with the poison and thus dying. 
++0 If we take more than five steps. 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 2/8
+1/19/26, 7:39 PM A Q-Learning example 
+
+To train our agent to have an optimal policy (so a policy that goes right, right, down), we will use the Q-Learning algorithm. 
+Step 1: Initialize the Q-table 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 3/8
+1/19/26, 7:39 PM A Q-Learning example 
+So, for now, our Q-table is useless; we need to train our Q-function using the Q-Learning algorithm. 
+Let’s do it for 2 training timesteps: 
+Training timestep 1: 
+Step 2: Choose an action using the Epsilon Greedy Strategy 
+Because epsilon is big (= 1.0), I take a random action. In this case, I go right. 
+
+Step 3: Perform action At, get Rt+1 and St+1 
+Rt+1 = 1 
+By going right, I get a small cheese, so and I’m in a new state. 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 4/8
+
+1/19/26, 7:39 PM A Q-Learning example 
+
+Step 4: Update Q(St, At) 
+Q(St, At) 
+We can now update using our formula. 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 5/8
+
+1/19/26, 7:39 PM A Q-Learning example 
+Training timestep 2: 
+Step 2: Choose an action using the Epsilon Greedy Strategy 
+I take a random action again, since epsilon=0.99 is big. (Notice we decay epsilon a little bit because, as the training progress, we want less and less exploration). 
+I took the action ‘down’. This is not a good action since it leads me to the poison. 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 6/8
+
+1/19/26, 7:39 PM A Q-Learning example 
+
+Step 3: Perform action At, get Rt+1 and St+1 
+Rt+1 = −10 
+Because I ate poison, I get , and I die. 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 7/8
+
+1/19/26, 7:39 PM A Q-Learning example 
+Step 4: Update Q(St, At) 
+
+Because we’re dead, we start a new episode. But what we see here is that, with two explorations steps, my agent became smarter. 
+As we continue exploring and exploiting the environment and updating Q-values using the TD target, the Q-table will give us a better and better approximation. At the end of the training, we’ll get an estimate of the optimal Q-function. 
+<> Update on GitHub 
+Introducing Q-Learning Q-Learning Recap ← → 
+https://huggingface.co/learn/deep-rl-course/unit2/q-learning-example 8/8
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    Search models, datasets, users... 
+Deep RL Course documentation 
+Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym   
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Advantage Actor Critic (A2C) using Robotics Simulations with 
+AAsskk aa qquueessttiioonn OOppeenn iinn CCoollaabb 
+Panda-Gym   
+Now that you’ve studied the theory behind Advantage Actor Critic (A2C), you’re ready to train your A2C agent using Stable-Baselines3 in a robotic environment. And train a: 
+A robotic arm  to move to the correct position. 
+We’re going to use 
+panda-gym 
+To validate this hands-on for the certification process, you need to push your two trained models to the Hub and get the following results: 
+PandaReachDense-v3 get a result of >= -3.5. 
+To find your result, go to the leaderboard and find your model, the result = mean_reward - std of reward 
+For more information about the certification process, check this section   
+https://huggingface.co/deep-rl-course/en/unit0/introduction#certification-process Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 1/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    To start the hands-on click on Open In Colab button  : 
+OOppeenn iinn CCoollaabb 
+Unit 6: Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym   
+  Environments: 
+Panda-Gym 
+  RL-Library: 
+Stable-Baselines3 
+We’re constantly trying to improve our tutorials, so if you find some issues in this notebook, please open an issue on the GitHub Repo. 
+Objectives of this notebook   
+At the end of the notebook, you will: 
+Be able to use Panda-Gym, the environment library. 
+Be able to train robots using A2C. 
+Understand why we need to normalize the input. 
+Be able to push your trained agent and the code to the Hub with a nice video replay and an evaluation score  . 
+Prerequisites️ 
+Before diving into the notebook, you need to: 
+    Study Actor-Critic methods by reading Unit 6   
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 2/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    Let’s train our first robots   
+Set the GPU   
+To accelerate the agent’s training, we’ll use a GPU. To do that, go to Runtime > Change Runtime type 
+Hardware Accelerator > GPU 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 3/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    
+Create a virtual display   
+During the notebook, we’ll need to generate a replay video. To do so, with colab, we need to have a virtual screen to be able to render the environment (and thus record the frames). 
+The following cell will install the librairies and create and run a virtual screen   
+%%capture 
+!apt install python-opengl 
+!apt install ffmpeg 
+!apt install xvfb 
+!pip3 install pyvirtualdisplay 
+# Virtual display 
+from pyvirtualdisplay import Display 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 4/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    virtual_display = Display(visible=0, size=(1400, 900)) 
+virtual_display.start() 
+Install dependencies   
+We’ll install multiple ones: 
+gymnasium 
+panda-gym: Contains the robotics arm environments. 
+stable-baselines3: The SB3 deep reinforcement learning library. 
+huggingface_sb3: Additional code for Stable-baselines3 to load and upload models from the Hugging Face  Hub. 
+huggingface_hub: Library allowing anyone to work with the Hub repositories. 
+!pip install stable-baselines3[extra] 
+!pip install gymnasium 
+!pip install huggingface_sb3 
+!pip install huggingface_hub 
+!pip install panda_gym 
+Import the packages   
+import os 
+import gymnasium as gym 
+import panda_gym 
+from huggingface_sb3 import load_from_hub, package_to_hub 
+from stable_baselines3 import A2C 
+from stable_baselines3.common.evaluation import evaluate_policy 
+from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize 
+from stable_baselines3.common.env_util import make_vec_env 
+from huggingface_hub import notebook_login 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 5/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    PandaReachDense-v3   
+The agent we’re going to train is a robotic arm that needs to do controls (moving the arm and using the end-effector). 
+In robotics, the end-effector is the device at the end of a robotic arm designed to interact with the environment. 
+In PandaReach, the robot must place its end-effector at a target position (green ball). 
+We’re going to use the dense version of this environment. It means we’ll get a dense reward function that will provide a reward at each timestep (the closer the agent is to completing the task, the higher the reward). Contrary to a sparse reward function where the environment return a reward if and only if the task is completed. 
+Also, we’re going to use the End-effector displacement control, it means the action corresponds to the displacement of the end-effector. We don’t control the individual motion of each joint (joint control). 
+This way the training will be easier. 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 6/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    Create the environment 
+The environment   
+In PandaReachDense-v3 the robotic arm must place its end-effector at a target position (green ball). 
+env_id = "PandaReachDense-v3" 
+# Create the env 
+env = gym.make(env_id) 
+# Get the state space and action space 
+s_size = env.observation_space.shape 
+a_size = env.action_space 
+print("_____OBSERVATION SPACE_____ \n") 
+print("The State Space is: ", s_size) 
+print("Sample observation", env.observation_space.sample()) # Get a random observation 
+The observation space is a dictionary with 3 different elements: 
+achieved_goal: (x,y,z) position of the goal. 
+desired_goal: (x,y,z) distance between the goal position and the current object position. observation: position (x,y,z) and velocity of the end-effector (vx, vy, vz). 
+Given it’s a dictionary as observation, we will need to use a MultiInputPolicy policy instead of MlpPolicy. 
+print("\n _____ACTION SPACE_____ \n") 
+print("The Action Space is: ", a_size) 
+print("Action Space Sample", env.action_space.sample()) # Take a random action 
+The action space is a vector with 3 values: 
+Control x, y, z movement 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 7/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    Normalize observation and rewards 
+A good practice in reinforcement learning is to normalize input features. 
+For that purpose, there is a wrapper that will compute a running average and standard deviation of input features. 
+We also normalize rewards with this same wrapper by adding norm_reward = True You should check the documentation to fill this cell 
+env = make_vec_env(env_id, n_envs=4) 
+# Adding this wrapper to normalize the observation and the reward 
+env = # TODO: Add the wrapper 
+Solution 
+env = make_vec_env(env_id, n_envs=4) 
+env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10.) 
+Create the A2C Model   
+For more information about A2C implementation with StableBaselines3 check: https://stable baselines3.readthedocs.io/en/master/modules/a2c.html#notes 
+To find the best parameters I checked the official trained agents by Stable-Baselines3 team. model = # Create the A2C model and try to find the best parameters 
+Solution 
+model = A2C(policy = "MultiInputPolicy", 
+env = env, 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 8/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    verbose=1) 
+Train the A2C agent   
+Let’s train our agent for 1,000,000 timesteps, don’t forget to use GPU on Colab. It will take approximately ~25-40min 
+model.learn(1_000_000) 
+# Save the model and VecNormalize statistics when saving the agent 
+model.save("a2c-PandaReachDense-v3") 
+env.save("vec_normalize.pkl") 
+Evaluate the agent   
+Now that’s our agent is trained, we need to check its performance. 
+Stable-Baselines3 provides a method to do that: evaluate_policy 
+from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize 
+# Load the saved statistics 
+eval_env = DummyVecEnv([lambda: gym.make("PandaReachDense-v3")]) 
+eval_env = VecNormalize.load("vec_normalize.pkl", eval_env) 
+# We need to override the render_mode 
+eval_env.render_mode = "rgb_array" 
+# do not update them at test time 
+eval_env.training = False 
+# reward normalization is not needed at test time 
+eval_env.norm_reward = False 
+# Load the agent 
+model = A2C.load("a2c-PandaReachDense-v3") 
+mean_reward, std_reward = evaluate_policy(model, eval_env) 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 9/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    print(f"Mean reward = {mean_reward:.2f} +/- {std_reward:.2f}") 
+Publish your trained model on the Hub   
+Now that we saw we got good results after the training, we can publish our trained model on the Hub with one line of code. 
+  The libraries documentation   
+https://github.com/huggingface/huggingface_sb3/tree/main#hugging-face—x-stable-baselines3- v20 
+By using package_to_hub, as we already mentionned in the former units, you evaluate, record a replay, generate a model card of your agent and push it to the hub. 
+This way: 
+You can showcase our work   
+You can visualize your agent playing   
+You can share with the community an agent that others can use   
+You can access a leaderboard  to see how well your agent is performing compared to your classmates  https://huggingface.co/spaces/huggingface-projects/Deep 
+Reinforcement-Learning-Leaderboard 
+To be able to share your model with the community there are three more steps to follow: 1️⃣(If it’s not already done) create an account to HF➡https://huggingface.co/join 2️⃣Sign in and then, you need to store your authentication token from the Hugging Face website. Create a new token (https://huggingface.co/settings/tokens) with write role 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 10/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    
+Copy the token 
+Run the cell below and paste the token 
+notebook_login() 
+!git config --global credential.helper store 
+If you don’t want to use a Google Colab or a Jupyter Notebook, you need to use this command instead: huggingface-cli login 
+3️⃣We’re now ready to push our trained agent to the  Hub  using package_to_hub() function. For this environment, running this cell can take approximately 10min 
+from huggingface_sb3 import package_to_hub 
+package_to_hub( 
+model=model, 
+model_name=f"a2c-{env_id}", 
+model_architecture="A2C", 
+env_id=env_id, 
+eval_env=eval_env, 
+repo_id=f"ThomasSimonini/a2c-{env_id}", # Change the username 
+commit_message="Initial commit", 
+) 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 11/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    Some additional challenges   
+The best way to learn is to try things by your own! Why not trying PandaPickAndPlace-v3? 
+If you want to try more advanced tasks for panda-gym, you need to check what was done using TQC or SAC (a more sample-efficient algorithm suited for robotics tasks). In real robotics, you’ll use a more sample-efficient algorithm for a simple reason: contrary to a simulation if you move your robotic arm too much, you have a risk of breaking it. 
+PandaPickAndPlace-v1 (this model uses the v1 version of the environment): 
+https://huggingface.co/sb3/tqc-PandaPickAndPlace-v1 
+And don’t hesitate to check panda-gym documentation here: https://panda 
+gym.readthedocs.io/en/latest/usage/train_with_sb3.html 
+We provide you the steps to train another agent (optional): 
+1. Define the environment called “PandaPickAndPlace-v3” 
+2. Make a vectorized environment 
+3. Add a wrapper to normalize the observations and rewards. Check the documentation 4. Create the A2C Model (don’t forget verbose=1 to print the training logs). 
+5. Train it for 1M Timesteps 
+6. Save the model and VecNormalize statistics when saving the agent 
+7. Evaluate your agent 
+8. Publish your trained model on the Hub  with package_to_hub 
+Solution (optional) 
+# 1 - 2 
+env_id = "PandaPickAndPlace-v3" 
+env = make_vec_env(env_id, n_envs=4) 
+# 3 
+env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10.) 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 12/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    
+# 4 
+model = A2C(policy = "MultiInputPolicy", 
+env = env, 
+verbose=1) 
+# 5 
+model.learn(1_000_000) 
+# 6 
+model_name = "a2c-PandaPickAndPlace-v3"; 
+model.save(model_name) 
+env.save("vec_normalize.pkl") 
+# 7 
+from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize 
+# Load the saved statistics 
+eval_env = DummyVecEnv([lambda: gym.make("PandaPickAndPlace-v3")]) 
+eval_env = VecNormalize.load("vec_normalize.pkl", eval_env) 
+# do not update them at test time 
+eval_env.training = False 
+# reward normalization is not needed at test time 
+eval_env.norm_reward = False 
+# Load the agent 
+model = A2C.load(model_name) 
+mean_reward, std_reward = evaluate_policy(model, eval_env) 
+print(f"Mean reward = {mean_reward:.2f} +/- {std_reward:.2f}") 
+# 8 
+package_to_hub( 
+model=model, 
+model_name=f"a2c-{env_id}", 
+model_architecture="A2C", 
+env_id=env_id, 
+eval_env=eval_env, 
+repo_id=f"ThomasSimonini/a2c-{env_id}", # TODO: Change the username 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 13/14
+1/19/26, 7:43 PM Advantage Actor Critic (A2C) using Robotics Simulations with Panda-Gym    commit_message="Initial commit", 
+) 
+See you on Unit 7!    
+Keep learning, stay awesome    
+<> Update on GitHub 
+Advantage Actor Critic (A2C) Quiz ← → 
+https://huggingface.co/learn/deep-rl-course/unit6/hands-on 14/14
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+Search models, datasets, users... 
+Deep RL Course documentation 
+Advantage Actor-Critic (A2C) 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Advantage Actor-Critic (A2C) 
+Reducing variance with Actor-Critic methods 
+The solution to reducing the variance of the Reinforce algorithm and training our agent faster and better is to use a combination of Policy-Based and Value-Based methods: the Actor-Critic method. 
+To understand the Actor-Critic, imagine you’re playing a video game. You can play with a friend that will provide you with some feedback. You’re the Actor and your friend is the Critic. 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 1/7
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+
+You don’t know how to play at the beginning, so you try some actions randomly. The Critic observes your action and provides feedback. 
+Learning from this feedback, you’ll update your policy and be better at playing that game. 
+On the other hand, your friend (Critic) will also update their way to provide feedback so it can be better next time. 
+This is the idea behind Actor-Critic. We learn two function approximations: 
+πθ(s) 
+A policy that controls how our agent acts: 
+A value function to assist the policy update by measuring how good the action taken is: q^w(s, a) 
+The Actor-Critic Process 
+Now that we have seen the Actor Critic’s big picture, let’s dive deeper to understand how the Actor and Critic improve together during the training. 
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 2/7
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+As we saw, with Actor-Critic methods, there are two function approximations (two neural networks): 
+πθ(s) 
+Actor, a policy function parameterized by theta: 
+q^w(s, a) 
+Critic, a value function parameterized by w: 
+Let’s see the training process to understand how the Actor and Critic are optimized: 
+St 
+At each timestep, t, we get the current state from the environment and pass it as input through our Actor and Critic. 
+At 
+Our Policy takes the state and outputs an action . 
+
+St At 
+The Critic takes that action also as input and, using and , computes the value of taking that action at that state: the Q-value. 
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 3/7
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+
+At St+1 Rt+1 The action performed in the environment outputs a new state and a reward . 
+The Actor updates its policy parameters using the Q value. 
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 4/7
+
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+
+At+1 
+Thanks to its updated parameters, the Actor produces the next action to take at given the St+1 
+new state . 
+The Critic then updates its value parameters. 
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 5/7
+
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+Adding Advantage in Actor-Critic (A2C) 
+We can stabilize learning further by using the Advantage function as Critic instead of the Action value function. 
+The idea is that the Advantage function calculates the relative advantage of an action compared to the others possible at a state: how taking that action at a state is better compared to the average value of the state. It’s subtracting the mean value of the state from the state action pair: 
+
+In other words, this function calculates the extra reward we get if we take this action at that state compared to the mean reward we get at that state. 
+The extra reward is what’s beyond the expected value of that state. 
+If A(s,a) > 0: our gradient is pushed in that direction. 
+If A(s,a) < 0 (our action does worse than the average value of that state), our gradient is pushed in the opposite direction. 
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 6/7
+1/19/26, 7:43 PM Advantage Actor-Critic (A2C) 
+The problem with implementing this advantage function is that it requires two value functions — Q(s, a) V (s) 
+and . Fortunately, we can use the TD error as a good estimator of the advantage function. 
+<> Update on GitHub 
+The Problem of Variance in 
+Advantage Actor Critic (A2C) using Robotics Simulations with 
+← → Reinforce 
+Panda-Gym   
+https://huggingface.co/learn/deep-rl-course/unit6/advantage-actor-critic 7/7
+
+1/19/26, 7:43 PM An introduction to Multi-Agents Reinforcement Learning (MARL) Search models, datasets, users... 
+Deep RL Course documentation 
+An introduction to Multi-Agents Reinforcement Learning (MARL) 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+An introduction to Multi-Agents Reinforcement Learning (MARL) 
+From single agent to multiple agents 
+In the first unit, we learned to train agents in a single-agent system. When our agent was alone in its environment: it was not cooperating or collaborating with other agents. 
+Ask HuggingChat https://huggingface.co/learn/deep-rl-course/unit7/introduction-to-marl 1/5
+
+1/19/26, 7:43 PM An introduction to Multi-Agents Reinforcement Learning (MARL) A patchwork of all the environments you've trained your agents on since the beginning of the course 
+When we do multi-agents reinforcement learning (MARL), we are in a situation where we have multiple agents that share and interact in a common environment. 
+For instance, you can think of a warehouse where multiple robots need to navigate to load and unload packages. 
+
+[Image by upklyak](https://www.freepik.com/free-vector/robots-warehouse-interior-automated machines_32117680.htm#query=warehouse robot&position=17&from_view=keyword) on Freepik 
+Or a road with several autonomous vehicles. 
+https://huggingface.co/learn/deep-rl-course/unit7/introduction-to-marl 2/5
+1/19/26, 7:43 PM An introduction to Multi-Agents Reinforcement Learning (MARL) 
+[Image by jcomp](https://www.freepik.com/free-vector/autonomous-smart-car-automatic-wireless-sensor driving-road-around-car-autonomous-smart-car-goes-scans-roads-observe-distance-automatic-braking system_26413332.htm#query=self driving cars highway&position=34&from_view=search&track=ais) on Freepik 
+In these examples, we have multiple agents interacting in the environment and with the other agents. This implies defining a multi-agents system. But first, let’s understand the different types of multi-agent environments. 
+Different types of multi-agent environments 
+https://huggingface.co/learn/deep-rl-course/unit7/introduction-to-marl 3/5
+1/19/26, 7:43 PM An introduction to Multi-Agents Reinforcement Learning (MARL) Given that, in a multi-agent system, agents interact with other agents, we can have different types of environments: 
+Cooperative environments: where your agents need to maximize the common benefits. 
+For instance, in a warehouse, robots must collaborate to load and unload the packages efficiently (as fast as possible). 
+Competitive/Adversarial environments: in this case, your agent wants to maximize its benefits by minimizing the opponent’s. 
+For example, in a game of tennis, each agent wants to beat the other agent. 
+
+Mixed of both adversarial and cooperative: like in our SoccerTwos environment, two agents are part of a team (blue or purple): they need to cooperate with each other and beat the opponent team. 
+https://huggingface.co/learn/deep-rl-course/unit7/introduction-to-marl 4/5
+1/19/26, 7:43 PM An introduction to Multi-Agents Reinforcement Learning (MARL) This environment was made by the Unity MLAgents Team 
+So now we might wonder: how can we design these multi-agent systems? Said differently, how can we train agents in a multi-agent setting ? 
+<> Update on GitHub 
+Introduction Designing Multi-Agents systems ← → 
+https://huggingface.co/learn/deep-rl-course/unit7/introduction-to-marl 5/5
+1/19/26, 7:46 PM An Introduction to Unreal Learning Agents 
+Search models, datasets, users... 
+Deep RL Course documentation 
+An Introduction to Unreal Learning Agents 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+An Introduction to Unreal Learning Agents 
+Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal. 
+It’s an exciting new plugin where you can create unique environments using Unreal Engine and train your agents. 
+Let’s see how you can get started and train a car to drive in an Unreal Engine Environment. 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/learning-agents 1/3
+1/19/26, 7:46 PM An Introduction to Unreal Learning Agents 
+
+Source: [Learning Agents Driving Car Tutorial] 
+(https://dev.epicgames.com/community/learning/tutorials/qj2O/unreal-engine-learning-to-drive) 
+Case 1: I don’t know anything about Unreal Engine and Beginners in Unreal Engine 
+If you’re new to Unreal Engine, don’t be scared! We listed two courses you need to follow to be able to use Learning Agents: 
+1. Master the Basics: Begin by watching this course your first hour in Unreal Engine 5. This comprehensive course will lay down the foundational knowledge you need to use Unreal. 
+2. Dive into Blueprints: Explore the world of Blueprints, the visual scripting component of Unreal Engine. This video course will familiarize you with this essential tool. 
+Armed with the basics, you’re now prepared to play with Learning Agents: 
+3. Get the Big Picture of Learning Agents by reading this informative overview. 4. Teach a Car to Drive using Reinforcement Learning in Learning Agents. 
+5. Check Imitation Learning with the Unreal Engine 5.3 Learning Agents Plugin 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/learning-agents 2/3
+1/19/26, 7:46 PM An Introduction to Unreal Learning Agents 
+Case 2: I’m familiar with Unreal 
+For those already acquainted with Unreal Engine, you can jump straight into Learning Agents with these two tutorials: 
+1. Get the Big Picture of Learning Agents by reading this informative overview. 
+2. Teach a Car to Drive using Reinforcement Learning in Learning Agents. . 
+3. Check Imitation Learning with the Unreal Engine 5.3 Learning Agents Plugin 
+<> Update on GitHub 
+Interesting environments to try An Introduction to Godot RL ← → 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/learning-agents 3/3
+1/19/26, 7:42 PM Bonus: Learn to create your own environments with Unity and MLAgents Search models, datasets, users... 
+Deep RL Course documentation 
+Bonus: Learn to create your own environments with Unity and MLAgents 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Bonus: Learn to create your own environments with Unity and MLAgents 
+You can create your own reinforcement learning environments with Unity and MLAgents. Using a game engine such as Unity can be intimidating at first, but here are the steps you can take to learn smoothly. 
+Step 1: Know how to use Unity 
+The best way to learn Unity is to do “Create with Code” course: it’s a series of videos for beginners where you will create 5 small games with Unity. 
+Step 2: Create the simplest environment with this tutorial 
+Then, when you know how to use Unity, you can create your first basic RL environment using this tutorial. 
+Step 3: Iterate and create nice environments 
+Now that you’ve created your first simple environment you can iterate to more complex ones Ask HuggingChat 
+using the MLAgents documentation (especially Designing Agents and Agent part) 
+https://huggingface.co/learn/deep-rl-course/unit5/bonus 1/2
+1/19/26, 7:42 PM Bonus: Learn to create your own environments with Unity and MLAgents In addition, you can take this free course “Create a hummingbird environment” by Adam Kelly 
+Have fun! And if you create custom environments don’t hesitate to share them to the #rl-i-made this discord channel. 
+<> Update on GitHub 
+Hands-on Quiz ← → 
+https://huggingface.co/learn/deep-rl-course/unit5/bonus 2/2
+1/19/26, 7:46 PM Brief introduction to RL documentation 
+Search models, datasets, users... 
+Deep RL Course documentation 
+Brief introduction to RL documentation 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Brief introduction to RL documentation 
+In this advanced topic, we address the question: how should we monitor and keep track of powerful reinforcement learning agents that we are training in the real world and interfacing with humans? 
+As machine learning systems have increasingly impacted modern life, the call for the documentation of these systems has grown. 
+Such documentation can cover aspects such as the training data used — where it is stored, when it was collected, who was involved, etc. — or the model optimization framework — the architecture, evaluation metrics, relevant papers, etc. — and more. 
+Today, model cards and datasheets are becoming increasingly available. For example, on the Hub (see documentation here). 
+If you click on a popular model on the Hub, you can learn about its creation process. 
+These model and data specific logs are designed to be completed when the model or dataset are created, leaving them to go un-updated when these models are built into evolving systems in the future. 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/rl-documentation 1/3
+
+1/19/26, 7:46 PM Brief introduction to RL documentation 
+Motivating Reward Reports 
+Reinforcement learning systems are fundamentally designed to optimize based on measurements of reward and time. While the notion of a reward function can be mapped nicely to many well understood fields of supervised learning (via a loss function), understanding of how machine learning systems evolve over time is limited. 
+To that end, the authors introduce Reward Reports for Reinforcement Learning (the pithy naming is designed to mirror the popular papers Model Cards for Model Reporting and Datasheets for Datasets). The goal is to propose a type of documentation focused on the human factors of reward and time-varying feedback systems. 
+Building on the documentation frameworks for model cards and datasheets proposed by Mitchell et al. and Gebru et al., we argue the need for Reward Reports for AI systems. 
+Reward Reports are living documents for proposed RL deployments that demarcate design choices. 
+However, many questions remain about the applicability of this framework to different RL applications, roadblocks to system interpretability, and the resonances between deployed supervised machine learning systems and the sequential decision-making utilized in RL. 
+At a minimum, Reward Reports are an opportunity for RL practitioners to deliberate on these questions and begin the work of deciding how to resolve them in practice. 
+Capturing temporal behavior with documentation 
+The core piece specific to documentation designed for RL and feedback-driven ML systems is a change-log. The change-log updates information from the designer (changed training parameters, data, etc.) along with noticed changes from the user (harmful behavior, unexpected responses, etc.). 
+The change log is accompanied by update triggers that encourage monitoring these effects. https://huggingface.co/learn/deep-rl-course/unitbonus3/rl-documentation 2/3
+
+1/19/26, 7:46 PM Brief introduction to RL documentation 
+Contributing 
+Some of the most impactful RL-driven systems are multi-stakeholder in nature and behind the closed doors of private corporations. These corporations are largely without regulation, so the burden of documentation falls on the public. 
+If you are interested in contributing, we are building Reward Reports for popular machine learning systems on a public record on GitHub.For further reading, you can visit the Reward Reports paper or look an example report. 
+Author 
+This section was written by Nathan Lambert 
+<> Update on GitHub 
+Students projects Introduction ← → 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/rl-documentation 3/3
+1/19/26, 7:37 PM Conclusion 
+Search models, datasets, users... 
+Deep RL Course documentation 
+Conclusion 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Conclusion 
+Congrats on finishing this unit! That was the biggest one, and there was a lot of information. And congrats on finishing the tutorial. You’ve just trained your first Deep RL agents and shared them with the community!    
+It’s normal if you still feel confused by some of these elements. This was the same for me and for all people who studied RL. 
+Take time to really grasp the material before continuing. It’s important to master these elements and have a solid foundation before entering the fun part. 
+Naturally, during the course, we’re going to use and explain these terms again, but it’s better to understand them before diving into the next units. 
+In the next (bonus) unit, we’re going to reinforce what we just learned by training Huggy the Dog to fetch a stick. 
+You will then be able to play with him  . 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unit1/conclusion 1/2
+1/19/26, 7:37 PM Conclusion 
+
+Finally, we would love to hear what you think of the course and how we can improve it. If you have some feedback then, please  fill this form 
+Keep Learning, stay awesome   
+<> Update on GitHub 
+Quiz Additional Readings ← → 
+https://huggingface.co/learn/deep-rl-course/unit1/conclusion 2/2
+1/19/26, 7:45 PM Decision Transformers 
+Search models, datasets, users... 
+Deep RL Course documentation 
+Decision Transformers 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Decision Transformers 
+The Decision Transformer model was introduced by “Decision Transformer: Reinforcement Learning via Sequence Modeling” by Chen L. et al. It abstracts Reinforcement Learning as a conditional-sequence modeling problem. 
+The main idea is that instead of training a policy using RL methods, such as fitting a value function, that will tell us what action to take to maximize the return (cumulative reward), we use a sequence modeling algorithm (Transformer) that, given a desired return, past states, and actions, will generate future actions to achieve this desired return. It’s an autoregressive model conditioned on the desired return, past states, and actions to generate future actions that achieve the desired return. 
+This is a complete shift in the Reinforcement Learning paradigm since we use generative trajectory modeling (modeling the joint distribution of the sequence of states, actions, and rewards) to replace conventional RL algorithms. This means that in Decision Transformers, we don’t maximize the return but rather generate a series of future actions that achieve the desired return. 
+The  Transformers team integrated the Decision Transformer, an Offline Reinforcement Learning method, into the library as well as the Hugging Face Hub. 
+Ask HuggingChat 
+Learn about Decision Transformers 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/decision-transformers 1/2
+1/19/26, 7:45 PM Decision Transformers 
+To learn more about Decision Transformers, you should read the blogpost we wrote about it Introducing Decision Transformers on Hugging Face 
+Train your first Decision Transformers 
+Now that you understand how Decision Transformers work thanks to Introducing Decision Transformers on Hugging Face, you’re ready to learn to train your first Offline Decision Transformer model from scratch to make a half-cheetah run. 
+Start the tutorial here  https://huggingface.co/blog/train-decision-transformers 
+Further reading 
+For more information, we recommend that you check out the following resources: 
+Decision Transformer: Reinforcement Learning via Sequence Modeling 
+Online Decision Transformer 
+Author 
+This section was written by Edward Beeching 
+<> Update on GitHub 
+Reinforcement Learning from Human Feedback Language models in RL ← → 
+https://huggingface.co/learn/deep-rl-course/unitbonus3/decision-transformers 2/2
+1/19/26, 7:43 PM Designing Multi-Agents systems 
+Search models, datasets, users... 
+Deep RL Course documentation 
+Designing Multi-Agents systems 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Designing Multi-Agents systems 
+For this section, you’re going to watch this excellent introduction to multi-agents made by Brian Douglas . 
+Introduction to Multi-Agent Reinforcement Learning 
+In this video, Brian talked about how to design multi-agent systems. He specifically took a multi agents system of vacuum cleaners and asked: how can can cooperate with each other? 
+Ask HuggingChat 
+We have two solutions to design this multi-agent reinforcement learning system (MARL). https://huggingface.co/learn/deep-rl-course/unit7/multi-agent-setting 1/4
+1/19/26, 7:43 PM Designing Multi-Agents systems 
+Decentralized system 
+Source: Introduction to Multi-Agent Reinforcement Learning 
+In decentralized learning, each agent is trained independently from the others. In the example given, each vacuum learns to clean as many places as it can without caring about what other vacuums (agents) are doing. 
+The benefit is that since no information is shared between agents, these vacuums can be designed and trained like we train single agents. 
+The idea here is that our training agent will consider other agents as part of the environment dynamics. Not as agents. 
+However, the big drawback of this technique is that it will make the environment non-stationary since the underlying Markov decision process changes over time as other agents are also interacting in the environment. And this is problematic for many Reinforcement Learning algorithms that can’t reach a global optimum with a non-stationary environment. 
+Centralized approach 
+https://huggingface.co/learn/deep-rl-course/unit7/multi-agent-setting 2/4
+1/19/26, 7:43 PM Designing Multi-Agents systems 
+Source: Introduction to Multi-Agent Reinforcement Learning 
+In this architecture, we have a high-level process that collects agents’ experiences: the experience buffer. And we’ll use these experiences to learn a common policy. 
+For instance, in the vacuum cleaner example, the observation will be: 
+The coverage map of the vacuums. 
+The position of all the vacuums. 
+We use that collective experience to train a policy that will move all three robots in the most beneficial way as a whole. So each robot is learning from their common experience. We now have a stationary environment since all the agents are treated as a larger entity, and they know the change of other agents’ policies (since it’s the same as theirs). 
+If we recap: 
+In a decentralized approach, we treat all agents independently without considering the existence of the other agents. 
+In this case, all agents consider others agents as part of the environment. 
+https://huggingface.co/learn/deep-rl-course/unit7/multi-agent-setting 3/4
+1/19/26, 7:43 PM Designing Multi-Agents systems 
+It’s a non-stationarity environment condition, so has no guarantee of convergence. 
+In a centralized approach: 
+A single policy is learned from all the agents. 
+Takes as input the present state of an environment and the policy outputs joint actions. The reward is global. 
+<> Update on GitHub 
+An introduction to Multi-Agents Reinforcement Learning (MARL) Self-Play ← → 
+https://huggingface.co/learn/deep-rl-course/unit7/multi-agent-setting 4/4
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+Search models, datasets, users... 
+Deep RL Course documentation 
+Diving deeper into policy-gradient methods 
+Join the Hugging Face community 
+and get access to the augmented documentation experience 
+Sign Up to get started 
+Diving deeper into policy-gradient methods 
+Getting the big picture 
+θ 
+We just learned that policy-gradient methods aim to find parameters that maximize the expected return. 
+The idea is that we have a parameterized stochastic policy. In our case, a neural network outputs a probability distribution over actions. The probability of taking each action is also called the action preference. 
+If we take the example of CartPole-v1: 
+As input, we have a state. 
+As output, we have a probability distribution over actions at that state. 
+Ask HuggingChat 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 1/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+
+Our goal with policy-gradient is to control the probability distribution of actions by tuning the policy such that good actions (that maximize the return) are sampled more frequently in the future. Each time the agent interacts with the environment, we tweak the parameters such that good actions will be sampled more likely in the future. 
+But how are we going to optimize the weights using the expected return? 
+The idea is that we’re going to let the agent interact during an episode. And if we win the episode, we consider that each action taken was good and must be more sampled in the future since they lead to win. 
+P(a∣s) 
+So for each state-action pair, we want to increase the : the probability of taking that action at that state. Or decrease if we lost. 
+The Policy-gradient algorithm (simplified) looks like this: 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 2/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+Now that we got the big picture, let’s dive deeper into policy-gradient methods. 
+Diving deeper into policy-gradient methods 
+π θ π 
+We have our stochastic policy which has a parameter . This , given a state, outputs a probability distribution of actions. 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 3/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+
+πθ(at∣st) at st 
+Where is the probability of the agent selecting action from state given our policy. 
+But how do we know if our policy is good? We need to have a way to measure it. To know that, we J(θ) 
+define a score/objective function called . 
+The objective function 
+The objective function gives us the performance of the agent given a trajectory (state action sequence without considering reward (contrary to an episode)), and it outputs the expected cumulative reward. 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 4/11
+
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+Let’s give some more details on this formula: 
+The expected return (also called expected cumulative reward), is the weighted average (where the weights are given by P(τ ; θ) of all possible values that the return R(τ ) can take). 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 5/11
+
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+R(τ ) 
+- : Return from an arbitrary trajectory. To take this quantity and use it to calculate the expected return, we need to multiply it by the probability of each possible trajectory. 
+P(τ ; θ) τ θ - : Probability of each possible trajectory (that probability depends on since it defines the policy that it uses to select the actions of the trajectory which has an impact of the states visited). 
+
+J(θ) 
+- : Expected return, we calculate it by summing for all trajectories, the probability of taking θ 
+that trajectory given multiplied by the return of this trajectory. 
+θ 
+Our objective then is to maximize the expected cumulative reward by finding the that will output the best action probability distributions: 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 6/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+
+Gradient Ascent and the Policy-gradient Theorem 
+θ 
+Policy-gradient is an optimization problem: we want to find the values of that maximize our J(θ) 
+objective function , so we need to use gradient-ascent. It’s the inverse of gradient-descent J(θ) 
+since it gives the direction of the steepest increase of . 
+(If you need a refresher on the difference between gradient descent and gradient ascent check this and this). 
+
+Our update step for gradient-ascent is: 
+θ ← θ + α ∗ ∇θJ(θ) θ 
+
+We can repeatedly apply this update in the hopes that converges to the value that maximizes J(θ) 
+. 
+J(θ) 
+However, there are two problems with computing the derivative of : 
+1. We can’t calculate the true gradient of the objective function since it requires calculating the probability of each possible trajectory, which is computationally super expensive. So we want to calculate a gradient estimation with a sample-based estimate (collect some trajectories). 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 7/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+2. We have another problem that I explain in the next optional section. To differentiate this objective function, we need to differentiate the state distribution, called the Markov Decision Process dynamics. This is attached to the environment. It gives us the probability of the environment going into the next state, given the current state and the action taken by the agent. The problem is that we can’t differentiate it because we might not know about it. 
+
+Fortunately we’re going to use a solution called the Policy Gradient Theorem that will help us to reformulate the objective function into a differentiable function that does not involve the differentiation of the state distribution. 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 8/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+
+If you want to understand how we derive this formula for approximating the gradient, check out the next (optional) section. 
+The Reinforce algorithm (Monte Carlo Reinforce) 
+The Reinforce algorithm, also called Monte-Carlo policy-gradient, is a policy-gradient algorithm θ 
+that uses an estimated return from an entire episode to update the policy parameter : In a loop: 
+πθ τ 
+Use the policy to collect an episode 
+g^ = ∇θJ(θ) 
+Use the episode to estimate the gradient 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 9/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+
+
+Update the weights of the policy: 
+θ ← θ + αg^ 
+
+We can interpret this update as follows: 
+∇θlogπθ(at∣st) 
+- is the direction of steepest increase of the (log) probability of selecting action at st 
+from state . This tells us how we should change the weights of policy if we want to at st 
+increase/decrease the log probability of selecting action at state . 
+R(τ ) 
+- : is the scoring function: 
+If the return is high, it will push up the probabilities of the (state, action) combinations. 
+Otherwise, if the return is low, it will push down the probabilities of the (state, action) combinations. 
+We can also collect multiple episodes (trajectories) to estimate the gradient: 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 10/11
+1/19/26, 7:41 PM Diving deeper into policy-gradient methods 
+<> Update on GitHub 
+The advantages and disadvantages of policy-gradient 
+(Optional) the Policy Gradient 
+← → methods 
+Theorem 
+https://huggingface.co/learn/deep-rl-course/unit4/policy-gradient 11/11

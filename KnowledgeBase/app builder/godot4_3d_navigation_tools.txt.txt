@@ -1,0 +1,32 @@
+
+00:00:01
+[Music] G 4 comes with some useful shortcuts and tools that you can use to place things accurately but they may not be the easiest to discover so in this video we'll look at a bunch of them this video is sponsored by good game devs like you who invest in learning with GD Quest make sure you catch the offer on our new bundle the great good 4 starter kit it includes our foundational courses learn 2D and 3D Game Dev from zero with good 4 and our interactive cookbook of popular game mechanics node Essentials good 4 edition okay so by default when you launch gdo in a 3D scene you should be in the select mode in the toolbar right above your viewport and in select mode you can click to select some things uh you have to click on nothing to deselect and you can click and drag to box select a bunch of things right okay uh then
+
+
+00:00:59
+when you select something you get the movement Gizmo and um you can click on the handles the axes to move a character or a node along that axis you can click on the squares to move in a plane and um that's about it because if you try to click on something else it's going to get selected right uh you can do more than that actually first of all you can press W to activate the move mode or you can click this icon in the toolbar and when you click the move mode you can click and drag to move the character from anywhere in the screen and it's going to move along the view plane so it's going to be constrained to how you are looking at the character but you're not limited to that so if I click again and move the character then I can use the axes shortcuts to move along those axes so X moves along the x- axis Z moves along the z- axis and y Y moves
+
+
+00:02:01
+along the y- axis so up and down in gdo right so you can use that that's quite convenient then you can switch to the rotate mode with e or click the tool in the toolbar and click and drag there again to rotate uh along the view axis this time or around the view Axis or of course you can click on the the circles that you see in the viewport right uh when you're rotating uh around This Plane you can press X to constrain the rotation around the x-axis Z to go around the z-axis and Y to go around the y- axis which is often very convenient because this is how you would turn uh things like these trees right I'm going to press e to go to rotation mode click and drag in y and then I'm turning the tree around the y- axis but you can do even more than that so let's say that I want to tilt my tree a little bit like that and so I want to rotate the tree
+
+
+00:03:03
+around not the y-axis the world y-axis but around its own y- axis right the what you are seeing here what we call its local transform I'll get to how you get the local transforms in a second but let me go back to the rotate mode and I'm going to click and I can press y one time and it rotates around the y axis and y a second time and it will rotate along its y AIS instead allowing me to turn the tree uh okay so that's great now I just showed you that when something is rotated right by default you will get the Gizmo to move along the world transform but you might want to move the tree also up and down like get it into the the ground or outside of the ground push it out along its own axis to do that you can click this icon here use
+
+
+00:04:00
+local space or press the T key to toggle it and then you can move the tree based on its orientation that's what this does uh so this is very convenient also for characters if I select Sophia uh here and I turn her a bit uh when I press W to go to the move mode if I click along the vertical AIS uh it's based on her orientation all right A C more um you have the ability to toggle grid snapping with the Y uh key uh or by clicking the icon with the magnet in the toolbar and when you do that the character snaps their transform to grid steps uh grid steps that you can change in the view drop- down menu by going to settings and of course uh there's an option there to show the grid um but very often when
+
+
+00:05:03
+designing levels for games we want to move things freely and only sometimes you know you want to snap to a position or you might use snapping to to get started and then you know fine-tune the position like that to do that with the grid snapping turned off you can just move the character as usual using the move mode and then you can press control on your keyboard and keep the key down and this will talk snapping temporarily right so you can use that to snap position but also if I press e to go to the rotate mode I can click and drag and press control to constrain the rotation to 15° increments which is quite useful and there's one last mode that we didn't see yet the scale mode that can turn on with r and if you click and drag in this mode it will scale the character or the the selection and you can press control then to scale by 10% increments
+
+
+00:06:02
+or 0.1 uh increments you can find all of these transforms uh directly in the inspector on the right so when you have a note selected its properties show up in the inspector and if you go down to node 3D there's a transform category that you can unfold and there you will find the position rotation and scale and you can see that when I change the scale of my character the property updates almost in real time here's one more tip for the road if you're not if something is touching the floor you can press the page down key on your keyboard and good will use the physics engine to snap the object down to the floor so this means that the floor or whatever you're snapping onto needs to have a collision shape already uh but the object that you're snapping to the floor doesn't need to like this bush is just a 3D model uh but because the floor has
+
+
+00:07:00
+Collision information we can snap it back down to the floor by pressing page down if you're interested in getting this project you'll find the link in the description it's completely free and open source uh and it contains many demos of the good 4 features subscribe to get more videos like these and be sure to join our Discord Community it's a great place to give and get help from fellow good users you'll find a link in the [Music] description
+

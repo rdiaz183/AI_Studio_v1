@@ -1,0 +1,29 @@
+﻿{
+    "call_stack":  [
+                       {
+                           "name":  "Review our Dev Studio parameters",
+                           "parameters":  [
+
+                                          ]
+                       },
+                       {
+                           "name":  "Detail how Dice Energy tokens scale Commander stats and how our JEPA simulation guards state integrity",
+                           "parameters":  [
+
+                                          ]
+                       }
+                   ],
+    "parameters":  [
+
+                   ],
+    "required_parameters":  [
+
+                            ],
+    "required_parameters_version":  1,
+    "user_parameters":  {
+
+                        },
+    "user_parameters_version":  1,
+    "type":  "command",
+    "version":  1
+}

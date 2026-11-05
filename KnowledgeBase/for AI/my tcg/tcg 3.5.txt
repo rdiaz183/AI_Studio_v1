@@ -1,0 +1,92 @@
+# UNKNOWN DIGITAL TCG ENGINE - COMPREHENSIVE MASTER SPECIFICATION FILE
+**Document Version:** 1.0  
+**Project:** Unknown (Working Title)  
+**Architecture:** Digital-First Esports Platform  
+
+---
+
+## 1. GAMEPLAY ENGINE & CORE RULES
+
+### Deck Constraints
+* **Main Deck:** Exactly 50 cards (maximum 4 copies per card title).
+* **Mandatory Rank 0 Suite:** Exactly 16 Rank 0 cards (4 playsets) are required in every Main Deck. Every Rank 0 unit features **Dual Utility**:
+  1. *Active Utility:* Tap during your turn for resource ramp, draw power, card removal ("pop"), or stat debuffs.
+  2. *Defensive Guard:* Discard/Rest from hand or field during either player's turn to block attacks, redirect combat, or mitigate damage.
+* **Side Deck:** 10 cards used during Best-of-3 set adjustments.
+* **Extra Deck:** 10 cards (Rank-up Commander forms and special summons).
+
+### Resource Engine (Dice Energy)
+* Base Energy scales automatically by +1 every turn up to a hard cap of 10â€“12 Energy.
+* **First Player Equity:** Player 1 starts with 2 Energy; Player 2 starts with 3 Energy (+1 Energy second-player equity bonus).
+* Zero land or resource cards required in deck building.
+
+### Commander Progression & Sortie (Rank 0 â†’ 3)
+* Commanders dictate color identity and scale turn-by-turn.
+* **Commander Sortie:** Deploying a Rank 3 Commander to the Front Line offers massive combat presence.
+* **Defeat Penalty:** If a Rank 3 Commander is defeated in combat, the owner loses **2 Prize Cards** and the Commander enters a 1-turn Overload/Rest state.
+
+### Win Condition & Damage System
+* **Prize Deck:** 6 to 8 Prize Cards.
+* **Damage Resolution:** Direct combat hits move Prize Cards directly to the defender's hand.
+
+### Field Spatial Limit & Open Items
+* **5-Card Field Cap:** Maximum 5 combined unit/item slots on board at any time.
+* **No Face-Down Cards:** Items (Equipment, Engines, Instant Elixirs) are placed in open board slots or cast directly from hand.
+
+---
+
+## 2. COMBAT & PHASE ARCHITECTURE
+
+### Interleaved Action Phase
+* **Combined Main & Battle Phases:** Players interleave summoning units, activating item cards, using Rank 0 tap abilities, and declaring individual unit attacks within a single fluid turn structure.
+
+### Persistent ATK Reduction
+* Combat damage is persistent across turns ($10\text{k} \text{ vs } 5\text{k}$ combat results in the destruction of the $5\text{k}$ unit while the $10\text{k}$ attacker retains $5\text{k}$ remaining ATK).
+* Low-rank units can chip down high-stat boss threats across multiple attacks.
+
+---
+
+## 3. SEVEN-COLOR ELEMENTAL FRAMEWORK
+
+1. **Red (Fire):** Direct damage, high base ATK, sacrifice offensive plays.
+2. **Blue (Water / Ice):** Control, persistent ATK debuffs, board manipulation.
+3. **Green (Nature / Earth):** Energy ramp, high-defense walls, stat buffing.
+4. **Yellow (Wind / Lightning):** Fast combos, unit re-tapping, multi-attacks.
+5. **White (Light / Holy):** Prize card shielding, healing, protection skills.
+6. **Purple (Dark / Chaos):** Graveyard recursion, sacrifice disruption.
+7. **Grey (Neutral):** Universal utility cards usable by any Commander color identity.
+
+---
+
+## 4. ATK & COST BASELINES (VANGUARD-STYLE 1,000 SCALING)
+
+| Rank | Base ATK (Vanilla) | Effect ATK Threshold | Typical Role |
+| :--- | :--- | :--- | :--- |
+| **Rank 0** | **5,000 ATK** | **3,000 â€“ 4,000 ATK** | Mandatory 16-card Dual-Utility Hand/Field Guards & Energy Ramp |
+| **Rank 1** | **8,000 ATK** | **6,000 â€“ 7,000 ATK** | Utility enablers, board fixers, card draw |
+| **Rank 2** | **10,000 ATK** | **8,000 â€“ 9,000 ATK** | Mid-game combat anchors, item interactions |
+| **Rank 3** | **13,000 ATK** | **11,000 â€“ 12,000 ATK** | Win-condition Boss monsters & Commander forms |
+
+---
+
+## 5. MATCH CLOCK & ACTION TIMER ENGINE
+
+* **Match Format:** Best-of-3 (BO3) with a **60-minute hard match clock** (25 minutes bank per player, 10-minute side-decking/transition window).
+* **Side Decking Window:** 90 seconds between games to swap up to 10 cards.
+* **Dynamic Turn Timer:** 90 seconds base turn bank. Playing a card, casting an item, or declaring an attack refunds **+5 seconds** to the active bank (capped at 3 minutes maximum per turn).
+* **End Phase Hand Limit:** Enforced **8-card maximum hand size**; excess cards are discarded to the Graveyard.
+
+---
+
+## 6. BUSINESS, ECONOMY & COMMUNITY MODEL
+
+### Monetization & Player Equity
+* **$20 Quarterly Expansion DLC:** Includes 4x playsets of key DLC cards, 4x playsets of all Common set cards, 2 Character Skins, 2 Board Skins, 3D card plastics, and 10,000 In-Game Currency.
+* **5-Tier Gacha & 1% Alt-Art Chase:** Standard 5-rarity gacha with duplicate protection. Pulling a 1% Chase Alt-Art permanently unlocks its crafting recipe.
+* **3:1 Crafting System:** Convert 3 extra cards of a specific rarity tier into 1 card of the exact same rarity.
+
+### Esports & Profit-Sharing Engine
+* **50% Net Revenue Split:** 50% of net platform revenue funds global tournament prize pools ($20,000 Weekly Cash Cups + Monthly Masters Championships).
+* **10% Prize Escalator Pool:** 10% of Cosmetic Store sales and 10% of approved community merch sales (such as custom 1,000-step damage counters) directly escalate live tournament prize pools.
+* **Grassroots Tournament Engine:** Integrated client bracket system allowing any player or local game store to run Swiss, Single Elimination, or Round Robin tournaments.
+* **100% Creator Commercial Rights:** Content creators retain full commercial monetization rights for gameplay, broadcasts, and merchandise.
